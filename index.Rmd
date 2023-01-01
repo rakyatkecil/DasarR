@@ -1,0 +1,26 @@
+--- 
+title: "`Dasar Pemrograman R`"
+author: "'`dimas`"
+date: "`r Sys.Date()`"
+site: "bookdown::bookdown_site"
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
+---
+
+
+R adalah salah satu bahasa pemrograman yang khusus dibuat untuk melakukan komputasi statsistik. Program R dibuat oleh **Ross Ihaka** dan **Robert Gentleman** berdasarkan (sangat mirip) pada bahasa pemrogram S yang perlu mengeluarkan beberapa rupiah untuk dapat menggunakannya. Sedangkan R adalah **_open source_**.
+
+Program R memberikan banyak kemudahan bagi pemula yang masih baru memulai belajar pemrograman (terutama dalam hal statistik). Hal ini dikarenakan terdapat berbagai fungsi-fungsi dasar statistik yang sangat mirip dengan nama metode statistikanya, seperti untuk menghitung nilai rata-rata (mean) menggunakan fungsi r `mean()` di R. Selain dapat digunakan dalam berbagai macam teknik statistika, R dapat digunakan untuk membuat grafik sesuai dengan kebutuhan penggunanya. 
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(fig.pos = 'Ca')
+knitr::include_graphics("images//RIRG.jpg")
+```
+
+
+
