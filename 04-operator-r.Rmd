@@ -1,0 +1,136 @@
+# Operator - operator pada R
+
+Operator - operator pada R adalah perintah untuk melakukan suatu operasi seperti operasi artimatika, logika dan relasi. Secara umum terdapat 4 tipe operator pada R, yaitu:
+
+* Operator Aritmatika
+* Operator Logika
+* Operator Relasi
+
+## Operator Aritmatika {#operator}
+
+Operator artimatika adalah operator yang digunakan untuk melakukan komputasi dengan menggunakan operasi - operasi matematika seperti penjumlahan, pengurangan, dll. Berikut adalah daftar operator aritmatika pada R:
+
+```{r, echo=FALSE}
+x <- data.frame(
+  Operator = c("+", "-", "*", "/", "^", "%%"),
+  Operasi = c("Penjumlahan", "Pengurangan",
+              "Perkalian", "Pembagian",
+              "Perpangkatan", "Modulo")
+)
+knitr::kable(
+  x,
+  caption = "Operator Aritmatika pada R",
+  booktabs = TRUE, 
+  align = "c"
+)
+```
+
+Operator umumnya digunakan untuk pengoperasian pada objek bertipe `numeric` atau `integer` dengan struktur data berupa `vector` dan `matrix`. Berikut adalah contoh penggunaannya:
+
+```{r}
+x <- 3
+y <- 5
+```
+```{r, echo=FALSE}
+x <- data.frame(
+  Operator = c("+", "-", "*", "/", "^", "%%"),
+  Operasi = c("x + y", "x - y",
+              "x * y", "x / y",
+              "x ^ y", "x %% y"),
+  Hasil = c(x + y, x - y,
+              x * y, x / y,
+              x ^ y, x %% y)
+)
+knitr::kable(
+  x,
+  caption = "Hasil Penggunaan Operator pada R",
+  booktabs = TRUE, 
+  align = "c"
+)
+```
+
+## Operator Logika
+
+Operator logika akan menghasilkan nilai `TRUE` dan `FALSE`. Seperti halnya logika matematika, terdapat 2 operator logika yaitu _dan_ (`AND`), _atau_ (`OR`) dan ingkaran (`NOT`). Berikut adalah daftar operator logika pada R:
+
+```{r, echo=FALSE}
+x <- data.frame(
+  Operator = c("!", "&", "&&", "|", "||"),
+  Operasi = c("Bukan/Ingkaran", "Logika DAN pada masing-masing anggota objek",
+              "Logika DAN", "Logika ATAU",
+              "Logika ATAU pada masing-masing anggota objek")
+)
+knitr::kable(
+  x,
+  caption = "Operator Logika pada R",
+  booktabs = TRUE, 
+  align = "c"
+)
+```
+
+Berikut adalah contoh hasil penggunaannya:
+
+```{r}
+x <- c(TRUE, FALSE, 5)
+y <- c(TRUE, FALSE, FALSE)
+z <- c(FALSE, TRUE, TRUE)
+
+!x
+x&y
+x&&z
+x|y
+x||z
+```
+
+```{r, echo=FALSE}
+P1 <- c(TRUE, TRUE, FALSE, FALSE)
+P2 <- c(TRUE, FALSE, TRUE, FALSE)
+x <- data.frame(
+  P1, P2, NegasiP1 = !P1,
+  NegasiP2 = !P2, 
+  DAN = (P1&P2),
+  ATAU = (P1|P2)
+)
+
+knitr::kable(
+  x,
+  caption = "Hasil Penggunaan Operator Logika",
+  booktabs = TRUE
+)
+```
+
+## Operator Relasi {#relational}
+
+Operator relasi adalah operator yang digunakan untuk membandingkan 2 buah nilai/objek. Hasil _output_ dari operator relasi ini adalah `TRUE` dan `FALSE`. Berikut adalah daftar operator relasi:
+
+```{r, echo=FALSE}
+Operator = c("<", "<=", ">", ">=", "==", "!=")
+Operasi = c("Kurang dari", "Kurang dari sama dengan",
+            "Lebih dari", "Lebih dari sama dengan",
+            "Sama dengan", "Tidak sama dengan")
+x <- data.frame(
+  Operator,
+  Operasi
+)
+
+knitr::kable(
+  x,
+  caption = "Operasi Relasi pada R",
+  booktabs = TRUE
+)
+```
+
+Operator relasi dapat dioperasikan layaknya operator logika. Berikut adalah contoh penggunaannya:
+
+```{r}
+x <- 3
+y <- 7
+z <- 7
+x<y
+x>y
+x<=y
+y<=z
+x!=y
+y==z
+
+```

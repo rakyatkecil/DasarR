@@ -1,0 +1,115 @@
+# Struktur Data
+
+Struktur data pada bahasa pemrograman R adalah sebuah konsep yang digunakan untuk menyimpan data berdasarkan kebutuhannya. Berdasarkan struktur datanya, terdapat 4 struktur data yang dapat kita definisikan pada program R:
+
+* Vektor (`vector`)
+* Matriks (`matrix`)
+* Pendafaran (`list`)
+* Kerangka Data (`data.frame`)
+
+## Vektor (Vector) {#vector}
+
+Vektor adalah struktur data yang paling sederhana pada bahasa pemrograman R. Vektor memuat barisan data dengan tipe data yang sama. Pendefinisian vektor dilakukan dengan menggunakan perintah `c()`. Semua data ditulis didalam tanda kurung dan setiap data dipisahkan dengan tanda koma `,`.
+
+```{r}
+x <- c(1:5)
+x
+y <- c("Hipertensi", "Diabetes", "Asam Urat")
+y
+length(x)
+length(y)
+```
+
+Apa yang terjadi apabila sebuah vektor diisi dengan 2 tipe data? misalnya `c(12, 4, TRUE)`
+
+Selanjutnya kita dapat memanggil anggota dari sebuah objek `vector` dengan menggunakan tanda `[x]` setelah objek dengan `x` adalah nilai yang menyatakan _data ke-x_.
+
+```{r}
+x[2]
+y[3]
+```
+
+## Matriks (Matrix) {#matrix}
+
+Sama halnya dengan vektor, matriks merupakan struktur data yang hanya dapat menyimpan 1 tipe data saja. Perbedaan antara struktur data 'matrix' dengan 'vector' berada pada dimensi datanya. Vektor merupakan struktur data berdimensi 1 (hanya memiliki panjang data). Sedangkan matriks adalah struktur data yang berdimensi 2 (memiliki dimensi dan panjang data).
+
+Pendefinisian matriks dilakukan dengan menggunakan perintah `matrix` dengan `syntax`: `matrix(data, nrow, ncol, byrow=FALSE)`.
+
+```{r}
+x <- matrix(
+  c(1:8), 2, 4
+)
+x
+dim(x)
+```
+
+dengan:
+
+* `data` adalah data yang akan kita gunakan
+* `nrow` adalah jumlah baris
+* `ncol` adalah jumlah kolom
+* `byrow` adalah perintah opsional untuk memilih agar data yang kita miliki didaftarkan berdasarkan baris atau kolom
+
+Apakah yang akan terjadi apabila kita menggunakan `byrow=FALSE` dan `byrow=TRUE`?
+
+Berbeda dengan objek yang berupa `vector`, pemanggilan data pada objek `matrix` menggunakan tanda `[x,y]` dimana `x` adalah _data baris ke-x_ dan `y` adalah _data kolom ke-y_. Apabila kita menggunakan tanda `[x,]` saja, maka kita memanggil semua data pada _baris ke-x_. Sedangkan apabila kita menggunakan tanda `[,y]` saja, maka kita memanggil semua data pada _kolom ke-y_. 
+
+```{r}
+x[2,3]
+x[2,]
+x[,4]
+x[6]
+```
+
+Catatan: `x` dan `y` pada `[x,y]` dapat berupa `vector`.
+
+## Daftar (List) {#list}
+
+Struktur data `list` dalam R adalah struktur data yang dapat mendaftarkan beberapa objek sekaligus tanpa perlu khawatir dengan tipe data yang berbeda. Struktur data 'list' dapat juga dikatakan sebagai vektor yang dapat menyimpan berbagai macam objek. Pendefinisian list dilakukan dengan menggunakan perintah `list()`.
+
+```{r}
+a <- c(1, 3, 6, 2)
+b <- c("Apa", "kabar", "anda", "hari", "ini", "?")
+c <- c(TRUE, FALSE, FALSE, FALSE, TRUE)
+x <- list(a=a, b=b, c=c)
+x
+```
+
+Selanjutnya kita dapat memanggil masing-masing objek pada sebuah list dengan `syntax`: `ListObject$ObjekInList` atau dengan menggunakan `[[x]]` dimana `x` adalah sebuah angka yang merujuk pada **daftar ke berapa**.
+
+```{r}
+x$a
+x[[3]]
+```
+
+## Kerangka Data (Data Frame) {#dataframe}
+
+Struktur data yang berupa _data frame_ (`data.frame`) merupakan struktur data yang akan paling sering kita gunakan dalam pengolahan data. Struktur data ini digunakan untuk mendefinisikan sebuah tabel data yang mana setiap kolom adalah nama-nama objek/variabel pada _data frame_ tersebut. Setiap objek/variabel dalam `data.frame` merupakan sebuah `vector`. Artinya setiap objek/variabel dalam `data.frame` hanya dapat memiliki 1 tipe data saja. Selain itu setiap objek/variabel yang berada dalam `data.frame` harus memiliki jumlah data (`length()`) yang sama.
+
+Perintah `data.frame()` adalah perintah yang digunakan untuk medefinisikan sebuah objek sebagai sebuah data frame.
+
+```{r}
+nama <- c("Ahmad", "Ganjar", "Lusi", "Andina", "Elok")
+jk   <- factor(c("Laki-laki", "Laki-laki", "Perempuan", "Perempuan", "Perempuan"))
+tb   <- c(170, 169, 160, 154, 163)
+bb   <- c(70, 67, 45, 40, 52)
+x    <- data.frame(nama, jk, tb, bb)
+x
+```
+
+```{r, echo=FALSE}
+knitr::kable(
+  x, 
+  caption = "Data Mahasiswa 2020",
+  booktabs = TRUE,
+)
+```
+
+Selanjutnya untuk memanggil objek/variabel pada sebuah `data.frame` mirip dengan memanggil data pada sebuah `matrix`. Selain itu kita dapat pula memanggil dengan cara menyebutkan nama objek/variabel pada `data.frame` tersebut.
+
+```{r}
+x[,2]
+x[4,]
+x$nama
+x[,c('jk', 'nama')]
+```

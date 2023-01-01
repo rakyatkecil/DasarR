@@ -1,0 +1,39 @@
+# Objek dan Paket
+
+## Objek
+
+Objek merupakan sebuah wadah untuk menyimpan informasi yang telah didefinisikan. Penyimpanan informasi ke dalam sebuah objek memberikan kemudahan bagi pengguna R untuk memanggil informasi yang sama berulang kali hanya dengan memanggil nama objeknya saja. Seringkali sebuah informasi memiliki banyak komponen, sehingga jika harus memanggilnya berulang kali akan menjadi sangat tidak efektif. Sehingga dengan mendefinisikannya ke dalam sebuah objek akan mempercepat proses pengerjaannya.
+
+
+Terdapat beberapa cara dalam mendefinisikan objek pada R seperti yang tersajikan pada tabel berikut:
+
+```{r, echo=FALSE}
+Operator = c("<-, =", "->")
+Operasi = c("Mendefinisikan objek sebelah kiri",
+            "Mendefinisikan objek sebelah kanan")
+x <- data.frame(Operator, Operasi)
+knitr::kable(
+  x,
+  booktabs = TRUE,
+  caption = "Operator Pendefinisian Objek pada R"
+)
+```
+
+Contoh penggunaannya adalah sebagai berikut:
+
+```{r}
+x <- 4
+y <- c(1, 4, 6, 8, 5)
+z <- c("Indonesia", "Raya")
+```
+
+Setelah objek didefinisikan, selanjutnya pemanggilan objek dapat dilakukan dengan menggunakan nama obejeknya saja. Contoh, akan kita panggil ketiga objek yang telah didefinisikan sebelumnya yaitu `x, y, z`. Berikut contohnya:
+```{r}
+x
+y
+z
+```
+
+
+## Paket (Package)
+
