@@ -1,12 +1,12 @@
-tab:unnamed-chunk-1
-tab:unnamed-chunk-21
-tab:unnamed-chunk-23
-tab:unnamed-chunk-25
+tab:unnamed-chunk-2
+tab:unnamed-chunk-22
+tab:unnamed-chunk-24
 tab:unnamed-chunk-26
-tab:unnamed-chunk-28
+tab:unnamed-chunk-27
 tab:unnamed-chunk-29
+tab:unnamed-chunk-30
 objek-dan-paket
-pendefinisian-objek
+objek
 paket-package
 datatype
 numeric
@@ -32,5 +32,3 @@ box-plot
 scatter-plot
 line-plot
 area-plot
-objek
-tab:unnamed-chunk-2

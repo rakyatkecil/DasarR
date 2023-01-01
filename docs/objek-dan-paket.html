@@ -228,6 +228,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="objek-dan-paket.html#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">4</span></span>
 <span id="cb1-2"><a href="objek-dan-paket.html#cb1-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">5</span>)</span>
 <span id="cb1-3"><a href="objek-dan-paket.html#cb1-3" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Indonesia&quot;</span>, <span class="st">&quot;Raya&quot;</span>)</span></code></pre></div>
+<p>Setelah objek didefinisikan, selanjutnya pemanggilan objek dapat dilakukan dengan menggunakan nama obejeknya saja. Contoh, akan kita panggil ketiga objek yang telah didefinisikan sebelumnya yaitu <code>x, y, z</code>. Berikut contohnya:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="objek-dan-paket.html#cb2-1" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
 <pre><code>## [1] 4</code></pre>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="objek-dan-paket.html#cb4-1" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div>
@@ -300,6 +301,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

@@ -20,7 +20,7 @@
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
 
-<meta name="author" content="dimas" />
+<meta name="author" content="’dimas" />
 
 
 <meta name="date" content="2023-01-01" />
@@ -138,7 +138,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="objek-dan-paket.html"><a href="objek-dan-paket.html"><i class="fa fa-check"></i><b>1</b> Objek dan Paket</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="objek-dan-paket.html"><a href="objek-dan-paket.html#pendefinisian-objek"><i class="fa fa-check"></i><b>1.1</b> Pendefinisian Objek</a></li>
+<li class="chapter" data-level="1.1" data-path="objek-dan-paket.html"><a href="objek-dan-paket.html#objek"><i class="fa fa-check"></i><b>1.1</b> Objek</a></li>
 <li class="chapter" data-level="1.2" data-path="objek-dan-paket.html"><a href="objek-dan-paket.html#paket-package"><i class="fa fa-check"></i><b>1.2</b> Paket (Package)</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="datatype.html"><a href="datatype.html"><i class="fa fa-check"></i><b>2</b> Tipe Data</a>
@@ -186,7 +186,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Dasar Pemrograman R</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"><code>Dasar Pemrograman R</code></a>
           </h1>
         </div>
 
@@ -206,7 +206,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">4.1</span> Operator Aritmatika<a href="operator---operator-pada-r.html#operator" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Operator artimatika adalah operator yang digunakan untuk melakukan komputasi dengan menggunakan operasi - operasi matematika seperti penjumlahan, pengurangan, dll. Berikut adalah daftar operator aritmatika pada R:</p>
 <table>
-<caption><span id="tab:unnamed-chunk-23">Table 4.1: </span>Operator Aritmatika pada R</caption>
+<caption><span id="tab:unnamed-chunk-24">Table 4.1: </span>Operator Aritmatika pada R</caption>
 <thead>
 <tr class="header">
 <th align="center">Operator</th>
@@ -244,7 +244,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="operator---operator-pada-r.html#cb73-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">3</span></span>
 <span id="cb73-2"><a href="operator---operator-pada-r.html#cb73-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">5</span></span></code></pre></div>
 <table>
-<caption><span id="tab:unnamed-chunk-25">Table 4.2: </span>Hasil Penggunaan Operator pada R</caption>
+<caption><span id="tab:unnamed-chunk-26">Table 4.2: </span>Hasil Penggunaan Operator pada R</caption>
 <thead>
 <tr class="header">
 <th align="center">Operator</th>
@@ -290,7 +290,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">4.2</span> Operator Logika<a href="operator---operator-pada-r.html#operator-logika" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Operator logika akan menghasilkan nilai <code>TRUE</code> dan <code>FALSE</code>. Seperti halnya logika matematika, terdapat 2 operator logika yaitu <em>dan</em> (<code>AND</code>), <em>atau</em> (<code>OR</code>) dan ingkaran (<code>NOT</code>). Berikut adalah daftar operator logika pada R:</p>
 <table>
-<caption><span id="tab:unnamed-chunk-26">Table 4.3: </span>Operator Logika pada R</caption>
+<caption><span id="tab:unnamed-chunk-27">Table 4.3: </span>Operator Logika pada R</caption>
 <thead>
 <tr class="header">
 <th align="center">Operator</th>
@@ -330,17 +330,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="operator---operator-pada-r.html#cb76-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">&amp;</span>y</span></code></pre></div>
 <pre><code>## [1]  TRUE FALSE FALSE</code></pre>
 <div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="operator---operator-pada-r.html#cb78-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">&amp;&amp;</span>z</span></code></pre></div>
-<pre><code>## Warning in x &amp;&amp; z: &#39;length(x) = 3 &gt; 1&#39; in coercion to &#39;logical(1)&#39;
+<pre><code>## Warning in x &amp;&amp; z: &#39;length(x) = 3 &gt; 1&#39; in coercion to
+## &#39;logical(1)&#39;
 
-## Warning in x &amp;&amp; z: &#39;length(x) = 3 &gt; 1&#39; in coercion to &#39;logical(1)&#39;</code></pre>
+## Warning in x &amp;&amp; z: &#39;length(x) = 3 &gt; 1&#39; in coercion to
+## &#39;logical(1)&#39;</code></pre>
 <pre><code>## [1] FALSE</code></pre>
 <div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="operator---operator-pada-r.html#cb81-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">|</span>y</span></code></pre></div>
 <pre><code>## [1]  TRUE FALSE  TRUE</code></pre>
 <div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="operator---operator-pada-r.html#cb83-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">||</span>z</span></code></pre></div>
-<pre><code>## Warning in x || z: &#39;length(x) = 3 &gt; 1&#39; in coercion to &#39;logical(1)&#39;</code></pre>
+<pre><code>## Warning in x || z: &#39;length(x) = 3 &gt; 1&#39; in coercion to
+## &#39;logical(1)&#39;</code></pre>
 <pre><code>## [1] TRUE</code></pre>
 <table>
-<caption><span id="tab:unnamed-chunk-28">Table 4.4: </span>Hasil Penggunaan Operator Logika</caption>
+<caption><span id="tab:unnamed-chunk-29">Table 4.4: </span>Hasil Penggunaan Operator Logika</caption>
 <thead>
 <tr class="header">
 <th align="left">P1</th>
@@ -391,7 +394,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">4.3</span> Operator Relasi<a href="operator---operator-pada-r.html#relational" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Operator relasi adalah operator yang digunakan untuk membandingkan 2 buah nilai/objek. Hasil <em>output</em> dari operator relasi ini adalah <code>TRUE</code> dan <code>FALSE</code>. Berikut adalah daftar operator relasi:</p>
 <table>
-<caption><span id="tab:unnamed-chunk-29">Table 4.5: </span>Operasi Relasi pada R</caption>
+<caption><span id="tab:unnamed-chunk-30">Table 4.5: </span>Operasi Relasi pada R</caption>
 <thead>
 <tr class="header">
 <th align="left">Operator</th>
