@@ -2,7 +2,7 @@
 
 ## Objek
 
-Objek merupakan sebuah wadah untuk menyimpan informasi yang telah didefinisikan. Penyimpanan informasi ke dalam sebuah objek memberikan kemudahan bagi pengguna R untuk memanggil informasi yang sama berulang kali hanya dengan memanggil nama objeknya saja. Seringkali sebuah informasi memiliki banyak komponen, sehingga jika harus memanggilnya berulang kali akan menjadi sangat tidak efektif. Sehingga dengan mendefinisikannya ke dalam sebuah objek akan mempercepat proses pengerjaannya.
+Objek merupakan sebuah wadah untuk menyimpan informasi (dapat berupa nilai, data, ataupun lainnya) yang telah didefinisikan. Penyimpanan informasi ke dalam sebuah objek memberikan kemudahan bagi pengguna R untuk memanggil informasi yang sama berulang kali hanya dengan memanggil nama objeknya saja. Seringkali sebuah informasi memiliki banyak bagian didalamnya seperti `data frame` atau kerangka data (memiliki kolom-kolom variabel).  Informasi ini akan sangat merepotkan jika harus memanggilnya berulang kali, sehingga dengan mendefinisikannya ke dalam sebuah objek akan mempercepat proses pengerjaannya.
 
 
 Terdapat beberapa cara dalam mendefinisikan objek pada R seperti yang tersajikan pada tabel berikut:
@@ -22,18 +22,72 @@ knitr::kable(
 Contoh penggunaannya adalah sebagai berikut:
 
 ```{r}
-x <- 4
-y <- c(1, 4, 6, 8, 5)
-z <- c("Indonesia", "Raya")
+a <- 4
+b <- c(1, 4, 6, 8, 5)
+c = c("Indonesia", "Raya")
+d = data.frame(X = c(1, 2, 3, 4, 5),
+               Y = c("Rondi", "Anis", "Alya", "Budi", "Surya"))
 ```
 
-Setelah objek didefinisikan, selanjutnya pemanggilan objek dapat dilakukan dengan menggunakan nama obejeknya saja. Contoh, akan kita panggil ketiga objek yang telah didefinisikan sebelumnya yaitu `x, y, z`. Berikut contohnya:
+Setelah objek didefinisikan, selanjutnya pemanggilan objek dapat dilakukan dengan menggunakan nama obejeknya saja. Contoh, akan kita panggil ketiga objek yang telah didefinisikan sebelumnya yaitu `a, b, c, d` dengan mengetikan masing-masing objek tersebut secara bergantian di `Console`. Berikut hasilnya:
 ```{r}
-x
-y
-z
+a
+b
+c
+d
+```
+
+Objek-objek tersebut telah terdefinisikan di RStudio. Perhatikan pada Jendela Environment saat ini sudah ada 4 buah objek yang didefinisikan sebelumnya.
+
+```{r, echo=FALSE, fig.align='center', fig.cap="Jendela Environment yang Sudah Terdapat Objek"}
+knitr::include_graphics("images//objek_01.jpg")
+```
+
+Objek-objek tersebut dapat dihapu ataupun digantikan dengan nilai yang baru. Untuk menghapus sebuah objek dapat dilakukan dengan menggunakan fungsi `rm(nama_objek)`. Contoh:
+
+```{r}
+a = 79
+rm(b)
+```
+
+Sekarang objek `a` telah memiliki nilai baru yaitu `79` dan objek b tidak tersedia pada Jendela Environment.
+
+```{r, echo=FALSE, fig.align='center', fig.cap="Jendela Environment setelah Penggantian Objek `a` dan Penghapusan Objek `b`"}
+knitr::include_graphics("images//objek_02.jpg")
 ```
 
 
-## Paket (Package)
+## Paket (Packages)
+
+R Packages adalah unit yang sangat fundamental dalam Program R. Dalam sebuah R Packages berisi kode-kode yang dapat digunakan, sampel data dan dokumentasi yang telah dideskripsikan dengan baik untuk mempermudah penggunaannya. Terdapat berbagai macam paket yang tersedia di software repository CRAN ( _The Comprehensive R Archive Network_ ) yang merupakan pusat arsip dari versi-versi paket terbaru dan yang lama (biasanya paket diperbarui oleh pembuatnya untuk keperluan kemudahan penggunanya atau menyesuaikan dengan update terbaru dari R). Tercatat bahwa pada November 2020 sudah terdapat lebih dari 16.000 paket yang tersedia di CRAN.
+
+Sebagai contoh penggunaan paket, akan dilakukan pembuatan grafik dengan menggunakan fungsi `plot()` yang merupakan fungsi bawaan dari R (dari paket `base`) dibandingkan dengan grafik yang menggunakan paket `ggplot2`. Berikut Hasilnya:
+
+```{r, echo=FALSE, fig.align='center', fig.cap="Diagram Pencar Dengan dan Tanpa Menggunakan Paket"}
+knitr::include_graphics("images//paket_01.jpg")
+```
+
+Untuk melakukan instalasi paket, pertama siapkan jaringan internet yang baik. Paket akan di unduh dari repository CRAN. Setelah jaringan internet stabil, gunakan fungsi `install.packages("nama_paket")` lalu jalankan pada Console. 
+
+Pastikan jaringan internet stabil selama proses instalasi paket berlangsung. Biasanya paket-paket dalam R tidak dapat berdiri sendiri atau memerlukan paket lain yang juga harus terinstal. Apabila terdapat 1 paket lain yang diperlukan namun gagal terinstal, maka paket yang akan kita gunakan tidak akan berjalan. Saat ini terjadi biasanya nama paket tidak akan muncul di **Tab Packages** (beberapa kasus nama paket muncul namun tidak dapat menggunakan fungsi yang ada). **Apabila paket tidak berfungsi dengan baik, maka lakukan instalasi ulang pada paket tersebut**.
+
+```{r, echo=FALSE, fig.align='center', fig.cap="Contoh Paket `ggplot2` yang Sudah Terinstal dan Dapat Digunakan", dpi=50}
+knitr::include_graphics("images//paket_02.jpg")
+```
+
+
+Secara _default_ CRAN menjadi repository untuk mengunduh paket di RStudio. Sehingga kita tidak perlu mengatur repository lagi. 
+
+Berikut adalah beberapa daftar paket yang harus sudah terinstal (dan dapat digunakan) untuk topik Program R. 
+
+1. `tidyverse` <br />
+Digunakan untuk melakukan manajemen pada data. Cara instal paket dengan menjalankan fungsi `install.packages("tidyverse")` pada console
+2. `ggplot2` <br />
+Digunakan untuk membuat grafik yang lebih bagus. Cara instal paket dengan menjalankan fungsi `install.packages("ggplot2")` pada console
+3. `dgof` <br />
+Digunakan untuk melakukan uji normalitas menggunakan Metode Kolmogorov-Smirnov. Cara instal paket dengan menjalankan fungsi `install.packages("dgof")` pada console
+
+
+
+
 

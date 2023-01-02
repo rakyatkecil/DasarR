@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Dasar Pemrograman R</title>
+  <title>Chapter 2 Objek dan Paket | Dasar Pemrograman R</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Dasar Pemrograman R" />
+  <meta property="og:title" content="Chapter 2 Objek dan Paket | Dasar Pemrograman R" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Dasar Pemrograman R" />
+  <meta name="twitter:title" content="Chapter 2 Objek dan Paket | Dasar Pemrograman R" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -23,14 +23,14 @@
 <meta name="author" content="’dimas" />
 
 
-<meta name="date" content="2023-01-01" />
+<meta name="date" content="2023-01-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
+<link rel="prev" href="index.html"/>
 <link rel="next" href="datatype.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -136,42 +136,56 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Dasar-dasar Pemrograman R</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="objek-dan-paket.html"><a href="objek-dan-paket.html"><i class="fa fa-check"></i><b>1</b> Objek dan Paket</a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Pengantar</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="objek-dan-paket.html"><a href="objek-dan-paket.html#objek"><i class="fa fa-check"></i><b>1.1</b> Objek</a></li>
-<li class="chapter" data-level="1.2" data-path="objek-dan-paket.html"><a href="objek-dan-paket.html#paket-package"><i class="fa fa-check"></i><b>1.2</b> Paket (Package)</a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#sejarah-program-r"><i class="fa fa-check"></i><b>1.1</b> Sejarah Program R</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#program-r"><i class="fa fa-check"></i><b>1.2</b> Program R</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#instalasi-program-r"><i class="fa fa-check"></i><b>1.2.1</b> Instalasi Program R</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="datatype.html"><a href="datatype.html"><i class="fa fa-check"></i><b>2</b> Tipe Data</a>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#r-studio"><i class="fa fa-check"></i><b>1.3</b> R Studio</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="datatype.html"><a href="datatype.html#numeric"><i class="fa fa-check"></i><b>2.1</b> Numerik (Numeric)</a></li>
-<li class="chapter" data-level="2.2" data-path="datatype.html"><a href="datatype.html#integer"><i class="fa fa-check"></i><b>2.2</b> Bilangan Bulat (Integer)</a></li>
-<li class="chapter" data-level="2.3" data-path="datatype.html"><a href="datatype.html#complex"><i class="fa fa-check"></i><b>2.3</b> Bilangan Kompleks (Complex)</a></li>
-<li class="chapter" data-level="2.4" data-path="datatype.html"><a href="datatype.html#logical"><i class="fa fa-check"></i><b>2.4</b> Logika (Logical)</a></li>
-<li class="chapter" data-level="2.5" data-path="datatype.html"><a href="datatype.html#character"><i class="fa fa-check"></i><b>2.5</b> Teks (Character)</a></li>
-<li class="chapter" data-level="2.6" data-path="datatype.html"><a href="datatype.html#factor"><i class="fa fa-check"></i><b>2.6</b> Faktor (Factor)</a></li>
+<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#instalasi-program-r-studio"><i class="fa fa-check"></i><b>1.3.1</b> Instalasi Program R Studio</a></li>
+<li class="chapter" data-level="1.3.2" data-path="index.html"><a href="index.html#lingkungan-kerja-rstudio"><i class="fa fa-check"></i><b>1.3.2</b> Lingkungan Kerja RStudio</a></li>
+<li class="chapter" data-level="1.3.3" data-path="index.html"><a href="index.html#membuat-projek-baru"><i class="fa fa-check"></i><b>1.3.3</b> Membuat Projek Baru</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="struktur-data.html"><a href="struktur-data.html"><i class="fa fa-check"></i><b>3</b> Struktur Data</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="struktur-data.html"><a href="struktur-data.html#vector"><i class="fa fa-check"></i><b>3.1</b> Vektor (Vector)</a></li>
-<li class="chapter" data-level="3.2" data-path="struktur-data.html"><a href="struktur-data.html#matrix"><i class="fa fa-check"></i><b>3.2</b> Matriks (Matrix)</a></li>
-<li class="chapter" data-level="3.3" data-path="struktur-data.html"><a href="struktur-data.html#list"><i class="fa fa-check"></i><b>3.3</b> Daftar (List)</a></li>
-<li class="chapter" data-level="3.4" data-path="struktur-data.html"><a href="struktur-data.html#dataframe"><i class="fa fa-check"></i><b>3.4</b> Kerangka Data (Data Frame)</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="operator---operator-pada-r.html"><a href="operator---operator-pada-r.html"><i class="fa fa-check"></i><b>4</b> Operator - operator pada R</a>
+<li class="chapter" data-level="2" data-path="objek-dan-paket.html"><a href="objek-dan-paket.html"><i class="fa fa-check"></i><b>2</b> Objek dan Paket</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="operator---operator-pada-r.html"><a href="operator---operator-pada-r.html#operator"><i class="fa fa-check"></i><b>4.1</b> Operator Aritmatika</a></li>
-<li class="chapter" data-level="4.2" data-path="operator---operator-pada-r.html"><a href="operator---operator-pada-r.html#operator-logika"><i class="fa fa-check"></i><b>4.2</b> Operator Logika</a></li>
-<li class="chapter" data-level="4.3" data-path="operator---operator-pada-r.html"><a href="operator---operator-pada-r.html#relational"><i class="fa fa-check"></i><b>4.3</b> Operator Relasi</a></li>
+<li class="chapter" data-level="2.1" data-path="objek-dan-paket.html"><a href="objek-dan-paket.html#objek"><i class="fa fa-check"></i><b>2.1</b> Objek</a></li>
+<li class="chapter" data-level="2.2" data-path="objek-dan-paket.html"><a href="objek-dan-paket.html#paket-packages"><i class="fa fa-check"></i><b>2.2</b> Paket (Packages)</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="plot-dengan-ggplot2.html"><a href="plot-dengan-ggplot2.html"><i class="fa fa-check"></i><b>5</b> Plot dengan <code>ggplot2</code></a>
+<li class="chapter" data-level="3" data-path="datatype.html"><a href="datatype.html"><i class="fa fa-check"></i><b>3</b> Tipe Data</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="plot-dengan-ggplot2.html"><a href="plot-dengan-ggplot2.html#bar-plot"><i class="fa fa-check"></i><b>5.1</b> Bar Plot</a></li>
-<li class="chapter" data-level="5.2" data-path="plot-dengan-ggplot2.html"><a href="plot-dengan-ggplot2.html#histogram"><i class="fa fa-check"></i><b>5.2</b> Histogram</a></li>
-<li class="chapter" data-level="5.3" data-path="plot-dengan-ggplot2.html"><a href="plot-dengan-ggplot2.html#pie-plot"><i class="fa fa-check"></i><b>5.3</b> Pie Plot</a></li>
-<li class="chapter" data-level="5.4" data-path="plot-dengan-ggplot2.html"><a href="plot-dengan-ggplot2.html#box-plot"><i class="fa fa-check"></i><b>5.4</b> Box Plot</a></li>
-<li class="chapter" data-level="5.5" data-path="plot-dengan-ggplot2.html"><a href="plot-dengan-ggplot2.html#scatter-plot"><i class="fa fa-check"></i><b>5.5</b> Scatter Plot</a></li>
-<li class="chapter" data-level="5.6" data-path="plot-dengan-ggplot2.html"><a href="plot-dengan-ggplot2.html#line-plot"><i class="fa fa-check"></i><b>5.6</b> Line Plot</a></li>
-<li class="chapter" data-level="5.7" data-path="plot-dengan-ggplot2.html"><a href="plot-dengan-ggplot2.html#area-plot"><i class="fa fa-check"></i><b>5.7</b> Area Plot</a></li>
+<li class="chapter" data-level="3.1" data-path="datatype.html"><a href="datatype.html#numeric"><i class="fa fa-check"></i><b>3.1</b> Numerik (Numeric)</a></li>
+<li class="chapter" data-level="3.2" data-path="datatype.html"><a href="datatype.html#integer"><i class="fa fa-check"></i><b>3.2</b> Bilangan Bulat (Integer)</a></li>
+<li class="chapter" data-level="3.3" data-path="datatype.html"><a href="datatype.html#complex"><i class="fa fa-check"></i><b>3.3</b> Bilangan Kompleks (Complex)</a></li>
+<li class="chapter" data-level="3.4" data-path="datatype.html"><a href="datatype.html#logical"><i class="fa fa-check"></i><b>3.4</b> Logika (Logical)</a></li>
+<li class="chapter" data-level="3.5" data-path="datatype.html"><a href="datatype.html#character"><i class="fa fa-check"></i><b>3.5</b> Teks (Character)</a></li>
+<li class="chapter" data-level="3.6" data-path="datatype.html"><a href="datatype.html#factor"><i class="fa fa-check"></i><b>3.6</b> Faktor (Factor)</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="struktur-data.html"><a href="struktur-data.html"><i class="fa fa-check"></i><b>4</b> Struktur Data</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="struktur-data.html"><a href="struktur-data.html#vector"><i class="fa fa-check"></i><b>4.1</b> Vektor (Vector)</a></li>
+<li class="chapter" data-level="4.2" data-path="struktur-data.html"><a href="struktur-data.html#matrix"><i class="fa fa-check"></i><b>4.2</b> Matriks (Matrix)</a></li>
+<li class="chapter" data-level="4.3" data-path="struktur-data.html"><a href="struktur-data.html#list"><i class="fa fa-check"></i><b>4.3</b> Daftar (List)</a></li>
+<li class="chapter" data-level="4.4" data-path="struktur-data.html"><a href="struktur-data.html#dataframe"><i class="fa fa-check"></i><b>4.4</b> Kerangka Data (Data Frame)</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="operator---operator-pada-r.html"><a href="operator---operator-pada-r.html"><i class="fa fa-check"></i><b>5</b> Operator - operator pada R</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="operator---operator-pada-r.html"><a href="operator---operator-pada-r.html#operator"><i class="fa fa-check"></i><b>5.1</b> Operator Aritmatika</a></li>
+<li class="chapter" data-level="5.2" data-path="operator---operator-pada-r.html"><a href="operator---operator-pada-r.html#operator-logika"><i class="fa fa-check"></i><b>5.2</b> Operator Logika</a></li>
+<li class="chapter" data-level="5.3" data-path="operator---operator-pada-r.html"><a href="operator---operator-pada-r.html#relational"><i class="fa fa-check"></i><b>5.3</b> Operator Relasi</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="plot-dengan-ggplot2.html"><a href="plot-dengan-ggplot2.html"><i class="fa fa-check"></i><b>6</b> Plot dengan <code>ggplot2</code></a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="plot-dengan-ggplot2.html"><a href="plot-dengan-ggplot2.html#bar-plot"><i class="fa fa-check"></i><b>6.1</b> Bar Plot</a></li>
+<li class="chapter" data-level="6.2" data-path="plot-dengan-ggplot2.html"><a href="plot-dengan-ggplot2.html#histogram"><i class="fa fa-check"></i><b>6.2</b> Histogram</a></li>
+<li class="chapter" data-level="6.3" data-path="plot-dengan-ggplot2.html"><a href="plot-dengan-ggplot2.html#pie-plot"><i class="fa fa-check"></i><b>6.3</b> Pie Plot</a></li>
+<li class="chapter" data-level="6.4" data-path="plot-dengan-ggplot2.html"><a href="plot-dengan-ggplot2.html#box-plot"><i class="fa fa-check"></i><b>6.4</b> Box Plot</a></li>
+<li class="chapter" data-level="6.5" data-path="plot-dengan-ggplot2.html"><a href="plot-dengan-ggplot2.html#scatter-plot"><i class="fa fa-check"></i><b>6.5</b> Scatter Plot</a></li>
+<li class="chapter" data-level="6.6" data-path="plot-dengan-ggplot2.html"><a href="plot-dengan-ggplot2.html#line-plot"><i class="fa fa-check"></i><b>6.6</b> Line Plot</a></li>
+<li class="chapter" data-level="6.7" data-path="plot-dengan-ggplot2.html"><a href="plot-dengan-ggplot2.html#area-plot"><i class="fa fa-check"></i><b>6.7</b> Area Plot</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -194,19 +208,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title"><code>Dasar Pemrograman R</code></h1>
-<p class="author"><em>’<code>dimas</code></em></p>
-<p class="date"><em>2023-01-01</em></p>
-</div>
-<div id="objek-dan-paket" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">Chapter 1</span> Objek dan Paket<a href="objek-dan-paket.html#objek-dan-paket" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="objek" class="section level2 hasAnchor" number="1.1">
-<h2><span class="header-section-number">1.1</span> Objek<a href="objek-dan-paket.html#objek" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Objek merupakan sebuah wadah untuk menyimpan informasi yang telah didefinisikan. Penyimpanan informasi ke dalam sebuah objek memberikan kemudahan bagi pengguna R untuk memanggil informasi yang sama berulang kali hanya dengan memanggil nama objeknya saja. Seringkali sebuah informasi memiliki banyak komponen, sehingga jika harus memanggilnya berulang kali akan menjadi sangat tidak efektif. Sehingga dengan mendefinisikannya ke dalam sebuah objek akan mempercepat proses pengerjaannya.</p>
+<div id="objek-dan-paket" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Objek dan Paket<a href="objek-dan-paket.html#objek-dan-paket" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="objek" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Objek<a href="objek-dan-paket.html#objek" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Objek merupakan sebuah wadah untuk menyimpan informasi (dapat berupa nilai, data, ataupun lainnya) yang telah didefinisikan. Penyimpanan informasi ke dalam sebuah objek memberikan kemudahan bagi pengguna R untuk memanggil informasi yang sama berulang kali hanya dengan memanggil nama objeknya saja. Seringkali sebuah informasi memiliki banyak bagian didalamnya seperti <code>data frame</code> atau kerangka data (memiliki kolom-kolom variabel). Informasi ini akan sangat merepotkan jika harus memanggilnya berulang kali, sehingga dengan mendefinisikannya ke dalam sebuah objek akan mempercepat proses pengerjaannya.</p>
 <p>Terdapat beberapa cara dalam mendefinisikan objek pada R seperti yang tersajikan pada tabel berikut:</p>
 <table>
-<caption><span id="tab:unnamed-chunk-2">Table 1.1: </span>Operator Pendefinisian Objek pada R</caption>
+<caption><span id="tab:unnamed-chunk-22">Table 2.1: </span>Operator Pendefinisian Objek pada R</caption>
 <thead>
 <tr class="header">
 <th align="left">Operator</th>
@@ -225,19 +234,71 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>Contoh penggunaannya adalah sebagai berikut:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="objek-dan-paket.html#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">4</span></span>
-<span id="cb1-2"><a href="objek-dan-paket.html#cb1-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">5</span>)</span>
-<span id="cb1-3"><a href="objek-dan-paket.html#cb1-3" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Indonesia&quot;</span>, <span class="st">&quot;Raya&quot;</span>)</span></code></pre></div>
-<p>Setelah objek didefinisikan, selanjutnya pemanggilan objek dapat dilakukan dengan menggunakan nama obejeknya saja. Contoh, akan kita panggil ketiga objek yang telah didefinisikan sebelumnya yaitu <code>x, y, z</code>. Berikut contohnya:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="objek-dan-paket.html#cb2-1" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="objek-dan-paket.html#cb1-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb1-2"><a href="objek-dan-paket.html#cb1-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">5</span>)</span>
+<span id="cb1-3"><a href="objek-dan-paket.html#cb1-3" aria-hidden="true" tabindex="-1"></a>c <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Indonesia&quot;</span>, <span class="st">&quot;Raya&quot;</span>)</span>
+<span id="cb1-4"><a href="objek-dan-paket.html#cb1-4" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">X =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>),</span>
+<span id="cb1-5"><a href="objek-dan-paket.html#cb1-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">Y =</span> <span class="fu">c</span>(<span class="st">&quot;Rondi&quot;</span>, <span class="st">&quot;Anis&quot;</span>, <span class="st">&quot;Alya&quot;</span>, <span class="st">&quot;Budi&quot;</span>, <span class="st">&quot;Surya&quot;</span>))</span></code></pre></div>
+<p>Setelah objek didefinisikan, selanjutnya pemanggilan objek dapat dilakukan dengan menggunakan nama obejeknya saja. Contoh, akan kita panggil ketiga objek yang telah didefinisikan sebelumnya yaitu <code>a, b, c, d</code> dengan mengetikan masing-masing objek tersebut secara bergantian di <code>Console</code>. Berikut hasilnya:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="objek-dan-paket.html#cb2-1" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div>
 <pre><code>## [1] 4</code></pre>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="objek-dan-paket.html#cb4-1" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="objek-dan-paket.html#cb4-1" aria-hidden="true" tabindex="-1"></a>b</span></code></pre></div>
 <pre><code>## [1] 1 4 6 8 5</code></pre>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="objek-dan-paket.html#cb6-1" aria-hidden="true" tabindex="-1"></a>z</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="objek-dan-paket.html#cb6-1" aria-hidden="true" tabindex="-1"></a>c</span></code></pre></div>
 <pre><code>## [1] &quot;Indonesia&quot; &quot;Raya&quot;</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="objek-dan-paket.html#cb8-1" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div>
+<pre><code>##   X     Y
+## 1 1 Rondi
+## 2 2  Anis
+## 3 3  Alya
+## 4 4  Budi
+## 5 5 Surya</code></pre>
+<p>Objek-objek tersebut telah terdefinisikan di RStudio. Perhatikan pada Jendela Environment saat ini sudah ada 4 buah objek yang didefinisikan sebelumnya.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-25"></span>
+<img src="images/objek_01.JPG" alt="Jendela Environment yang Sudah Terdapat Objek" width="307" />
+<p class="caption">
+Figure 2.1: Jendela Environment yang Sudah Terdapat Objek
+</p>
 </div>
-<div id="paket-package" class="section level2 hasAnchor" number="1.2">
-<h2><span class="header-section-number">1.2</span> Paket (Package)<a href="objek-dan-paket.html#paket-package" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Objek-objek tersebut dapat dihapu ataupun digantikan dengan nilai yang baru. Untuk menghapus sebuah objek dapat dilakukan dengan menggunakan fungsi <code>rm(nama_objek)</code>. Contoh:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="objek-dan-paket.html#cb10-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="dv">79</span></span>
+<span id="cb10-2"><a href="objek-dan-paket.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(b)</span></code></pre></div>
+<p>Sekarang objek <code>a</code> telah memiliki nilai baru yaitu <code>79</code> dan objek b tidak tersedia pada Jendela Environment.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-27"></span>
+<img src="images/objek_02.JPG" alt="Jendela Environment setelah Penggantian Objek `a` dan Penghapusan Objek `b`" width="306" />
+<p class="caption">
+Figure 2.2: Jendela Environment setelah Penggantian Objek <code>a</code> dan Penghapusan Objek <code>b</code>
+</p>
+</div>
+</div>
+<div id="paket-packages" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Paket (Packages)<a href="objek-dan-paket.html#paket-packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>R Packages adalah unit yang sangat fundamental dalam Program R. Dalam sebuah R Packages berisi kode-kode yang dapat digunakan, sampel data dan dokumentasi yang telah dideskripsikan dengan baik untuk mempermudah penggunaannya. Terdapat berbagai macam paket yang tersedia di software repository CRAN ( <em>The Comprehensive R Archive Network</em> ) yang merupakan pusat arsip dari versi-versi paket terbaru dan yang lama (biasanya paket diperbarui oleh pembuatnya untuk keperluan kemudahan penggunanya atau menyesuaikan dengan update terbaru dari R). Tercatat bahwa pada November 2020 sudah terdapat lebih dari 16.000 paket yang tersedia di CRAN.</p>
+<p>Sebagai contoh penggunaan paket, akan dilakukan pembuatan grafik dengan menggunakan fungsi <code>plot()</code> yang merupakan fungsi bawaan dari R (dari paket <code>base</code>) dibandingkan dengan grafik yang menggunakan paket <code>ggplot2</code>. Berikut Hasilnya:</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-28"></span>
+<img src="images/paket_01.jpg" alt="Diagram Pencar Dengan dan Tanpa Menggunakan Paket" width="607" />
+<p class="caption">
+Figure 2.3: Diagram Pencar Dengan dan Tanpa Menggunakan Paket
+</p>
+</div>
+<p>Untuk melakukan instalasi paket, pertama siapkan jaringan internet yang baik. Paket akan di unduh dari repository CRAN. Setelah jaringan internet stabil, gunakan fungsi <code>install.packages("nama_paket")</code> lalu jalankan pada Console.</p>
+<p>Pastikan jaringan internet stabil selama proses instalasi paket berlangsung. Biasanya paket-paket dalam R tidak dapat berdiri sendiri atau memerlukan paket lain yang juga harus terinstal. Apabila terdapat 1 paket lain yang diperlukan namun gagal terinstal, maka paket yang akan kita gunakan tidak akan berjalan. Saat ini terjadi biasanya nama paket tidak akan muncul di <strong>Tab Packages</strong> (beberapa kasus nama paket muncul namun tidak dapat menggunakan fungsi yang ada). <strong>Apabila paket tidak berfungsi dengan baik, maka lakukan instalasi ulang pada paket tersebut</strong>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-29"></span>
+<img src="images/paket_02.JPG" alt="Contoh Paket `ggplot2` yang Sudah Terinstal dan Dapat Digunakan" width="573" />
+<p class="caption">
+Figure 2.4: Contoh Paket <code>ggplot2</code> yang Sudah Terinstal dan Dapat Digunakan
+</p>
+</div>
+<p>Secara <em>default</em> CRAN menjadi repository untuk mengunduh paket di RStudio. Sehingga kita tidak perlu mengatur repository lagi.</p>
+<p>Berikut adalah beberapa daftar paket yang harus sudah terinstal (dan dapat digunakan) untuk topik Program R.</p>
+<ol style="list-style-type: decimal">
+<li><code>tidyverse</code> <br />
+Digunakan untuk melakukan manajemen pada data. Cara instal paket dengan menjalankan fungsi <code>install.packages("tidyverse")</code> pada console</li>
+<li><code>ggplot2</code> <br />
+Digunakan untuk membuat grafik yang lebih bagus. Cara instal paket dengan menjalankan fungsi <code>install.packages("ggplot2")</code> pada console</li>
+<li><code>dgof</code> <br />
+Digunakan untuk melakukan uji normalitas menggunakan Metode Kolmogorov-Smirnov. Cara instal paket dengan menjalankan fungsi <code>install.packages("dgof")</code> pada console</li>
+</ol>
 
 </div>
 </div>
@@ -246,8 +307,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-
-<a href="datatype.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="datatype.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -68,12 +68,12 @@ penjelasan:
 * `ggplot(data, aes(x))` adalah perintah untuk membuat sebuah objek `ggplot` dari objek `x` pada data `data`
 * `geom_histogram(binwidth = 1, color = "white", fill= "darkred")`
   - `geom_histogram()` adalah perintah untuk membuat histogram menggunakan `ggplot`
-  - `bandwidth` adalah lebar dari masing-masing batang
+  - `binwidth` adalah lebar dari masing-masing batang
   - `fill` bertujuan untuk memberi warna batang (dalam kasus ini kita akan berikan warna yang sama untuk semua batang)
   - `colour` bertujuan untuk memberi warna garis (dalam kasus ini kita akan berikan warna yang sama untuk semua garis)
 * `theme_bw()` bertujuan untuk menentukan tema `black and white` pada plot
 
-Selanjutnya bandingkan dengan histogram yang memiliki `bandwith` berbeda.
+Selanjutnya bandingkan dengan histogram yang memiliki `binwidth` berbeda.
 ```{r}
 p <- ggplot(data, aes(x)) + 
   geom_histogram(binwidth = 3, 
