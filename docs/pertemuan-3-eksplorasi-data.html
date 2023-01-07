@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Pertemuan 3: Eksplorasi Data | Dasar-dasar Pemrograman R</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Pertemuan 3: Eksplorasi Data | Dasar-dasar Pemrograman R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Pertemuan 3: Eksplorasi Data | Dasar-dasar Pemrograman R" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="’dimas" />
+
+
+<meta name="date" content="2023-01-07" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="pertemuan-2-manajemen-data.html"/>
+<link rel="next" href="pertemuan-4-korelasi-dan-regresi.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Dasar-dasar Pemrograman R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Pengantar</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#sejarah-program-r"><i class="fa fa-check"></i><b>1.1</b> Sejarah Program R</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#program-r"><i class="fa fa-check"></i><b>1.2</b> Program R</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#instalasi-program-r"><i class="fa fa-check"></i><b>1.2.1</b> Instalasi Program R</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#r-studio"><i class="fa fa-check"></i><b>1.3</b> R Studio</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#instalasi-program-r-studio"><i class="fa fa-check"></i><b>1.3.1</b> Instalasi Program R Studio</a></li>
+<li class="chapter" data-level="1.3.2" data-path="index.html"><a href="index.html#lingkungan-kerja-rstudio"><i class="fa fa-check"></i><b>1.3.2</b> Lingkungan Kerja RStudio</a></li>
+<li class="chapter" data-level="1.3.3" data-path="index.html"><a href="index.html#membuat-projek-baru"><i class="fa fa-check"></i><b>1.3.3</b> Membuat Projek Baru</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html"><i class="fa fa-check"></i><b>2</b> Pertemuan 1: Pengenalan</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html#objek"><i class="fa fa-check"></i><b>2.1</b> Objek</a></li>
+<li class="chapter" data-level="2.2" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html#paket-packages"><i class="fa fa-check"></i><b>2.2</b> Paket (Packages)</a></li>
+<li class="chapter" data-level="2.3" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html#datatype"><i class="fa fa-check"></i><b>2.3</b> Tipe Data</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html#numeric"><i class="fa fa-check"></i><b>2.3.1</b> Numerik (Numeric)</a></li>
+<li class="chapter" data-level="2.3.2" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html#integer"><i class="fa fa-check"></i><b>2.3.2</b> Bilangan Bulat (Integer)</a></li>
+<li class="chapter" data-level="2.3.3" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html#complex"><i class="fa fa-check"></i><b>2.3.3</b> Bilangan Kompleks (Complex)</a></li>
+<li class="chapter" data-level="2.3.4" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html#logical"><i class="fa fa-check"></i><b>2.3.4</b> Logika (Logical)</a></li>
+<li class="chapter" data-level="2.3.5" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html#character"><i class="fa fa-check"></i><b>2.3.5</b> Teks (Character)</a></li>
+<li class="chapter" data-level="2.3.6" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html#factor"><i class="fa fa-check"></i><b>2.3.6</b> Faktor (Factor)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html#struktur-data"><i class="fa fa-check"></i><b>2.4</b> Struktur Data</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html#vector"><i class="fa fa-check"></i><b>2.4.1</b> Vektor (Vector)</a></li>
+<li class="chapter" data-level="2.4.2" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html#matrix"><i class="fa fa-check"></i><b>2.4.2</b> Matriks (Matrix)</a></li>
+<li class="chapter" data-level="2.4.3" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html#list"><i class="fa fa-check"></i><b>2.4.3</b> Daftar (List)</a></li>
+<li class="chapter" data-level="2.4.4" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html#dataframe"><i class="fa fa-check"></i><b>2.4.4</b> Kerangka Data (Data Frame)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html#operator---operator-pada-r"><i class="fa fa-check"></i><b>2.5</b> Operator - operator pada R</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html#operator"><i class="fa fa-check"></i><b>2.5.1</b> Operator Aritmatika</a></li>
+<li class="chapter" data-level="2.5.2" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html#operator-logika"><i class="fa fa-check"></i><b>2.5.2</b> Operator Logika</a></li>
+<li class="chapter" data-level="2.5.3" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html#relational"><i class="fa fa-check"></i><b>2.5.3</b> Operator Relasi</a></li>
+<li class="chapter" data-level="2.5.4" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html#operator-pipe"><i class="fa fa-check"></i><b>2.5.4</b> Operator Pipe (<code>%&gt;%</code>)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="pertemuan-2-manajemen-data.html"><a href="pertemuan-2-manajemen-data.html"><i class="fa fa-check"></i><b>3</b> Pertemuan 2: Manajemen Data</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="pertemuan-2-manajemen-data.html"><a href="pertemuan-2-manajemen-data.html#import-data"><i class="fa fa-check"></i><b>3.1</b> Import Data</a></li>
+<li class="chapter" data-level="3.2" data-path="pertemuan-2-manajemen-data.html"><a href="pertemuan-2-manajemen-data.html#indentifikasi-masing-masing-variabel"><i class="fa fa-check"></i><b>3.2</b> Indentifikasi Masing-masing Variabel</a></li>
+<li class="chapter" data-level="3.3" data-path="pertemuan-2-manajemen-data.html"><a href="pertemuan-2-manajemen-data.html#ringkasan-data-dengan-summary"><i class="fa fa-check"></i><b>3.3</b> Ringkasan data dengan <code>summary()</code></a></li>
+<li class="chapter" data-level="3.4" data-path="pertemuan-2-manajemen-data.html"><a href="pertemuan-2-manajemen-data.html#memilih-variabel"><i class="fa fa-check"></i><b>3.4</b> Memilih Variabel</a></li>
+<li class="chapter" data-level="3.5" data-path="pertemuan-2-manajemen-data.html"><a href="pertemuan-2-manajemen-data.html#missing-values"><i class="fa fa-check"></i><b>3.5</b> Missing Values</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="pertemuan-2-manajemen-data.html"><a href="pertemuan-2-manajemen-data.html#menghapus-na"><i class="fa fa-check"></i><b>3.5.1</b> Menghapus <code>NA</code></a></li>
+<li class="chapter" data-level="3.5.2" data-path="pertemuan-2-manajemen-data.html"><a href="pertemuan-2-manajemen-data.html#mengganti-na-dengan-mean"><i class="fa fa-check"></i><b>3.5.2</b> Mengganti <code>NA</code> dengan mean</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="pertemuan-2-manajemen-data.html"><a href="pertemuan-2-manajemen-data.html#membuat-variabel-baru"><i class="fa fa-check"></i><b>3.6</b> Membuat Variabel Baru</a></li>
+<li class="chapter" data-level="3.7" data-path="pertemuan-2-manajemen-data.html"><a href="pertemuan-2-manajemen-data.html#transformasi-variabel"><i class="fa fa-check"></i><b>3.7</b> Transformasi Variabel</a></li>
+<li class="chapter" data-level="3.8" data-path="pertemuan-2-manajemen-data.html"><a href="pertemuan-2-manajemen-data.html#recode"><i class="fa fa-check"></i><b>3.8</b> Recode</a></li>
+<li class="chapter" data-level="3.9" data-path="pertemuan-2-manajemen-data.html"><a href="pertemuan-2-manajemen-data.html#filter"><i class="fa fa-check"></i><b>3.9</b> Filter</a></li>
+<li class="chapter" data-level="3.10" data-path="pertemuan-2-manajemen-data.html"><a href="pertemuan-2-manajemen-data.html#latihan"><i class="fa fa-check"></i><b>3.10</b> Latihan</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html"><i class="fa fa-check"></i><b>4</b> Pertemuan 3: Eksplorasi Data</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#statistik-deskriptif"><i class="fa fa-check"></i><b>4.1</b> Statistik Deskriptif</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#deskriptif"><i class="fa fa-check"></i><b>4.1.1</b> Deskriptif</a></li>
+<li class="chapter" data-level="4.1.2" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#deskriptif-variabel-tinggi-badan"><i class="fa fa-check"></i><b>4.1.2</b> Deskriptif Variabel Tinggi Badan</a></li>
+<li class="chapter" data-level="4.1.3" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#deskriptif-variabel-berat-badan"><i class="fa fa-check"></i><b>4.1.3</b> Deskriptif Variabel Berat Badan</a></li>
+<li class="chapter" data-level="4.1.4" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#deskriptif-statistik-berdasarkan-kelompok"><i class="fa fa-check"></i><b>4.1.4</b> Deskriptif Statistik berdasarkan kelompok</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#visualisasi-data-dengan-ggplot2"><i class="fa fa-check"></i><b>4.2</b> Visualisasi Data dengan <code>ggplot2</code></a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#bar-plot"><i class="fa fa-check"></i><b>4.2.1</b> Bar Plot</a></li>
+<li class="chapter" data-level="4.2.2" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#histogram"><i class="fa fa-check"></i><b>4.2.2</b> Histogram</a></li>
+<li class="chapter" data-level="4.2.3" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#pie-plot"><i class="fa fa-check"></i><b>4.2.3</b> Pie Plot</a></li>
+<li class="chapter" data-level="4.2.4" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#box-plot"><i class="fa fa-check"></i><b>4.2.4</b> Box Plot</a></li>
+<li class="chapter" data-level="4.2.5" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#scatter-plot"><i class="fa fa-check"></i><b>4.2.5</b> Scatter Plot</a></li>
+<li class="chapter" data-level="4.2.6" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#line-plot"><i class="fa fa-check"></i><b>4.2.6</b> Line Plot</a></li>
+<li class="chapter" data-level="4.2.7" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#area-plot"><i class="fa fa-check"></i><b>4.2.7</b> Area Plot</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="pertemuan-4-korelasi-dan-regresi.html"><a href="pertemuan-4-korelasi-dan-regresi.html"><i class="fa fa-check"></i><b>5</b> Pertemuan 4: Korelasi dan Regresi</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="pertemuan-4-korelasi-dan-regresi.html"><a href="pertemuan-4-korelasi-dan-regresi.html#korelasi"><i class="fa fa-check"></i><b>5.1</b> Korelasi</a></li>
+<li class="chapter" data-level="5.2" data-path="pertemuan-4-korelasi-dan-regresi.html"><a href="pertemuan-4-korelasi-dan-regresi.html#regresi"><i class="fa fa-check"></i><b>5.2</b> Regresi</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="pertemuan-4-korelasi-dan-regresi.html"><a href="pertemuan-4-korelasi-dan-regresi.html#linier"><i class="fa fa-check"></i><b>5.2.1</b> Linier</a></li>
+<li class="chapter" data-level="5.2.2" data-path="pertemuan-4-korelasi-dan-regresi.html"><a href="pertemuan-4-korelasi-dan-regresi.html#logistik"><i class="fa fa-check"></i><b>5.2.2</b> Logistik</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="latihan-latihan.html"><a href="latihan-latihan.html"><i class="fa fa-check"></i><b>6</b> Latihan-latihan</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="latihan-latihan.html"><a href="latihan-latihan.html#xxxx"><i class="fa fa-check"></i><b>6.1</b> XXXX</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"><code>Dasar-dasar Pemrograman R</code></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="pertemuan-3-eksplorasi-data" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Pertemuan 3: Eksplorasi Data<a href="pertemuan-3-eksplorasi-data.html#pertemuan-3-eksplorasi-data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="statistik-deskriptif" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Statistik Deskriptif<a href="pertemuan-3-eksplorasi-data.html#statistik-deskriptif" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="pertemuan-3-eksplorasi-data.html#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb137-2"><a href="pertemuan-3-eksplorasi-data.html#cb137-2" aria-hidden="true" tabindex="-1"></a>data_latihan <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;G:/Mandat/data_latihan.csv&quot;</span>, <span class="at">sep=</span><span class="st">&quot;;&quot;</span>)</span>
+<span id="cb137-3"><a href="pertemuan-3-eksplorasi-data.html#cb137-3" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> data_latihan <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>()</span>
+<span id="cb137-4"><a href="pertemuan-3-eksplorasi-data.html#cb137-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mydata)</span></code></pre></div>
+<pre><code>##   tinggi berat     jk
+## 1    172    77   male
+## 2    167    75   none
+## 3     96    32   none
+## 4    202   136   male
+## 5    150    49 female
+## 6    178   120   male</code></pre>
+<div id="deskriptif" class="section level3 hasAnchor" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Deskriptif<a href="pertemuan-3-eksplorasi-data.html#deskriptif" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="pertemuan-3-eksplorasi-data.html#cb139-1" aria-hidden="true" tabindex="-1"></a>mydata <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(jk) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(</span>
+<span id="cb139-2"><a href="pertemuan-3-eksplorasi-data.html#cb139-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="fu">n</span>()</span>
+<span id="cb139-3"><a href="pertemuan-3-eksplorasi-data.html#cb139-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## # A tibble: 4 × 2
+##   jk                 n
+##   &lt;chr&gt;          &lt;int&gt;
+## 1 female             9
+## 2 hermaphroditic     1
+## 3 male              44
+## 4 none               4</code></pre>
+</div>
+<div id="deskriptif-variabel-tinggi-badan" class="section level3 hasAnchor" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Deskriptif Variabel Tinggi Badan<a href="pertemuan-3-eksplorasi-data.html#deskriptif-variabel-tinggi-badan" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="pertemuan-3-eksplorasi-data.html#cb141-1" aria-hidden="true" tabindex="-1"></a>mydata <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(</span>
+<span id="cb141-2"><a href="pertemuan-3-eksplorasi-data.html#cb141-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">rata_rata =</span> <span class="fu">mean</span>(tinggi),</span>
+<span id="cb141-3"><a href="pertemuan-3-eksplorasi-data.html#cb141-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">median    =</span> <span class="fu">median</span>(tinggi),</span>
+<span id="cb141-4"><a href="pertemuan-3-eksplorasi-data.html#cb141-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">std.dev   =</span> <span class="fu">sd</span>(tinggi),</span>
+<span id="cb141-5"><a href="pertemuan-3-eksplorasi-data.html#cb141-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">minimum   =</span> <span class="fu">min</span>(tinggi),</span>
+<span id="cb141-6"><a href="pertemuan-3-eksplorasi-data.html#cb141-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">maksimum  =</span> <span class="fu">max</span>(tinggi), </span>
+<span id="cb141-7"><a href="pertemuan-3-eksplorasi-data.html#cb141-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">jarak     =</span> <span class="fu">range</span>(tinggi),</span>
+<span id="cb141-8"><a href="pertemuan-3-eksplorasi-data.html#cb141-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">n         =</span> <span class="fu">n</span>()</span>
+<span id="cb141-9"><a href="pertemuan-3-eksplorasi-data.html#cb141-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>##   rata_rata median  std.dev minimum
+## 1  173.9483    180 35.83511      66
+## 2  173.9483    180 35.83511      66
+##   maksimum jarak  n
+## 1      234    66 58
+## 2      234   234 58</code></pre>
+</div>
+<div id="deskriptif-variabel-berat-badan" class="section level3 hasAnchor" number="4.1.3">
+<h3><span class="header-section-number">4.1.3</span> Deskriptif Variabel Berat Badan<a href="pertemuan-3-eksplorasi-data.html#deskriptif-variabel-berat-badan" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="pertemuan-3-eksplorasi-data.html#cb143-1" aria-hidden="true" tabindex="-1"></a>mydata <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(</span>
+<span id="cb143-2"><a href="pertemuan-3-eksplorasi-data.html#cb143-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">rata_rata =</span> <span class="fu">mean</span>(berat),</span>
+<span id="cb143-3"><a href="pertemuan-3-eksplorasi-data.html#cb143-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">median    =</span> <span class="fu">median</span>(berat),</span>
+<span id="cb143-4"><a href="pertemuan-3-eksplorasi-data.html#cb143-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">std.dev   =</span> <span class="fu">sd</span>(berat),</span>
+<span id="cb143-5"><a href="pertemuan-3-eksplorasi-data.html#cb143-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">minimum   =</span> <span class="fu">min</span>(berat),</span>
+<span id="cb143-6"><a href="pertemuan-3-eksplorasi-data.html#cb143-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">maksimum  =</span> <span class="fu">max</span>(berat), </span>
+<span id="cb143-7"><a href="pertemuan-3-eksplorasi-data.html#cb143-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">jarak     =</span> <span class="fu">range</span>(berat),</span>
+<span id="cb143-8"><a href="pertemuan-3-eksplorasi-data.html#cb143-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">n         =</span> <span class="fu">n</span>()</span>
+<span id="cb143-9"><a href="pertemuan-3-eksplorasi-data.html#cb143-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>##   rata_rata median  std.dev minimum
+## 1  98.16207     79 170.8102      15
+## 2  98.16207     79 170.8102      15
+##   maksimum jarak  n
+## 1     1358    15 58
+## 2     1358  1358 58</code></pre>
+</div>
+<div id="deskriptif-statistik-berdasarkan-kelompok" class="section level3 hasAnchor" number="4.1.4">
+<h3><span class="header-section-number">4.1.4</span> Deskriptif Statistik berdasarkan kelompok<a href="pertemuan-3-eksplorasi-data.html#deskriptif-statistik-berdasarkan-kelompok" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="pertemuan-3-eksplorasi-data.html#cb145-1" aria-hidden="true" tabindex="-1"></a>mydata <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(jk) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(</span>
+<span id="cb145-2"><a href="pertemuan-3-eksplorasi-data.html#cb145-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">rata_rata =</span> <span class="fu">mean</span>(tinggi),</span>
+<span id="cb145-3"><a href="pertemuan-3-eksplorasi-data.html#cb145-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">median    =</span> <span class="fu">median</span>(tinggi),</span>
+<span id="cb145-4"><a href="pertemuan-3-eksplorasi-data.html#cb145-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">std.dev   =</span> <span class="fu">sd</span>(tinggi),</span>
+<span id="cb145-5"><a href="pertemuan-3-eksplorasi-data.html#cb145-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">minimum   =</span> <span class="fu">min</span>(tinggi),</span>
+<span id="cb145-6"><a href="pertemuan-3-eksplorasi-data.html#cb145-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">maksimum  =</span> <span class="fu">max</span>(tinggi), </span>
+<span id="cb145-7"><a href="pertemuan-3-eksplorasi-data.html#cb145-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">jarak     =</span> <span class="fu">max</span>(tinggi) <span class="sc">-</span> <span class="fu">min</span>(tinggi),</span>
+<span id="cb145-8"><a href="pertemuan-3-eksplorasi-data.html#cb145-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">n         =</span> <span class="fu">n</span>()</span>
+<span id="cb145-9"><a href="pertemuan-3-eksplorasi-data.html#cb145-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## # A tibble: 4 × 8
+##   jk         rata_…¹ median std.dev minimum
+##   &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;int&gt;
+## 1 female        169.    168    9.94     150
+## 2 hermaphro…    175     175   NA        175
+## 3 male          178.    183   37.0       66
+## 4 none          140     132   52.0       96
+## # … with 3 more variables: maksimum &lt;int&gt;,
+## #   jarak &lt;int&gt;, n &lt;int&gt;, and abbreviated
+## #   variable name ¹​rata_rata
+## # ℹ Use `colnames()` to see all variable names</code></pre>
+</div>
+</div>
+<div id="visualisasi-data-dengan-ggplot2" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Visualisasi Data dengan <code>ggplot2</code><a href="pertemuan-3-eksplorasi-data.html#visualisasi-data-dengan-ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Plot adalah salah satu hal mendasar yang dapat digunakan untuk menggambarkan distribusi data. Program R pun memiliki perintah - perintah untuk membuat sebuah plot. Namun perintah - perintah tersebut masih merupakan perintah yang sederhana. Hasilnya, gambar kurang menarik untuk disajikan pada khalayak umum.</p>
+<p><code>ggplot2</code> merupakan sebuah paket yang dapat digunakan pada program R dengan cara melakukan instalasi terlebih dahulu menggunakan perintah <code>install.package("ggplot2")</code>. Paket <code>ggplot2</code> memberikan fasilitas bagi penggunanya dalam membuat sebuah plot yang menarik untuk dilihat. Setelah anda memahami jenis-jenis plot beserta cara penggunaannya, kita dapat menggunakan paket <code>ggpubr</code> yang telah disusun khusus untuk kebutuhan publikasi/penerbitan.</p>
+<p>Setelah instalasi paket <code>ggplot2</code> selesai, selanjutnya kita dapat memanggil paket tersebut dengan perintah</p>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="pertemuan-3-eksplorasi-data.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+<div id="bar-plot" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Bar Plot<a href="pertemuan-3-eksplorasi-data.html#bar-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Grafik batang merupakan grafik yang digunakan untuk menunjukkan frekuensi dari dara. Grafik batang lebih sering digunakan untuk menunjukkan perbedaan jumlah dari data yang bertipe kategorik seperti jenis kelamin, asal daerah, status perniahan, dsb. Selanjutnya kita akan membuat sebuah grafik batang dengan menggunakan data berikut:</p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="pertemuan-3-eksplorasi-data.html#cb148-1" aria-hidden="true" tabindex="-1"></a>jpc <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">34</span>, <span class="dv">25</span>, <span class="dv">69</span>, <span class="dv">40</span>, <span class="dv">30</span>, <span class="dv">32</span>, <span class="dv">45</span>)</span>
+<span id="cb148-2"><a href="pertemuan-3-eksplorasi-data.html#cb148-2" aria-hidden="true" tabindex="-1"></a>hr  <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Sen&quot;</span>, <span class="st">&quot;Sel&quot;</span>, <span class="st">&quot;Rab&quot;</span>, <span class="st">&quot;Kam&quot;</span>, <span class="st">&quot;Jum&quot;</span>, <span class="st">&quot;Sab&quot;</span>, <span class="st">&quot;Min&quot;</span>)</span>
+<span id="cb148-3"><a href="pertemuan-3-eksplorasi-data.html#cb148-3" aria-hidden="true" tabindex="-1"></a>x   <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Hari =</span> hr, <span class="at">Pasien =</span> jpc)</span>
+<span id="cb148-4"><a href="pertemuan-3-eksplorasi-data.html#cb148-4" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>##   Hari Pasien
+## 1  Sen     34
+## 2  Sel     25
+## 3  Rab     69
+## 4  Kam     40
+## 5  Jum     30
+## 6  Sab     32
+## 7  Min     45</code></pre>
+<p>Terdapat perintah <code>barplot</code> dalam <code>R</code> yang merupakan perintah yang sudah tersedia saat melakukan instalasi <code>R</code>. Walapun perintah <code>barplot</code> dapat kita gunakan, namun hasil yang diberikan sangat sederhana dan lebih cocok digunakan untuk sebuah laporan. Berikut adalah cara menggunakan perintah <code>barplot</code>:</p>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="pertemuan-3-eksplorasi-data.html#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(x<span class="sc">$</span>Pasien, </span>
+<span id="cb150-2"><a href="pertemuan-3-eksplorasi-data.html#cb150-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">names.arg =</span> x<span class="sc">$</span>Hari)</span></code></pre></div>
+<p><img src="dr_files/figure-html/unnamed-chunk-83-1.png" width="672" /></p>
+<p>Selanjutnya kita akan menggunakan paket <code>ggplot2</code> untuk menyajikan grafik batang yang lebih menarik. Berikut adalah perintah untuk membuat grafik batang dengan menggunakan paket <code>ggplot2</code>:</p>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="pertemuan-3-eksplorasi-data.html#cb151-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(x, <span class="fu">aes</span>(Hari)) <span class="sc">+</span> </span>
+<span id="cb151-2"><a href="pertemuan-3-eksplorasi-data.html#cb151-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">weight=</span>Pasien, <span class="at">fill=</span>Hari, <span class="at">colour=</span>Hari)) <span class="sc">+</span></span>
+<span id="cb151-3"><a href="pertemuan-3-eksplorasi-data.html#cb151-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Jumlah Laki-laki dan Perempuan&quot;</span>,</span>
+<span id="cb151-4"><a href="pertemuan-3-eksplorasi-data.html#cb151-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Latihan Membuat Grafik dengan R&quot;</span>) <span class="sc">+</span></span>
+<span id="cb151-5"><a href="pertemuan-3-eksplorasi-data.html#cb151-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Jenis Kelamin&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb151-6"><a href="pertemuan-3-eksplorasi-data.html#cb151-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Jumlah Responden&quot;</span>) <span class="sc">+</span></span>
+<span id="cb151-7"><a href="pertemuan-3-eksplorasi-data.html#cb151-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb151-8"><a href="pertemuan-3-eksplorasi-data.html#cb151-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb151-9"><a href="pertemuan-3-eksplorasi-data.html#cb151-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb151-10"><a href="pertemuan-3-eksplorasi-data.html#cb151-10" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
+<p><img src="dr_files/figure-html/unnamed-chunk-84-1.png" width="672" /></p>
+<p>penjelasan:</p>
+<ul>
+<li><code>ggplot(x, aes(Hari))</code> adalah perintah untuk membuat sebuah objek <code>ggplot</code> dari variabel <code>Hari</code> pada data <code>x</code></li>
+<li><code>geom_bar(aes(weight=Pasien, fill=Hari, colour=Hari))</code>
+<ul>
+<li><code>geom_bar()</code> adalah perintah untuk membuat grafik batang menggunakan <code>ggplot</code></li>
+<li><code>weight</code> adalah banyak datanya (dalam kasus yang kita kerjakan: banyaknya Pasien setiap hari)</li>
+<li><code>fill</code> bertujuan untuk memberi warna batang (harus sama dengan <code>aes(Hari)</code> pada <code>ggplot</code> agar setiap batang memiliki warna yang berbeda)</li>
+<li><code>colour</code> bertujuan untuk memberi warna garis (harus sama dengan <code>aes(Hari)</code> pada <code>ggplot</code> agar setiap batang memiliki warna yang berbeda)</li>
+</ul></li>
+<li><code>theme_bw()</code> bertujuan untuk menentukan tema <code>black and white</code> pada grafik</li>
+</ul>
+</div>
+<div id="histogram" class="section level3 hasAnchor" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Histogram<a href="pertemuan-3-eksplorasi-data.html#histogram" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Histogram merupakan grafik batang yang dapat menunjukkan seberapa sering suatu nilai yang berbeda terjadi. Histogram lebih sering digunakan untuk melihat distribusi dari suatu data. Berbeda dengan grafik batang, kita perlu menggunakan data numerik dalam membuat sebuah histogram. Berikut adalah data acak yang dibangkitkan dengan perintah <code>rnorm</code>:</p>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="pertemuan-3-eksplorasi-data.html#cb152-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>,<span class="dv">5</span>,<span class="dv">2</span>))</span></code></pre></div>
+<p>Kita dapat menggunakan perintah <code>hist</code> yang telah tersedia pada program R saat melakukan instalasi program R.</p>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="pertemuan-3-eksplorasi-data.html#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(data<span class="sc">$</span>x)</span></code></pre></div>
+<p><img src="dr_files/figure-html/unnamed-chunk-86-1.png" width="672" /></p>
+<p>Selanjutnya kita akan menggunakan perintah yang tersedia pada paket <code>ggplot2</code>.</p>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="pertemuan-3-eksplorasi-data.html#cb154-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(x)) <span class="sc">+</span> </span>
+<span id="cb154-2"><a href="pertemuan-3-eksplorasi-data.html#cb154-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>, </span>
+<span id="cb154-3"><a href="pertemuan-3-eksplorasi-data.html#cb154-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color =</span> <span class="st">&quot;white&quot;</span>, </span>
+<span id="cb154-4"><a href="pertemuan-3-eksplorasi-data.html#cb154-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill=</span> <span class="st">&quot;darkred&quot;</span>) <span class="sc">+</span></span>
+<span id="cb154-5"><a href="pertemuan-3-eksplorasi-data.html#cb154-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb154-6"><a href="pertemuan-3-eksplorasi-data.html#cb154-6" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
+<p><img src="dr_files/figure-html/unnamed-chunk-87-1.png" width="672" /></p>
+<p>penjelasan:</p>
+<ul>
+<li><code>ggplot(data, aes(x))</code> adalah perintah untuk membuat sebuah objek <code>ggplot</code> dari objek <code>x</code> pada data <code>data</code></li>
+<li><code>geom_histogram(binwidth = 1, color = "white", fill= "darkred")</code>
+<ul>
+<li><code>geom_histogram()</code> adalah perintah untuk membuat histogram menggunakan <code>ggplot</code></li>
+<li><code>binwidth</code> adalah lebar dari masing-masing batang</li>
+<li><code>fill</code> bertujuan untuk memberi warna batang (dalam kasus ini kita akan berikan warna yang sama untuk semua batang)</li>
+<li><code>colour</code> bertujuan untuk memberi warna garis (dalam kasus ini kita akan berikan warna yang sama untuk semua garis)</li>
+</ul></li>
+<li><code>theme_bw()</code> bertujuan untuk menentukan tema <code>black and white</code> pada plot</li>
+</ul>
+<p>Selanjutnya bandingkan dengan histogram yang memiliki <code>binwidth</code> berbeda.</p>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="pertemuan-3-eksplorasi-data.html#cb155-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(x)) <span class="sc">+</span> </span>
+<span id="cb155-2"><a href="pertemuan-3-eksplorasi-data.html#cb155-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">3</span>, </span>
+<span id="cb155-3"><a href="pertemuan-3-eksplorasi-data.html#cb155-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color =</span> <span class="st">&quot;white&quot;</span>, </span>
+<span id="cb155-4"><a href="pertemuan-3-eksplorasi-data.html#cb155-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill=</span> <span class="st">&quot;darkred&quot;</span>) <span class="sc">+</span></span>
+<span id="cb155-5"><a href="pertemuan-3-eksplorasi-data.html#cb155-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb155-6"><a href="pertemuan-3-eksplorasi-data.html#cb155-6" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
+<p><img src="dr_files/figure-html/unnamed-chunk-88-1.png" width="672" /></p>
+</div>
+<div id="pie-plot" class="section level3 hasAnchor" number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> Pie Plot<a href="pertemuan-3-eksplorasi-data.html#pie-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Pie plot atau diagram lingkaran lebih sering digunaan untuk menunjukkan perbandingan antar kategori pada sebuah variabel. Berikut ini adalah data yang akan kita gunakan untuk membuat diagram lingkaran:</p>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="pertemuan-3-eksplorasi-data.html#cb156-1" aria-hidden="true" tabindex="-1"></a>jumlah <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">23</span>, <span class="dv">57</span>, <span class="dv">20</span>)</span>
+<span id="cb156-2"><a href="pertemuan-3-eksplorasi-data.html#cb156-2" aria-hidden="true" tabindex="-1"></a>label <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Setuju&quot;</span>, <span class="st">&quot;Tidak setuju&quot;</span>, <span class="st">&quot;Tidak tahu&quot;</span>)</span>
+<span id="cb156-3"><a href="pertemuan-3-eksplorasi-data.html#cb156-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(label, jumlah)</span></code></pre></div>
+<p>Menggunakan perintah <code>pie</code></p>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="pertemuan-3-eksplorasi-data.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pie</span>(x<span class="sc">$</span>jumlah, <span class="at">labels =</span> x<span class="sc">$</span>label)</span></code></pre></div>
+<p><img src="dr_files/figure-html/unnamed-chunk-90-1.png" width="672" /></p>
+<p>Selanjutnya berikut ini adalah perintah untuk membuat diagram lingkaran dengan menggunakan paket <code>ggplot2</code></p>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="pertemuan-3-eksplorasi-data.html#cb158-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(x, <span class="fu">aes</span>(<span class="at">x=</span><span class="st">&quot;&quot;</span>, <span class="at">y=</span>jumlah, <span class="at">fill=</span>label)) <span class="sc">+</span></span>
+<span id="cb158-2"><a href="pertemuan-3-eksplorasi-data.html#cb158-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>)</span>
+<span id="cb158-3"><a href="pertemuan-3-eksplorasi-data.html#cb158-3" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">coord_polar</span>(<span class="st">&quot;y&quot;</span>, <span class="at">start =</span> <span class="dv">0</span>)</span></code></pre></div>
+<p><img src="dr_files/figure-html/unnamed-chunk-91-1.png" width="672" /></p>
+<p>penjelasan:</p>
+<ul>
+<li><code>ggplot(x, aes(x="", y=jumlah, fill=label))</code> adalah perintah untuk membuat sebuah objek ggplot dengan data <code>x</code> dengan nilai <code>y</code> adalah jumlah dan <code>label</code> menjadi warna pembeda di setiap nilai pada <code>y</code></li>
+<li><code>geom_bar(stat = "identity")</code>
+<ul>
+<li><code>geom_bar()</code> adalah perintah untuk membuat grafik batang menggunakan <code>ggplot</code></li>
+<li><code>stat = "identity"</code> bertujuan untuk membuat grafik batang dalam bentuk stacked bar chart</li>
+</ul></li>
+<li><code>coord_polar("y", start = 0)</code> bertujuan untuk membentuk stacked pada koordinat polar mengikuti <code>angle = y</code> dan dimulai dari titik nol <code>start = 0</code></li>
+</ul>
+</div>
+<div id="box-plot" class="section level3 hasAnchor" number="4.2.4">
+<h3><span class="header-section-number">4.2.4</span> Box Plot<a href="pertemuan-3-eksplorasi-data.html#box-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Box Plot dapat menggambarkan sebaran data yang bersifat <code>numerik</code>. Box plot dibuat dengan menggunakan nilai-nilai pada ukuran pemusatan data. Nilai-nilai tersebut ialah <code>1st quartile</code>, <code>median</code>, <code>3rd quartile</code>, dan <code>interquartile range</code>. Selanjutnya kita akan menggunakan 3 data berbeda yang bersebar normal untuk menunjukkan keunggulan dalam menggunakan box plot.</p>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="pertemuan-3-eksplorasi-data.html#cb159-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">250</span>, <span class="dv">9</span>, <span class="dv">3</span>)</span>
+<span id="cb159-2"><a href="pertemuan-3-eksplorasi-data.html#cb159-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">250</span>, <span class="dv">4</span>, <span class="dv">1</span>)</span>
+<span id="cb159-3"><a href="pertemuan-3-eksplorasi-data.html#cb159-3" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">250</span>, <span class="dv">11</span>, <span class="dv">6</span>)</span></code></pre></div>
+<p>Menggunakan perintah <code>boxplot</code></p>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="pertemuan-3-eksplorasi-data.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(x, y, z,</span>
+<span id="cb160-2"><a href="pertemuan-3-eksplorasi-data.html#cb160-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">names =</span> <span class="fu">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>, <span class="st">&quot;z&quot;</span>))</span>
+<span id="cb160-3"><a href="pertemuan-3-eksplorasi-data.html#cb160-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">label =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;x&quot;</span>,<span class="st">&quot;y&quot;</span>,<span class="st">&quot;z&quot;</span>),</span>
+<span id="cb160-4"><a href="pertemuan-3-eksplorasi-data.html#cb160-4" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">each=</span><span class="dv">250</span>)),</span>
+<span id="cb160-5"><a href="pertemuan-3-eksplorasi-data.html#cb160-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">value =</span> <span class="fu">c</span>(x, y, z))</span>
+<span id="cb160-6"><a href="pertemuan-3-eksplorasi-data.html#cb160-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
+<pre><code>##   label     value
+## 1     x  9.768197
+## 2     x 13.257648
+## 3     x 13.760699
+## 4     x  6.209824
+## 5     x  7.440133
+## 6     x 11.914389</code></pre>
+<p><img src="dr_files/figure-html/unnamed-chunk-93-1.png" width="75%" height="75%" style="display: block; margin: auto;" /></p>
+<p>Menggunakan paket <code>ggplot2</code></p>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="pertemuan-3-eksplorasi-data.html#cb162-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x=</span>label, <span class="at">y=</span>value)) <span class="sc">+</span></span>
+<span id="cb162-2"><a href="pertemuan-3-eksplorasi-data.html#cb162-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">outlier.colour =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb162-3"><a href="pertemuan-3-eksplorasi-data.html#cb162-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb162-4"><a href="pertemuan-3-eksplorasi-data.html#cb162-4" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
+<p><img src="dr_files/figure-html/unnamed-chunk-94-1.png" width="75%" height="75%" style="display: block; margin: auto;" /></p>
+<p>penjelasan:</p>
+<ul>
+<li><code>ggplot(data, aes(x=label, y=value))</code> adalah perintah untuk membuat sebuah objek ggplot dengan nilai <code>value</code> sebagai <code>y</code> dan <code>label</code> menjadi warna pembeda di setiap nilai <code>y</code> menggunaan data <code>data</code></li>
+<li><code>geom_boxplot(outlier.colour = "red")</code>
+<ul>
+<li><code>geom_boxplot()</code> adalah perintah untuk membuat box plot menggunakan <code>ggplot</code></li>
+<li><code>outlier.colour = "red"</code> memberikan warna merah pada garis box plot (optional)</li>
+</ul></li>
+</ul>
+<p>Menggunakan paket <code>ggplot2</code></p>
+</div>
+<div id="scatter-plot" class="section level3 hasAnchor" number="4.2.5">
+<h3><span class="header-section-number">4.2.5</span> Scatter Plot<a href="pertemuan-3-eksplorasi-data.html#scatter-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Scatter Plot (diagram pencar) merupakan grafik yang dibuat dengan tujuan untuk memasangkan 2 nilai/variabel. Diagram pencar dapat menggambarkan hubungan dari 2 nilai/variabel tersebut. Apabila titik-titik dalam diagram pencar menuju kearah kanan atas dari kiri bawah, maka terdapat hubungan yang positif dari kedua nilai/variabel begitu pula sebaliknya. Kita akan menggunakan data berikut untuk menunjukkan hubungan yang positi dan negatif dari 2 variabel.</p>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="pertemuan-3-eksplorasi-data.html#cb163-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb163-2"><a href="pertemuan-3-eksplorasi-data.html#cb163-2" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fl">0.75</span></span>
+<span id="cb163-3"><a href="pertemuan-3-eksplorasi-data.html#cb163-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb163-4"><a href="pertemuan-3-eksplorasi-data.html#cb163-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb163-5"><a href="pertemuan-3-eksplorasi-data.html#cb163-5" aria-hidden="true" tabindex="-1"></a>data_pos <span class="ot">&lt;-</span> <span class="fu">mvrnorm</span>(n, <span class="at">mu=</span><span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>), <span class="at">Sigma=</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, r, r, <span class="dv">1</span>), <span class="at">nrow=</span><span class="dv">2</span>))</span>
+<span id="cb163-6"><a href="pertemuan-3-eksplorasi-data.html#cb163-6" aria-hidden="true" tabindex="-1"></a>x_pos <span class="ot">&lt;-</span> data_pos[, <span class="dv">1</span>]</span>
+<span id="cb163-7"><a href="pertemuan-3-eksplorasi-data.html#cb163-7" aria-hidden="true" tabindex="-1"></a>y_pos <span class="ot">&lt;-</span> data_pos[, <span class="dv">2</span>]</span>
+<span id="cb163-8"><a href="pertemuan-3-eksplorasi-data.html#cb163-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb163-9"><a href="pertemuan-3-eksplorasi-data.html#cb163-9" aria-hidden="true" tabindex="-1"></a>data_neg <span class="ot">&lt;-</span> <span class="fu">mvrnorm</span>(n, <span class="at">mu=</span><span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>), <span class="at">Sigma=</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="sc">-</span>r, <span class="sc">-</span>r, <span class="dv">1</span>), <span class="at">nrow=</span><span class="dv">2</span>))</span>
+<span id="cb163-10"><a href="pertemuan-3-eksplorasi-data.html#cb163-10" aria-hidden="true" tabindex="-1"></a>x_neg <span class="ot">&lt;-</span> data_neg[, <span class="dv">1</span>]</span>
+<span id="cb163-11"><a href="pertemuan-3-eksplorasi-data.html#cb163-11" aria-hidden="true" tabindex="-1"></a>y_neg <span class="ot">&lt;-</span> data_neg[, <span class="dv">2</span>]</span></code></pre></div>
+<p>Menggunakan perintah <code>plot</code> pada program R:</p>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="pertemuan-3-eksplorasi-data.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y_pos, x_pos)</span></code></pre></div>
+<p><img src="dr_files/figure-html/unnamed-chunk-96-1.png" width="75%" height="75%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="pertemuan-3-eksplorasi-data.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y_neg, x_neg)</span></code></pre></div>
+<p><img src="dr_files/figure-html/unnamed-chunk-96-2.png" width="75%" height="75%" style="display: block; margin: auto;" /></p>
+<p>Gambar pertama menunjukkan adanya hubungan yang positif pada pariabel <code>y_pos</code> dan <code>x_pos</code>. Sedangkan pada gambar kedua adalah sebaliknya, yaitu hubungan yang negatif. selanjutnya kita akan membangun diagram pencar menggunakan paket <code>ggplot2</code>.</p>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="pertemuan-3-eksplorasi-data.html#cb166-1" aria-hidden="true" tabindex="-1"></a>data_pos <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(data_pos)</span>
+<span id="cb166-2"><a href="pertemuan-3-eksplorasi-data.html#cb166-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(data_pos) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;x&quot;</span>,<span class="st">&quot;y&quot;</span>)</span>
+<span id="cb166-3"><a href="pertemuan-3-eksplorasi-data.html#cb166-3" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data_pos, <span class="fu">aes</span>(x,y))</span>
+<span id="cb166-4"><a href="pertemuan-3-eksplorasi-data.html#cb166-4" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb166-5"><a href="pertemuan-3-eksplorasi-data.html#cb166-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span>lm) <span class="sc">+</span></span>
+<span id="cb166-6"><a href="pertemuan-3-eksplorasi-data.html#cb166-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="dr_files/figure-html/unnamed-chunk-97-1.png" width="75%" height="75%" style="display: block; margin: auto;" /></p>
+<p>penjelasan:</p>
+<ul>
+<li><code>data_pos</code> adalah objek yang memuat <code>data_pos</code> baru setelah diubah kedalam bentuk <code>data frame</code></li>
+<li><code>colnames()</code> adalah perintah untuk memberikan nama kolom/variabel pada <code>data frame</code></li>
+<li><code>ggplot(data_pos, aes(x,y))</code> adalah perintah untuk membuat sebuah objek ggplot dengan nilai <code>value</code> sebagai <code>y</code> dan <code>label</code> menjadi warna pembeda di setiap nilai <code>y</code> menggunaan data <code>data</code></li>
+<li><code>geom_point()</code> adalah perintah untuk membuat diagram pencar
+<ul>
+<li><code>size=2</code> adalah perintah untuk mengubah ukuran titik diagram pencar menjadi sebesar 2 poin</li>
+</ul></li>
+<li><code>geom_smooth(method=lm)</code> adalah perintah untuk membuat garis regresi linier sebagai penegas hubungan antara 2 variabel (optional)</li>
+</ul>
+</div>
+<div id="line-plot" class="section level3 hasAnchor" number="4.2.6">
+<h3><span class="header-section-number">4.2.6</span> Line Plot<a href="pertemuan-3-eksplorasi-data.html#line-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="pertemuan-3-eksplorasi-data.html#cb168-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">23</span>, <span class="dv">57</span>, <span class="dv">20</span>)</span>
+<span id="cb168-2"><a href="pertemuan-3-eksplorasi-data.html#cb168-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(x) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Setuju&quot;</span>, <span class="st">&quot;Tidak setuju&quot;</span>, <span class="st">&quot;Tidak tahu&quot;</span>)</span></code></pre></div>
+<p>Menggunakan perintah <code>pie</code></p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="pertemuan-3-eksplorasi-data.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, <span class="at">type =</span> <span class="st">&quot;o&quot;</span>)</span></code></pre></div>
+<p><img src="dr_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
+</div>
+<div id="area-plot" class="section level3 hasAnchor" number="4.2.7">
+<h3><span class="header-section-number">4.2.7</span> Area Plot<a href="pertemuan-3-eksplorasi-data.html#area-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="pertemuan-3-eksplorasi-data.html#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;diamonds&quot;</span>)</span>
+<span id="cb170-2"><a href="pertemuan-3-eksplorasi-data.html#cb170-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(diamonds)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 10
+##   carat cut       color clarity depth table price     x     y     z
+##   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1  0.23 Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43
+## 2  0.21 Premium   E     SI1      59.8    61   326  3.89  3.84  2.31
+## 3  0.23 Good      E     VS1      56.9    65   327  4.05  4.07  2.31
+## 4  0.29 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63
+## 5  0.31 Good      J     SI2      63.3    58   335  4.34  4.35  2.75
+## 6  0.24 Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48</code></pre>
+<p>Note: data <code>diamonds</code> adalah data yang sudah tersedia dalam program R</p>
+<p>Menggunakan paket <code>ggplot2</code></p>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="pertemuan-3-eksplorasi-data.html#cb172-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(diamonds, <span class="fu">aes</span>(<span class="at">x =</span> price, <span class="at">fill =</span> cut))</span>
+<span id="cb172-2"><a href="pertemuan-3-eksplorasi-data.html#cb172-2" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">geom_area</span>(<span class="at">stat =</span> <span class="st">&quot;bin&quot;</span>)</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="dr_files/figure-html/unnamed-chunk-101-1.png" width="75%" height="75%" style="display: block; margin: auto;" /></p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="pertemuan-2-manajemen-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="pertemuan-4-korelasi-dan-regresi.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/03-struktur-data.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["dr.pdf", "dr.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

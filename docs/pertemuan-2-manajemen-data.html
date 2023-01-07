@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Pertemuan 2: Manajemen Data | Dasar-dasar Pemrograman R</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Pertemuan 2: Manajemen Data | Dasar-dasar Pemrograman R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Pertemuan 2: Manajemen Data | Dasar-dasar Pemrograman R" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="’dimas" />
+
+
+<meta name="date" content="2023-01-07" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="pertemuan-1-pengenalan.html"/>
+<link rel="next" href="pertemuan-3-eksplorasi-data.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Dasar-dasar Pemrograman R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Pengantar</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#sejarah-program-r"><i class="fa fa-check"></i><b>1.1</b> Sejarah Program R</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#program-r"><i class="fa fa-check"></i><b>1.2</b> Program R</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#instalasi-program-r"><i class="fa fa-check"></i><b>1.2.1</b> Instalasi Program R</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#r-studio"><i class="fa fa-check"></i><b>1.3</b> R Studio</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#instalasi-program-r-studio"><i class="fa fa-check"></i><b>1.3.1</b> Instalasi Program R Studio</a></li>
+<li class="chapter" data-level="1.3.2" data-path="index.html"><a href="index.html#lingkungan-kerja-rstudio"><i class="fa fa-check"></i><b>1.3.2</b> Lingkungan Kerja RStudio</a></li>
+<li class="chapter" data-level="1.3.3" data-path="index.html"><a href="index.html#membuat-projek-baru"><i class="fa fa-check"></i><b>1.3.3</b> Membuat Projek Baru</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html"><i class="fa fa-check"></i><b>2</b> Pertemuan 1: Pengenalan</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html#objek"><i class="fa fa-check"></i><b>2.1</b> Objek</a></li>
+<li class="chapter" data-level="2.2" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html#paket-packages"><i class="fa fa-check"></i><b>2.2</b> Paket (Packages)</a></li>
+<li class="chapter" data-level="2.3" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html#datatype"><i class="fa fa-check"></i><b>2.3</b> Tipe Data</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html#numeric"><i class="fa fa-check"></i><b>2.3.1</b> Numerik (Numeric)</a></li>
+<li class="chapter" data-level="2.3.2" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html#integer"><i class="fa fa-check"></i><b>2.3.2</b> Bilangan Bulat (Integer)</a></li>
+<li class="chapter" data-level="2.3.3" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html#complex"><i class="fa fa-check"></i><b>2.3.3</b> Bilangan Kompleks (Complex)</a></li>
+<li class="chapter" data-level="2.3.4" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html#logical"><i class="fa fa-check"></i><b>2.3.4</b> Logika (Logical)</a></li>
+<li class="chapter" data-level="2.3.5" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html#character"><i class="fa fa-check"></i><b>2.3.5</b> Teks (Character)</a></li>
+<li class="chapter" data-level="2.3.6" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html#factor"><i class="fa fa-check"></i><b>2.3.6</b> Faktor (Factor)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html#struktur-data"><i class="fa fa-check"></i><b>2.4</b> Struktur Data</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html#vector"><i class="fa fa-check"></i><b>2.4.1</b> Vektor (Vector)</a></li>
+<li class="chapter" data-level="2.4.2" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html#matrix"><i class="fa fa-check"></i><b>2.4.2</b> Matriks (Matrix)</a></li>
+<li class="chapter" data-level="2.4.3" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html#list"><i class="fa fa-check"></i><b>2.4.3</b> Daftar (List)</a></li>
+<li class="chapter" data-level="2.4.4" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html#dataframe"><i class="fa fa-check"></i><b>2.4.4</b> Kerangka Data (Data Frame)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html#operator---operator-pada-r"><i class="fa fa-check"></i><b>2.5</b> Operator - operator pada R</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html#operator"><i class="fa fa-check"></i><b>2.5.1</b> Operator Aritmatika</a></li>
+<li class="chapter" data-level="2.5.2" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html#operator-logika"><i class="fa fa-check"></i><b>2.5.2</b> Operator Logika</a></li>
+<li class="chapter" data-level="2.5.3" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html#relational"><i class="fa fa-check"></i><b>2.5.3</b> Operator Relasi</a></li>
+<li class="chapter" data-level="2.5.4" data-path="pertemuan-1-pengenalan.html"><a href="pertemuan-1-pengenalan.html#operator-pipe"><i class="fa fa-check"></i><b>2.5.4</b> Operator Pipe (<code>%&gt;%</code>)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="pertemuan-2-manajemen-data.html"><a href="pertemuan-2-manajemen-data.html"><i class="fa fa-check"></i><b>3</b> Pertemuan 2: Manajemen Data</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="pertemuan-2-manajemen-data.html"><a href="pertemuan-2-manajemen-data.html#import-data"><i class="fa fa-check"></i><b>3.1</b> Import Data</a></li>
+<li class="chapter" data-level="3.2" data-path="pertemuan-2-manajemen-data.html"><a href="pertemuan-2-manajemen-data.html#indentifikasi-masing-masing-variabel"><i class="fa fa-check"></i><b>3.2</b> Indentifikasi Masing-masing Variabel</a></li>
+<li class="chapter" data-level="3.3" data-path="pertemuan-2-manajemen-data.html"><a href="pertemuan-2-manajemen-data.html#ringkasan-data-dengan-summary"><i class="fa fa-check"></i><b>3.3</b> Ringkasan data dengan <code>summary()</code></a></li>
+<li class="chapter" data-level="3.4" data-path="pertemuan-2-manajemen-data.html"><a href="pertemuan-2-manajemen-data.html#memilih-variabel"><i class="fa fa-check"></i><b>3.4</b> Memilih Variabel</a></li>
+<li class="chapter" data-level="3.5" data-path="pertemuan-2-manajemen-data.html"><a href="pertemuan-2-manajemen-data.html#missing-values"><i class="fa fa-check"></i><b>3.5</b> Missing Values</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="pertemuan-2-manajemen-data.html"><a href="pertemuan-2-manajemen-data.html#menghapus-na"><i class="fa fa-check"></i><b>3.5.1</b> Menghapus <code>NA</code></a></li>
+<li class="chapter" data-level="3.5.2" data-path="pertemuan-2-manajemen-data.html"><a href="pertemuan-2-manajemen-data.html#mengganti-na-dengan-mean"><i class="fa fa-check"></i><b>3.5.2</b> Mengganti <code>NA</code> dengan mean</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="pertemuan-2-manajemen-data.html"><a href="pertemuan-2-manajemen-data.html#membuat-variabel-baru"><i class="fa fa-check"></i><b>3.6</b> Membuat Variabel Baru</a></li>
+<li class="chapter" data-level="3.7" data-path="pertemuan-2-manajemen-data.html"><a href="pertemuan-2-manajemen-data.html#transformasi-variabel"><i class="fa fa-check"></i><b>3.7</b> Transformasi Variabel</a></li>
+<li class="chapter" data-level="3.8" data-path="pertemuan-2-manajemen-data.html"><a href="pertemuan-2-manajemen-data.html#recode"><i class="fa fa-check"></i><b>3.8</b> Recode</a></li>
+<li class="chapter" data-level="3.9" data-path="pertemuan-2-manajemen-data.html"><a href="pertemuan-2-manajemen-data.html#filter"><i class="fa fa-check"></i><b>3.9</b> Filter</a></li>
+<li class="chapter" data-level="3.10" data-path="pertemuan-2-manajemen-data.html"><a href="pertemuan-2-manajemen-data.html#latihan"><i class="fa fa-check"></i><b>3.10</b> Latihan</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html"><i class="fa fa-check"></i><b>4</b> Pertemuan 3: Eksplorasi Data</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#statistik-deskriptif"><i class="fa fa-check"></i><b>4.1</b> Statistik Deskriptif</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#deskriptif"><i class="fa fa-check"></i><b>4.1.1</b> Deskriptif</a></li>
+<li class="chapter" data-level="4.1.2" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#deskriptif-variabel-tinggi-badan"><i class="fa fa-check"></i><b>4.1.2</b> Deskriptif Variabel Tinggi Badan</a></li>
+<li class="chapter" data-level="4.1.3" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#deskriptif-variabel-berat-badan"><i class="fa fa-check"></i><b>4.1.3</b> Deskriptif Variabel Berat Badan</a></li>
+<li class="chapter" data-level="4.1.4" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#deskriptif-statistik-berdasarkan-kelompok"><i class="fa fa-check"></i><b>4.1.4</b> Deskriptif Statistik berdasarkan kelompok</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#visualisasi-data-dengan-ggplot2"><i class="fa fa-check"></i><b>4.2</b> Visualisasi Data dengan <code>ggplot2</code></a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#bar-plot"><i class="fa fa-check"></i><b>4.2.1</b> Bar Plot</a></li>
+<li class="chapter" data-level="4.2.2" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#histogram"><i class="fa fa-check"></i><b>4.2.2</b> Histogram</a></li>
+<li class="chapter" data-level="4.2.3" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#pie-plot"><i class="fa fa-check"></i><b>4.2.3</b> Pie Plot</a></li>
+<li class="chapter" data-level="4.2.4" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#box-plot"><i class="fa fa-check"></i><b>4.2.4</b> Box Plot</a></li>
+<li class="chapter" data-level="4.2.5" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#scatter-plot"><i class="fa fa-check"></i><b>4.2.5</b> Scatter Plot</a></li>
+<li class="chapter" data-level="4.2.6" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#line-plot"><i class="fa fa-check"></i><b>4.2.6</b> Line Plot</a></li>
+<li class="chapter" data-level="4.2.7" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#area-plot"><i class="fa fa-check"></i><b>4.2.7</b> Area Plot</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="pertemuan-4-korelasi-dan-regresi.html"><a href="pertemuan-4-korelasi-dan-regresi.html"><i class="fa fa-check"></i><b>5</b> Pertemuan 4: Korelasi dan Regresi</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="pertemuan-4-korelasi-dan-regresi.html"><a href="pertemuan-4-korelasi-dan-regresi.html#korelasi"><i class="fa fa-check"></i><b>5.1</b> Korelasi</a></li>
+<li class="chapter" data-level="5.2" data-path="pertemuan-4-korelasi-dan-regresi.html"><a href="pertemuan-4-korelasi-dan-regresi.html#regresi"><i class="fa fa-check"></i><b>5.2</b> Regresi</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="pertemuan-4-korelasi-dan-regresi.html"><a href="pertemuan-4-korelasi-dan-regresi.html#linier"><i class="fa fa-check"></i><b>5.2.1</b> Linier</a></li>
+<li class="chapter" data-level="5.2.2" data-path="pertemuan-4-korelasi-dan-regresi.html"><a href="pertemuan-4-korelasi-dan-regresi.html#logistik"><i class="fa fa-check"></i><b>5.2.2</b> Logistik</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="latihan-latihan.html"><a href="latihan-latihan.html"><i class="fa fa-check"></i><b>6</b> Latihan-latihan</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="latihan-latihan.html"><a href="latihan-latihan.html#xxxx"><i class="fa fa-check"></i><b>6.1</b> XXXX</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"><code>Dasar-dasar Pemrograman R</code></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="pertemuan-2-manajemen-data" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Pertemuan 2: Manajemen Data<a href="pertemuan-2-manajemen-data.html#pertemuan-2-manajemen-data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Kegitan Manajemen Data merupakan upaya-upaya yang dilakukan oleh sesorang untuk mempersiapkan data mentah ( <em>rawdata</em> ) menjadi data yang terorganisasi dengan baik (siap untuk diolah). Umumnya data mentah yang kita dapat tidak seperti data-data yang digunakan dalam praktik di perkuliahan. Data mentah sering kali memiliki kondisi-kondisi seperti berikut:</p>
+<ol style="list-style-type: decimal">
+<li>Terdapat <em>missing value</em>, yang biasanya terjadi karena data yang hilang ataupun tidak lengkap saat peng-entry-an data (terkadang kasusnya sangat banyak)</li>
+<li>Terdapat <em>outlier</em>, <em>outlier</em> merupakan bagian dari data yang memiliki nilai sangat besar atau sangat kecil. <em>Outlier</em> dalam beberapa kasus memiliki arti tertentu, namun sering kali menjadi masalah dalam pengolahan data berikutnya</li>
+<li>Terdapat <em>noise</em>, yang merupakan bagian dari data yang tidak dapat diolah. <em>Noise</em> muncul karena kesalahan entry, entry yang kurang tepat, dan lain sebagainya.</li>
+</ol>
+<p>Selain mengatasi masalah-masalah tersebut, kita juga akan melakukan pembuatan variabel baru, transformasi data, pengkodean ulang ( <em>recode</em> ) dan juga <em>filtering</em>. Selanjutnya kita akan menggunakan dataset pada link dibawah ini untuk latihan manajemen data.</p>
+<p>&lt;a href=“#”, target=“_blank”&gt;Unduh Dataset&lt;/ a&gt;</p>
+<div id="import-data" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Import Data<a href="pertemuan-2-manajemen-data.html#import-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Import data di RStudio dapat dilakukan dengan 2 cara. Cara yang pertama adalah dengan menggunakan fungsi-fungsi secara manual dan cara yang kedua ialah dengan menggunakan panduan import ( <em>Import Wizard</em> ). Kita akan gunakan cara yang kedua untuk mempermudahkan pengerjaan. Sebelum melakukan import data, instalasi paket <code>readr</code> perlu untuk dilakukan. Ketikan perintah berikut pada jendela <code>console</code> lalu tekan <code>enter</code>:</p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="pertemuan-2-manajemen-data.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;readr&quot;)</span></span></code></pre></div>
+<p>Setelah paket <code>readr</code> berhasil ter-instal, lakukan langkah-langkah berikut:</p>
+<ol style="list-style-type: decimal">
+<li>Klik <code>Tab Environment</code> pada jendelan ketiga.</li>
+<li>Klik <code>Import Dataset</code> lalu pilih <code>From Text (readr)</code>.</li>
+<li>Setelah itu akan muncul jendela <em>Import Wizard</em> seperti berikut:</li>
+</ol>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="pertemuan-2-manajemen-data.html#cb106-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;images//import_01.jpg&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-58"></span>
+<img src="images/import_01.JPG" alt="Jendela Import Wizard" width="594" />
+<p class="caption">
+Figure 3.1: Jendela Import Wizard
+</p>
+</div>
+<ol start="4" style="list-style-type: decimal">
+<li><p>Klik <code>browse</code> lalu pilih file data yang akan digunakan dan klik <code>open</code>.</p></li>
+<li><p>Selanjutnya tampilan <em>Import Wizard</em> akan seperti berikut:</p></li>
+<li><p>Kita dapat memberikan nama objek untuk dataset tersebut. Selain itu kita juga dapat menentukan secara langsung tipe data dari masing-masing variabel (kolom data). Bagian ini dapat dilewati dan klik <code>Import</code>.</p></li>
+<li><p>Pada jendela <code>console</code> secara otomatis akan muncul beberapa fungsi yang digunakan untuk melakukan <em>import data</em>. Kita akan mengambil kode <em>import</em> nya saja untuk diletakkan pada <code>R Script</code> kita. Seleksi perintah <em>import</em> ( <code>read_csv</code> ), tekan <code>Ctrl + C</code>, lalu kembali ke jendela <code>R Script</code> dan tekan <code>Ctrl + V</code>.</p></li>
+</ol>
+<blockquote>
+<p><em>Terdapat berbagai macam format dalam penyimpanan kerangka data. CSV atau <strong>Comma Separated Values</strong> merupakan salah satu format data yang mudah untuk di import ke berbagai aplikasi pengolah data. CSV memisahkan data antar kolom/variabel dengan tanda koma (,) atau titik koma (;).</em></p>
+</blockquote>
+<p>Setelah data siap, kita akan memulai proses manajemen data. Objek data mentah (data yang baru saja di <em>import</em>) akan saya biarkan tetap seperti itu (tidak akan diapa-apakan). Sebagai gantinya saya akan membuat objek baru (biasanya menggunakan nama <code>mydata</code>) yang merupakan <em>rawdata</em> (juga) untuk selanjutnya di olah. Hal ini saya lakukan untuk menjaga agar saya masih memiliki data mentah tersebut. Terkadang terjadi kesalahan-kesalahan dalam proses manajemen dan olah data yang membuat saya harus memproses ulang data dari awal. Adanya data mentah tersebut mencegah saya untuk meng-import ulang data mentahnya.</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="pertemuan-2-manajemen-data.html#cb107-1" aria-hidden="true" tabindex="-1"></a>rawdata <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;G:/Mandat/data_latihan.csv&quot;</span>, <span class="at">sep=</span><span class="st">&quot;;&quot;</span>)</span>
+<span id="cb107-2"><a href="pertemuan-2-manajemen-data.html#cb107-2" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">=</span> rawdata</span>
+<span id="cb107-3"><a href="pertemuan-2-manajemen-data.html#cb107-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mydata)</span></code></pre></div>
+<pre><code>##   tinggi berat     jk
+## 1    172    77   male
+## 2    167    75   none
+## 3     96    32   none
+## 4    202   136   male
+## 5    150    49 female
+## 6    178   120   male</code></pre>
+<p>Fungsi <code>head()</code> digunakan untuk menampilkan 6 baris pertama dari data pada <code>console</code>. Sedangkan untuk menampilkan 6 baris terakhir menggunakan fungsi <code>tail()</code>. Setelah memastikan data yang akan diproses siap, selanjutnya kita aktifkan paket yang akan digunakan. Paket tersebut ialah <code>tidyverse</code>.</p>
+</div>
+<div id="indentifikasi-masing-masing-variabel" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Indentifikasi Masing-masing Variabel<a href="pertemuan-2-manajemen-data.html#indentifikasi-masing-masing-variabel" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Sering kali kita akan menemukan data dengan banyak variabel (misal data dari hasil survei skala besar [SDKI 2017]). Tentunya kita harus mengetahui variabel-variabel tersebut sebelum kita melakukan manajemen data (jenis variabel, skala data, dsb.). Identifikasi variabel dapat dilakukan dengan menggunakan perintah <code>str()</code> sebagai berikut:</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="pertemuan-2-manajemen-data.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mydata)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    87 obs. of  3 variables:
+##  $ tinggi: int  172 167 96 202 150 178 165 97 183 182 ...
+##  $ berat : num  77 75 32 136 49 120 75 32 84 77 ...
+##  $ jk    : chr  &quot;male&quot; &quot;none&quot; &quot;none&quot; &quot;male&quot; ...</code></pre>
+<p>Fungsi <code>str()</code> akan memunculkan informasi-informasi yang berguna seperti struktur data, jumlah baris (observasi), jumlah kolom (variabel), nama variabel, tipe data pada masing-masing variabel dan beberapa contoh data pertama pada data. Berdasarkan hasil diatas dapat diketahui bahwa mydata memiliki struktur data <code>data.frame</code>; terdapat <code>87 observasi</code> serta <code>3 variabel</code>; variabel <code>tinggi</code> bertipe <code>integer</code> (bilangan bulat), variabel <code>berat</code> bertipe <code>numeric</code> dan variabel <code>jk</code> bertipe <code>character</code>. Dengan mengetahui karakteristik data yang kita miliki akan memudahkan kita dalam menentukan tindakan pada data tersebut. Sebagai contoh, variabel <code>jk</code> akan kita ubah tipe datanya dari <code>character</code> ke <code>factor</code> karena variabel tersebut merupakan kategori dari jenis kelamin.</p>
+<blockquote>
+<p>Untuk melihat keseluruhan dari data (<code>data.frame</code>), gunakan fungsi <code>View(mydata)</code> (dengan <code>V</code> kapital). Setelah menjalankan fungsi tersebut pada <code>console</code> maka akan terbuka jendela baru yang menampilkan data secara keseluruhan.</p>
+</blockquote>
+</div>
+<div id="ringkasan-data-dengan-summary" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Ringkasan data dengan <code>summary()</code><a href="pertemuan-2-manajemen-data.html#ringkasan-data-dengan-summary" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>terdapat sebuah fungsi yang dapat memberikan hasil ringkasan pada data. Fungsi tersebut adalah <code>summary()</code>. Fungsi <code>summary()</code> dapat memberikan ringkasan baik pada data yang bertipe <code>numeric</code>, <code>character</code>, dll. Selain itu juga dapat menunjukkan berapa banyak <em>missing data</em> (<code>NA</code>) pada masing-masing variabel. Berikut adalah luaran dari fungsi <code>summary()</code>:</p>
+<ol style="list-style-type: decimal">
+<li>Pada data yang bertipe <code>numeric</code> dan <code>integer</code> akan menghasilkan nilai paling rendah (<code>Min.</code>), kuartil pertama (<code>1st Qu.</code>), nilai tengah (<code>Median</code>), rataan (<code>Mean</code>), kuartil ketiga (<code>3rd Qu.</code>) dan nilai paling tinggi (<code>Max.</code>).</li>
+<li>Pada data yang bertipe <code>factor</code> akan menghasilkan jumlah data pada masing-masing <code>levels</code> nya.</li>
+<li>Pada data yang beritpe <code>character</code> akan mengahsilkan berapa banyak data (<code>Length</code>) dan tipe data (<code>Class</code>) saja. Hal ini dikarenakan data bertipe <code>character</code> memiliki banyak sekali kemungkinan nilai/hasil (kebetulan saja pada variabel <code>jk</code> hanya ada 2 nilai saja, bagaimana jika data <code>character</code> nya adalah komentar netizen tentang Rizki Billar?).</li>
+<li>Pada data yang bertipe <code>logical</code> kan menghasilkan tipe data (<code>Mode</code>), jumlah <code>FALSE</code> dan jumlah <code>TRUE</code>.</li>
+</ol>
+<p>Sekarang kita akan gunakan fungsi <code>summary()</code> pada <code>mydata</code>:</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="pertemuan-2-manajemen-data.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mydata)</span></code></pre></div>
+<pre><code>##      tinggi          berat        
+##  Min.   : 66.0   Min.   :  15.00  
+##  1st Qu.:167.0   1st Qu.:  55.60  
+##  Median :180.0   Median :  79.00  
+##  Mean   :174.4   Mean   :  97.31  
+##  3rd Qu.:191.0   3rd Qu.:  84.50  
+##  Max.   :264.0   Max.   :1358.00  
+##  NA&#39;s   :6       NA&#39;s   :28       
+##       jk           
+##  Length:87         
+##  Class :character  
+##  Mode  :character  
+##                    
+##                    
+##                    
+## </code></pre>
+</div>
+<div id="memilih-variabel" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Memilih Variabel<a href="pertemuan-2-manajemen-data.html#memilih-variabel" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Setelah mengetahui karakter data yang kita miliki dengan bantuan fungsi <code>str()</code> dan <code>summary()</code>, kita dapat menentukan apakah kelesuruhan variabel akan digunakan atau hanya sebagian variabel saja. Andaikan kita hanya akan menggunakan sebagian data saja, maka gunakan fungsi <code>select()</code> untuk memilih variabel-variabel yang akan digunakan. Berikut cara penggunaannya:</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="pertemuan-2-manajemen-data.html#cb113-1" aria-hidden="true" tabindex="-1"></a>mydata2 <span class="ot">=</span> mydata <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(jk, berat, tinggi)</span>
+<span id="cb113-2"><a href="pertemuan-2-manajemen-data.html#cb113-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mydata2)</span></code></pre></div>
+<pre><code>##       jk berat tinggi
+## 1   male    77    172
+## 2   none    75    167
+## 3   none    32     96
+## 4   male   136    202
+## 5 female    49    150
+## 6   male   120    178</code></pre>
+<p>Masih ingat dengan operator pipe? Kode diatas akan memberikan hasil yang sama dengan kode berikut:</p>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="pertemuan-2-manajemen-data.html#cb115-1" aria-hidden="true" tabindex="-1"></a>mydata2 <span class="ot">=</span> dplyr<span class="sc">::</span><span class="fu">select</span>(mydata, jk, berat, tinggi)</span>
+<span id="cb115-2"><a href="pertemuan-2-manajemen-data.html#cb115-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mydata2)</span></code></pre></div>
+<pre><code>##       jk berat tinggi
+## 1   male    77    172
+## 2   none    75    167
+## 3   none    32     96
+## 4   male   136    202
+## 5 female    49    150
+## 6   male   120    178</code></pre>
+<p>Sekarang kita hanya memiliki 3 variabel saja, yaitu <code>jk</code> (jenis kelamin), <code>berat</code> (berat badan) dan <code>tinggi</code> (tinggi badan).</p>
+</div>
+<div id="missing-values" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Missing Values<a href="pertemuan-2-manajemen-data.html#missing-values" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Dalam R, <em>missing value</em> disimbolkan dengan <code>NA</code> yang berarti <em>Not Avialable</em>. Secara umum <em>missing value</em> mendapatkan 3 perlakuan yaitu dihapus dalam data, diganti dengan nilai rataan (<code>mean</code>), atau kombinasi dari keduanya. Penggantian <code>NA</code> dengan <code>mean</code> hanya dapat dilakukan pada data yang bertipe <code>numeric</code>.</p>
+<div id="menghapus-na" class="section level3 hasAnchor" number="3.5.1">
+<h3><span class="header-section-number">3.5.1</span> Menghapus <code>NA</code><a href="pertemuan-2-manajemen-data.html#menghapus-na" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Penghapusan <code>NA</code> dilakukan apabila kita sudah memastikan bahwa <strong>tidak ada variabel (kolom data) yang hanya memiliki nilai <code>NA</code> saja</strong>. Hal ini dikarenakan penghapusan <code>NA</code> dilakukan untuk 1 baris. Sehingga andaikan terdapat <code>NA</code> pada salah satu kolom di baris ke-9, maka 1 baris 9 akan dihapus dari data. Bagaimana jika terdapat 1 kolom yang hanya bernilai <code>NA</code>?</p>
+<p>Penghapusan <code>NA</code> dapat dilakukan dengan menggunakan fungsi <code>na.omit()</code>.</p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="pertemuan-2-manajemen-data.html#cb117-1" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">=</span> mydata <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>()</span>
+<span id="cb117-2"><a href="pertemuan-2-manajemen-data.html#cb117-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mydata)</span></code></pre></div>
+<pre><code>##      tinggi          berat        
+##  Min.   : 66.0   Min.   :  15.00  
+##  1st Qu.:168.5   1st Qu.:  56.40  
+##  Median :180.0   Median :  79.00  
+##  Mean   :173.9   Mean   :  98.16  
+##  3rd Qu.:192.5   3rd Qu.:  84.75  
+##  Max.   :234.0   Max.   :1358.00  
+##       jk           
+##  Length:58         
+##  Class :character  
+##  Mode  :character  
+##                    
+##                    
+## </code></pre>
+<p>Kode tersebut akan memberikan hasil seperti kode berikut:</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="pertemuan-2-manajemen-data.html#cb119-1" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">=</span> <span class="fu">na.omit</span>(mydata)</span>
+<span id="cb119-2"><a href="pertemuan-2-manajemen-data.html#cb119-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mydata)</span></code></pre></div>
+<pre><code>##      tinggi          berat        
+##  Min.   : 66.0   Min.   :  15.00  
+##  1st Qu.:168.5   1st Qu.:  56.40  
+##  Median :180.0   Median :  79.00  
+##  Mean   :173.9   Mean   :  98.16  
+##  3rd Qu.:192.5   3rd Qu.:  84.75  
+##  Max.   :234.0   Max.   :1358.00  
+##       jk           
+##  Length:58         
+##  Class :character  
+##  Mode  :character  
+##                    
+##                    
+## </code></pre>
+</div>
+<div id="mengganti-na-dengan-mean" class="section level3 hasAnchor" number="3.5.2">
+<h3><span class="header-section-number">3.5.2</span> Mengganti <code>NA</code> dengan mean<a href="pertemuan-2-manajemen-data.html#mengganti-na-dengan-mean" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Penggantian <code>NA</code> dengan <code>mean</code> hanya perlu dilakukan jika data memiliki terlalu banyak <code>NA</code>. Apabila <code>NA</code> terlalu banyak, maka penghapusan <code>NA</code> dapat menghilangkan data-data lain yang bisa jadi memiliki informasi penting. Mengganti <code>NA</code> denga <code>mean</code>juga perlu mempertimbangkan berbagai macam hal karena dapat menghasilkan <em>underestimate of standard errors</em>. Berikut adalah kode untuk mengganti <code>NA</code> dengan nilai <code>mean</code>.</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="pertemuan-2-manajemen-data.html#cb121-1" aria-hidden="true" tabindex="-1"></a>rataan <span class="ot">=</span> <span class="fu">mean</span>(mydata<span class="sc">$</span>berat, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb121-2"><a href="pertemuan-2-manajemen-data.html#cb121-2" aria-hidden="true" tabindex="-1"></a>mydata<span class="sc">$</span>berat[<span class="fu">is.na</span>(mydata<span class="sc">$</span>berat)] <span class="ot">=</span> rataan</span></code></pre></div>
+<p>Penjelasan kode:</p>
+<ul>
+<li><code>mean()</code> berfungsi untuk mendapatkan nilai rataan pada data yang ditentukan, dalam hal ini ialah <code>mydata$berat</code> (variabel <code>berat</code> pada data <code>mydata</code>).</li>
+<li><code>na.rm = TRUE</code> berfungsi untuk mengabaikan nilai <code>NA</code> pada variabel <code>berat</code> pada data <code>mydata</code>. Hal ini dilakukan agar perhitungan rataan terlepas dari nilai <code>NA</code> pada data yang bersangkutan (dalam hal ini <code>mydata$berat</code> tanpa mengubah data aslinya pada <code>mydata</code>)</li>
+<li><code>is.na()</code> adalah fungsi logika untuk menghasilkan <code>TRUE</code> apabila data bernilai <code>NA</code> dan <code>FALSE</code> jika selain <code>NA</code> dan <code>mydata$berat</code> adalah data variabel <code>berat</code> pada objek <code>mydata</code>. Sehingga <code>is.na(mydata$berat)</code> akan menghasilkan nilai <code>TRUE</code> apabila <code>mydata$berat</code> bernilai <code>NA</code> dan <code>FALSE</code> untuk selain bernilai <code>NA</code>.</li>
+<li><code>mydata$berat[is.na(mydata$berat)]</code> bertujuan untuk memberikan hasil <code>TRUE</code> dan <code>FALSE</code> pada variabel <code>berat</code> data <code>mydata</code>. Selanjutnya akan di isi dengan nilai <code>rataan</code>.</li>
+</ul>
+</div>
+</div>
+<div id="membuat-variabel-baru" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> Membuat Variabel Baru<a href="pertemuan-2-manajemen-data.html#membuat-variabel-baru" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Terdapat berbagai cara untuk membuat variabel baru di Program R. Dalam modul ini hanya menyajikan 2 cara saja yaitu tanpa dan dengan paket <code>tidyverse</code>.</p>
+<ol style="list-style-type: decimal">
+<li>Tanpa paket <code>tidyverse</code> <br />
+Untuk membuat variabel baru dapat dilakukan dengan mendefinisikan <code>nama_variabel</code> tersebut setelah <code>mydata$</code> lalu <code>= isian_variabel_baru</code> seperti pada contoh berikut:</li>
+</ol>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="pertemuan-2-manajemen-data.html#cb122-1" aria-hidden="true" tabindex="-1"></a>tinggi_meter <span class="ot">=</span> mydata<span class="sc">$</span>tinggi <span class="sc">/</span> <span class="dv">100</span></span>
+<span id="cb122-2"><a href="pertemuan-2-manajemen-data.html#cb122-2" aria-hidden="true" tabindex="-1"></a>mydata<span class="sc">$</span>tinggiM <span class="ot">=</span> tinggi_meter</span>
+<span id="cb122-3"><a href="pertemuan-2-manajemen-data.html#cb122-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mydata)</span></code></pre></div>
+<pre><code>##   tinggi berat     jk tinggiM
+## 1    172    77   male    1.72
+## 2    167    75   none    1.67
+## 3     96    32   none    0.96
+## 4    202   136   male    2.02
+## 5    150    49 female    1.50
+## 6    178   120   male    1.78</code></pre>
+<p>Penjelasan:</p>
+<ul>
+<li><code>tinggi_meter</code> merupakan objek yang digunakan untuk menyimpan nilai dari <code>mydata$tinggi</code> yang dibagi dengan 100.</li>
+<li><code>mydata$tinggiM</code> adalah variabel baru yang akan memuat nilai dari objek <code>tinggi_meter</code>.</li>
+<li>agar <code>mydata$tinggiM</code> berisi nilai <code>tinggi_meter</code> maka perlu diberi <code>=</code> diantara keduanya.</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Dengan paket <code>tidyverse</code> <br />
+Untuk membuat variabel baru dengan menggunakan paket <code>tidyverse</code> dapat dilakukan dengan fungsi <code>mutate(definisi_variabel_baru)</code>. Keuntungan dari penggunaan fungsi <code>mutate</code> adalah kita dapat membuat lebih dari 1 variabel baru sekaligus. Berikut contoh penggunaannya:</li>
+</ol>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="pertemuan-2-manajemen-data.html#cb124-1" aria-hidden="true" tabindex="-1"></a>mydata2 <span class="ot">=</span> mydata <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">tinggiM =</span> tinggi <span class="sc">/</span> <span class="dv">100</span>)</span>
+<span id="cb124-2"><a href="pertemuan-2-manajemen-data.html#cb124-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mydata2)</span></code></pre></div>
+<pre><code>##   tinggi berat     jk tinggiM
+## 1    172    77   male    1.72
+## 2    167    75   none    1.67
+## 3     96    32   none    0.96
+## 4    202   136   male    2.02
+## 5    150    49 female    1.50
+## 6    178   120   male    1.78</code></pre>
+<p>Penjelasan:</p>
+<ul>
+<li>Objek <code>mydata2</code> akan digunakan untuk menyimpan objek <code>mydata</code> yang telah ditambahkan dengan variabel baru. Pada contoh sebelumnya, langkah ini dapat dilakukan dengan menambahkan kode <code>mydata2 = mydata</code> dan mengganti <code>mydata$tinggiM</code> dengan <code>mydata2$tinggiM</code>.</li>
+<li><code>mutate(tinggiM = tinggi / 100)</code> membuat variabel baru yaitu <code>tinggiM</code> pada objek <code>mydata</code>.</li>
+<li>kode diatas memiliki hasil yang sama dengan kode berikut: <code>mutate(mydata, tinggiM = tinggi / 100)</code>.</li>
+</ul>
+<p>Untuk membuat beberapa variabel sekaligus dapat dilakukan dengan menambahkan koma pada akhir pendefinisian variabel sebelumnya.</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="pertemuan-2-manajemen-data.html#cb126-1" aria-hidden="true" tabindex="-1"></a>mydata2 <span class="ot">=</span> mydata <span class="sc">%&gt;%</span> </span>
+<span id="cb126-2"><a href="pertemuan-2-manajemen-data.html#cb126-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tinggiM   =</span> tinggi <span class="sc">/</span> <span class="dv">100</span>, </span>
+<span id="cb126-3"><a href="pertemuan-2-manajemen-data.html#cb126-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">var_baru1 =</span> <span class="dv">1</span>,</span>
+<span id="cb126-4"><a href="pertemuan-2-manajemen-data.html#cb126-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">var_baru2 =</span> <span class="st">&quot;ini variabel baru&quot;</span>)</span>
+<span id="cb126-5"><a href="pertemuan-2-manajemen-data.html#cb126-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mydata2)</span></code></pre></div>
+<pre><code>##   tinggi berat     jk tinggiM var_baru1
+## 1    172    77   male    1.72         1
+## 2    167    75   none    1.67         1
+## 3     96    32   none    0.96         1
+## 4    202   136   male    2.02         1
+## 5    150    49 female    1.50         1
+## 6    178   120   male    1.78         1
+##           var_baru2
+## 1 ini variabel baru
+## 2 ini variabel baru
+## 3 ini variabel baru
+## 4 ini variabel baru
+## 5 ini variabel baru
+## 6 ini variabel baru</code></pre>
+</div>
+<div id="transformasi-variabel" class="section level2 hasAnchor" number="3.7">
+<h2><span class="header-section-number">3.7</span> Transformasi Variabel<a href="pertemuan-2-manajemen-data.html#transformasi-variabel" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Konsep yang digunakan dalam mentranformasi data sama dengan konsep dalam membuat variabel baru yang telah dijelaskan sebelumnya. Berikut adalah contoh dalam membuat variabel IMT:</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="pertemuan-2-manajemen-data.html#cb128-1" aria-hidden="true" tabindex="-1"></a>mydata2 <span class="ot">=</span> mydata2 <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">IMT =</span> berat <span class="sc">/</span> (tinggiM<span class="sc">^</span><span class="dv">2</span>))</span></code></pre></div>
+</div>
+<div id="recode" class="section level2 hasAnchor" number="3.8">
+<h2><span class="header-section-number">3.8</span> Recode<a href="pertemuan-2-manajemen-data.html#recode" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Dalam hal <code>recode</code> akan ditunjukkan 1 contoh yang menggunkan paket <code>tidyverse</code>. Cara ini dianggap cara yang paling mudah dalam melakukannya.</p>
+<p>Kode berikut ini bertujuan untuk membuat variabel baru untuk menyimpan kategori-kategori nilai IMT yang telah dibuat sebelumnya. Terdapat 3 kategori yang digunakan dalam contoh ini yaitu:</p>
+<ol style="list-style-type: decimal">
+<li><code>Kurus</code>, kategori IMT untuk nilai IMT yang kurang dari 18 (<code>IMT &lt; 18</code>).</li>
+<li><code>Sedang</code>, kategori IMT untuk nilai IMT yang lebih dari sama dengan 18 dan kurang dari sama dengan 25. (<code>IMT &gt;=18 &amp; IMT &lt;= 25</code>).</li>
+<li><code>Gemuk</code>, kategori IMT untuk nilai IMT yang lebih dari 25.</li>
+</ol>
+<p>Dalam contoh ini kita akan membuat variabel baru dengan nama <code>IMTkat</code> menggunakan fungsi <code>mutate()</code>. Sedangkan isian dari <code>IMTkat</code> menggunakan fungsi <code>case_when()</code> yang disesuaikan dengan pendefinisian sebelumnya (kurus, normal dan gemuk).</p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="pertemuan-2-manajemen-data.html#cb129-1" aria-hidden="true" tabindex="-1"></a>mydata2 <span class="ot">&lt;-</span> mydata2 <span class="sc">%&gt;%</span> </span>
+<span id="cb129-2"><a href="pertemuan-2-manajemen-data.html#cb129-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">IMTkat =</span> <span class="fu">case_when</span>(</span>
+<span id="cb129-3"><a href="pertemuan-2-manajemen-data.html#cb129-3" aria-hidden="true" tabindex="-1"></a>    IMT <span class="sc">&lt;</span> <span class="dv">18</span> <span class="sc">~</span> <span class="st">&quot;Kurus&quot;</span>,</span>
+<span id="cb129-4"><a href="pertemuan-2-manajemen-data.html#cb129-4" aria-hidden="true" tabindex="-1"></a>    IMT <span class="sc">&gt;=</span> <span class="dv">18</span> <span class="sc">&amp;</span> IMT <span class="sc">&lt;=</span> <span class="dv">25</span> <span class="sc">~</span> <span class="st">&quot;Normal&quot;</span>, </span>
+<span id="cb129-5"><a href="pertemuan-2-manajemen-data.html#cb129-5" aria-hidden="true" tabindex="-1"></a>    IMT <span class="sc">&gt;</span> <span class="dv">25</span> <span class="sc">~</span> <span class="st">&quot;Gemuk&quot;</span>)</span>
+<span id="cb129-6"><a href="pertemuan-2-manajemen-data.html#cb129-6" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<p>Fungsi <code>case_when()</code> mengijinkan kita untuk membuat lebih dari 1 kondisi:</p>
+<ol style="list-style-type: decimal">
+<li><code>IMT &lt; 18 ~ "Kurus"</code> akan memberikan nilai <code>Kurus</code> pada variabel yang baru didefinisikan (yaitu <code>IMTkat</code>) apabila variabel <code>IMT</code> memiliki nilai yang kurang dari 18.</li>
+<li><code>IMT &gt;= 18 &amp; IMT &lt;= 25 ~ "Normal"</code> akan memberikan nilai <code>Normal</code> pada variabel yang baru didefinisikan apabila variabel <code>IMT</code> memiliki nilai yang lebih dari sama dengan 18 dan kurang dari sama dengan 25.</li>
+<li><code>IMT &gt; 25 ~ "Gemuk"</code> akan memberikan nilai <code>Gemuk</code> pada variabel yang baru didefinisikan apabila variabel <code>IMT</code> memiliki nilai yang lebih dari 25.</li>
+<li>Perlu diingat bahwa dalam “pendefinisian” <code>case_when()</code> ini tidak menggunakan <code>=</code> melainkan <code>~</code>.</li>
+</ol>
+</div>
+<div id="filter" class="section level2 hasAnchor" number="3.9">
+<h2><span class="header-section-number">3.9</span> Filter<a href="pertemuan-2-manajemen-data.html#filter" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Untuk memudahkan dalam penggunaanya, dalam modul ini akan menggunakan fungsi <code>filter()</code> pada paket <code>tidyverse</code>. Secara konsep penggunaannya sama dengan penggunaan fungsi <code>mutate()</code>, hanya saja pada filter akan menggunakan operator hubungan (<code>&lt;, &gt;, ==, !=, dll.</code>) dalam pendefinisiannya. Contoh berikut akan memilih seluruh data pada <code>mydata2</code> dengan kondisi <code>IMTkat</code> bernilai <code>Gemuk</code>:</p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="pertemuan-2-manajemen-data.html#cb130-1" aria-hidden="true" tabindex="-1"></a>mydata3 <span class="ot">&lt;-</span> mydata2 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(IMTkat <span class="sc">==</span> <span class="st">&quot;Gemuk&quot;</span>)</span>
+<span id="cb130-2"><a href="pertemuan-2-manajemen-data.html#cb130-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mydata3)</span></code></pre></div>
+<pre><code>##   tinggi berat     jk tinggiM var_baru1
+## 1    172    77   male    1.72         1
+## 2    167    75   none    1.67         1
+## 3     96    32   none    0.96         1
+## 4    202   136   male    2.02         1
+## 5    178   120   male    1.78         1
+## 6    165    75 female    1.65         1
+##           var_baru2      IMT IMTkat
+## 1 ini variabel baru 26.02758  Gemuk
+## 2 ini variabel baru 26.89232  Gemuk
+## 3 ini variabel baru 34.72222  Gemuk
+## 4 ini variabel baru 33.33007  Gemuk
+## 5 ini variabel baru 37.87401  Gemuk
+## 6 ini variabel baru 27.54821  Gemuk</code></pre>
+<p>Fungsi <code>filter()</code> juga dapat digunakan untuk beberapa kondisi. Untuk menghubungkan lebih dari 1 kondisi perlu menggunakan operator logika (<code>&amp;, |</code>). Berikut contohnya:</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="pertemuan-2-manajemen-data.html#cb132-1" aria-hidden="true" tabindex="-1"></a>mydata3 <span class="ot">&lt;-</span> mydata2 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(IMTkat <span class="sc">==</span> <span class="st">&quot;Gemuk&quot;</span> <span class="sc">|</span> IMTkat <span class="sc">==</span> <span class="st">&quot;Kurus&quot;</span>)</span>
+<span id="cb132-2"><a href="pertemuan-2-manajemen-data.html#cb132-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mydata3)</span></code></pre></div>
+<pre><code>##      tinggi          berat       
+##  Min.   : 66.0   Min.   :  17.0  
+##  1st Qu.:165.0   1st Qu.:  50.0  
+##  Median :177.0   Median :  77.0  
+##  Mean   :167.7   Mean   : 114.2  
+##  3rd Qu.:190.0   3rd Qu.:  88.0  
+##  Max.   :229.0   Max.   :1358.0  
+##       jk               tinggiM     
+##  Length:33          Min.   :0.660  
+##  Class :character   1st Qu.:1.650  
+##  Mode  :character   Median :1.770  
+##                     Mean   :1.677  
+##                     3rd Qu.:1.900  
+##                     Max.   :2.290  
+##    var_baru1  var_baru2        
+##  Min.   :1   Length:33         
+##  1st Qu.:1   Class :character  
+##  Median :1   Mode  :character  
+##  Mean   :1                     
+##  3rd Qu.:1                     
+##  Max.   :1                     
+##       IMT            IMTkat         
+##  Min.   : 12.89   Length:33         
+##  1st Qu.: 25.08   Class :character  
+##  Median : 26.12   Mode  :character  
+##  Mean   : 39.66                     
+##  3rd Qu.: 33.95                     
+##  Max.   :443.43</code></pre>
+</div>
+<div id="latihan" class="section level2 hasAnchor" number="3.10">
+<h2><span class="header-section-number">3.10</span> Latihan<a href="pertemuan-2-manajemen-data.html#latihan" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="pertemuan-2-manajemen-data.html#cb134-1" aria-hidden="true" tabindex="-1"></a>mydata4 <span class="ot">&lt;-</span> mydata2 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(jk <span class="sc">==</span> <span class="st">&quot;male&quot;</span> <span class="sc">|</span> jk <span class="sc">==</span> <span class="st">&quot;female&quot;</span>)</span>
+<span id="cb134-2"><a href="pertemuan-2-manajemen-data.html#cb134-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mydata4)</span></code></pre></div>
+<pre><code>##   tinggi berat     jk tinggiM var_baru1
+## 1    172    77   male    1.72         1
+## 2    202   136   male    2.02         1
+## 3    150    49 female    1.50         1
+## 4    178   120   male    1.78         1
+## 5    165    75 female    1.65         1
+## 6    183    84   male    1.83         1
+##           var_baru2      IMT IMTkat
+## 1 ini variabel baru 26.02758  Gemuk
+## 2 ini variabel baru 33.33007  Gemuk
+## 3 ini variabel baru 21.77778 Normal
+## 4 ini variabel baru 37.87401  Gemuk
+## 5 ini variabel baru 27.54821  Gemuk
+## 6 ini variabel baru 25.08286  Gemuk</code></pre>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="pertemuan-2-manajemen-data.html#cb136-1" aria-hidden="true" tabindex="-1"></a>mydata4 <span class="ot">&lt;-</span> mydata4 <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(</span>
+<span id="cb136-2"><a href="pertemuan-2-manajemen-data.html#cb136-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">JK =</span> <span class="fu">case_when</span>(</span>
+<span id="cb136-3"><a href="pertemuan-2-manajemen-data.html#cb136-3" aria-hidden="true" tabindex="-1"></a>    jk <span class="sc">==</span> <span class="st">&quot;male&quot;</span> <span class="sc">~</span> <span class="st">&quot;M&quot;</span>,</span>
+<span id="cb136-4"><a href="pertemuan-2-manajemen-data.html#cb136-4" aria-hidden="true" tabindex="-1"></a>    jk <span class="sc">==</span> <span class="st">&quot;female&quot;</span> <span class="sc">~</span> <span class="st">&quot;F&quot;</span></span>
+<span id="cb136-5"><a href="pertemuan-2-manajemen-data.html#cb136-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb136-6"><a href="pertemuan-2-manajemen-data.html#cb136-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="pertemuan-1-pengenalan.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="pertemuan-3-eksplorasi-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-tipe-data.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["dr.pdf", "dr.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

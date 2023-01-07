@@ -1,92 +1,256 @@
-# Tipe Data {#datatype}
+# Pertemuan 2: Manajemen Data
 
-Terdapat 6 tipe data pada bahasa pemrograman R. Setiap tipe data tersebut memiliki karakteristik sendiri sehingga tidak terjadi tumpang tindih dalam melakukan berbagai macam pengoperasiannya. Berikut adalah 6 tipe data pada bahasa pemrograman R:
+Kegitan Manajemen Data merupakan upaya-upaya yang dilakukan oleh sesorang untuk mempersiapkan data mentah ( _rawdata_ ) menjadi data yang terorganisasi dengan baik (siap untuk diolah). Umumnya data mentah yang kita dapat tidak seperti data-data yang digunakan dalam praktik di perkuliahan. Data mentah sering kali memiliki kondisi-kondisi seperti berikut:
 
-## Numerik (Numeric) {#numeric}
+1. Terdapat _missing value_, yang biasanya terjadi karena data yang hilang ataupun tidak lengkap saat peng-entry-an data (terkadang kasusnya sangat banyak)
+2. Terdapat _outlier_, _outlier_ merupakan bagian dari data yang memiliki nilai sangat besar atau sangat kecil. _Outlier_ dalam beberapa kasus memiliki arti tertentu, namun sering kali menjadi masalah dalam pengolahan data berikutnya
+3. Terdapat _noise_, yang merupakan bagian dari data yang tidak dapat diolah. _Noise_ muncul karena kesalahan entry, entry yang kurang tepat, dan lain sebagainya.
 
-Tipe data numerik adalah tipe data yang berupa nilai/angka desimal. Tipe data ini merupakan tipe data yang dapat digunakan untuk melakukan operasi-operasi aritmatika seperti penjumlahan, pengurangan, perkailan, dsb. Jika kita definisikan objek `x` dengan suatu nilai/angka, maka tipe objek tersbut adalah `numeric`.
+Selain mengatasi masalah-masalah tersebut, kita juga akan melakukan pembuatan variabel baru, transformasi data, pengkodean ulang ( _recode_ ) dan juga _filtering_. Selanjutnya kita akan menggunakan dataset pada link dibawah ini untuk latihan manajemen data.
+
+<a href="#", target="_blank">Unduh Dataset</ a>
+
+## Import Data
+
+Import data di RStudio dapat dilakukan dengan 2 cara. Cara yang pertama adalah dengan menggunakan fungsi-fungsi secara manual dan cara yang kedua ialah dengan menggunakan panduan import ( _Import Wizard_ ). Kita akan gunakan cara yang kedua untuk mempermudahkan pengerjaan. Sebelum melakukan import data, instalasi paket `readr` perlu untuk dilakukan. Ketikan perintah berikut pada jendela `console` lalu tekan `enter`:
+
+```{r, eval=FALSE}
+# install.packages("readr")
+```
+
+Setelah paket `readr` berhasil ter-instal, lakukan langkah-langkah berikut:
+
+1. Klik `Tab Environment` pada jendelan ketiga.
+2. Klik `Import Dataset` lalu pilih `From Text (readr)`.
+3. Setelah itu akan muncul jendela _Import Wizard_ seperti berikut:
+
+```{r, fig.align='center', fig.cap="Jendela Import Wizard"}
+knitr::include_graphics("images//import_01.jpg")
+```
+
+4. Klik `browse` lalu pilih file data yang akan digunakan dan klik `open`.
+5. Selanjutnya tampilan _Import Wizard_ akan seperti berikut:
+
+
+6. Kita dapat memberikan nama objek untuk dataset tersebut. Selain itu kita juga dapat menentukan secara langsung tipe data dari masing-masing variabel (kolom data). Bagian ini dapat dilewati dan klik `Import`.
+
+
+7. Pada jendela `console` secara otomatis akan muncul beberapa fungsi yang digunakan untuk melakukan _import data_. Kita akan mengambil kode _import_ nya saja untuk diletakkan pada `R Script` kita. Seleksi perintah _import_ ( `read_csv` ), tekan `Ctrl + C`, lalu kembali ke jendela `R Script` dan tekan `Ctrl + V`.
+
+
+> _Terdapat berbagai macam format dalam penyimpanan kerangka data. CSV atau **Comma Separated Values** merupakan salah satu format data yang mudah untuk di import ke berbagai aplikasi pengolah data. CSV memisahkan data antar kolom/variabel dengan tanda koma (,) atau titik koma (;)._
+
+
+Setelah data siap, kita akan memulai proses manajemen data. Objek data mentah (data yang baru saja di _import_) akan saya biarkan tetap seperti itu (tidak akan diapa-apakan). Sebagai gantinya saya akan membuat objek baru (biasanya menggunakan nama `mydata`) yang merupakan _rawdata_ (juga) untuk selanjutnya di olah. Hal ini saya lakukan untuk menjaga agar saya masih memiliki data mentah tersebut. Terkadang terjadi kesalahan-kesalahan dalam proses manajemen dan olah data yang membuat saya harus memproses ulang data dari awal. Adanya data mentah tersebut mencegah saya untuk meng-import ulang data mentahnya.
 
 ```{r}
-x <- 2.6
-class(x)
+rawdata <- read.csv("G:/Mandat/data_latihan.csv", sep=";")
+mydata = rawdata
+head(mydata)
 ```
 
-Bahkan R akan mendefinisikan objek dengan tipe `numeric` jika berikan angka tanpa desimal.
+Fungsi `head()` digunakan untuk menampilkan 6 baris pertama dari data pada `console`. Sedangkan untuk menampilkan 6 baris terakhir menggunakan fungsi `tail()`. Setelah memastikan data yang akan diproses siap, selanjutnya kita aktifkan paket yang akan digunakan. Paket tersebut ialah `tidyverse`.
+
+## Indentifikasi Masing-masing Variabel
+
+Sering kali kita akan menemukan data dengan banyak variabel (misal data dari hasil survei skala besar [SDKI 2017]). Tentunya kita harus mengetahui variabel-variabel tersebut sebelum kita melakukan manajemen data (jenis variabel, skala data, dsb.). Identifikasi variabel dapat dilakukan dengan menggunakan perintah `str()` sebagai berikut:
 
 ```{r}
-x <- 5
-class(x)
+str(mydata)
 ```
 
-## Bilangan Bulat (Integer) {#integer}
+Fungsi `str()` akan memunculkan informasi-informasi yang berguna seperti struktur data, jumlah baris (observasi), jumlah kolom (variabel), nama variabel, tipe data pada masing-masing variabel dan beberapa contoh data pertama pada data. Berdasarkan hasil diatas dapat diketahui bahwa mydata memiliki struktur data `data.frame`; terdapat `87 observasi` serta `3 variabel`; variabel `tinggi` bertipe `integer` (bilangan bulat), variabel `berat` bertipe `numeric` dan variabel `jk` bertipe `character`. Dengan mengetahui karakteristik data yang kita miliki akan memudahkan kita dalam menentukan tindakan pada data tersebut. Sebagai contoh, variabel `jk` akan kita ubah tipe datanya dari `character` ke `factor` karena variabel tersebut merupakan kategori dari jenis kelamin.
 
-Seperti yang kita tahu bahwa pendefinisian angka pada suatu objek akan secara otomatis membuat objek tersebut bertipe `numeric`. Sedangkan untuk mendefinisikan objek dengan tipe `integer` harus mendefinisikan secara khusus objek tersebut dengan perintah `as.integer`.
+> Untuk melihat keseluruhan dari data (`data.frame`), gunakan fungsi `View(mydata)` (dengan `V` kapital). Setelah menjalankan fungsi tersebut pada `console` maka akan terbuka jendela baru yang menampilkan data secara keseluruhan.
+
+
+## Ringkasan data dengan `summary()`
+
+terdapat sebuah fungsi yang dapat memberikan hasil ringkasan pada data. Fungsi tersebut adalah `summary()`. Fungsi `summary()` dapat memberikan ringkasan baik pada data yang bertipe `numeric`, `character`, dll. Selain itu juga dapat menunjukkan berapa banyak _missing data_ (`NA`) pada masing-masing variabel. Berikut adalah luaran dari fungsi `summary()`:
+
+1. Pada data yang bertipe `numeric` dan `integer` akan menghasilkan nilai paling rendah (`Min.`), kuartil pertama (`1st Qu.`), nilai tengah (`Median`), rataan (`Mean`), kuartil ketiga (`3rd Qu.`) dan nilai paling tinggi (`Max.`). 
+2. Pada data yang bertipe `factor` akan menghasilkan jumlah data pada masing-masing `levels` nya.
+3. Pada data yang beritpe `character` akan mengahsilkan berapa banyak data (`Length`) dan tipe data (`Class`) saja. Hal ini dikarenakan data bertipe `character` memiliki banyak sekali kemungkinan nilai/hasil (kebetulan saja pada variabel `jk` hanya ada 2 nilai saja, bagaimana jika data `character` nya adalah komentar netizen tentang Rizki Billar?).
+4. Pada data yang bertipe `logical` kan menghasilkan tipe data (`Mode`), jumlah `FALSE` dan jumlah `TRUE`.
+
+Sekarang kita akan gunakan fungsi `summary()` pada `mydata`:
 
 ```{r}
-x <- as.integer(5)
-class(x)
+summary(mydata)
 ```
 
-Selain itu kita dapat mendefinisikan sebuah objek yang bertipe `integer` dengan menambahkan huruf `L` kapital pada akhir angka.
+
+## Memilih Variabel
+
+Setelah mengetahui karakter data yang kita miliki dengan bantuan fungsi `str()` dan `summary()`, kita dapat menentukan apakah kelesuruhan variabel akan digunakan atau hanya sebagian variabel saja. Andaikan kita hanya akan menggunakan sebagian data saja, maka gunakan fungsi `select()` untuk memilih variabel-variabel yang akan digunakan. Berikut cara penggunaannya:
 
 ```{r}
-x <- 3L
-class(x)
+mydata2 = mydata %>% dplyr::select(jk, berat, tinggi)
+head(mydata2)
 ```
 
-Bagaimana jika kita berikan angka desimal pada objek yang kita definisikan sebagai `integer`?
-
-```{r eval=FALSE}
-x <- as.integer(3.76)
-```
-
-## Bilangan Kompleks (Complex) {#complex}
-
-Bilangan kompleks dalam matematika adalah bilangan yang didefinisikan dengan $a + bi$, dengan $a$ dan $b$ adalah bilangan real. Sedangkan $i$ adalah bilangan imajiner dan menyebabkan $bi$ menjadi imajiner. Bilangan imajiner sendiri memiliki sifat $i^{2}=1$. Kita harus secara langsung mendefinisikan objek sebagai bilangan kompleks agar mendapatkan sebuah objek yang bertipe `complex`.
+Masih ingat dengan operator pipe? Kode diatas akan memberikan hasil yang sama dengan kode berikut:
 
 ```{r}
-x <- 2 + 4i
-class(x)
+mydata2 = dplyr::select(mydata, jk, berat, tinggi)
+head(mydata2)
 ```
 
-## Logika (Logical) {#logical}
 
-Objek dengan tipe logika adalah objek yang hanya memiliki 2 nilai saja yaitu `TRUE` dan `FALSE`.
+Sekarang kita hanya memiliki 3 variabel saja, yaitu `jk` (jenis kelamin), `berat` (berat badan) dan `tinggi` (tinggi badan). 
+
+
+## Missing Values
+
+Dalam R, _missing value_ disimbolkan dengan `NA` yang berarti _Not Avialable_. Secara umum _missing value_ mendapatkan 3 perlakuan yaitu dihapus dalam data, diganti dengan nilai rataan (`mean`), atau kombinasi dari keduanya. Penggantian `NA` dengan `mean` hanya dapat dilakukan pada data yang bertipe `numeric`.
+
+
+### Menghapus `NA`
+
+Penghapusan `NA` dilakukan apabila kita sudah memastikan bahwa **tidak ada variabel (kolom data) yang hanya memiliki nilai `NA` saja**. Hal ini dikarenakan penghapusan `NA` dilakukan untuk 1 baris. Sehingga andaikan terdapat `NA` pada salah satu kolom di baris ke-9, maka 1 baris 9 akan dihapus dari data. Bagaimana jika terdapat 1 kolom yang hanya bernilai `NA`?
+
+Penghapusan `NA` dapat dilakukan dengan menggunakan fungsi `na.omit()`.
 
 ```{r}
-x <- TRUE
-class(x)
+mydata = mydata %>% na.omit()
+summary(mydata)
 ```
 
-## Teks (Character) {#character}
-
-Pendefinisian objek dengan tipe teks (`character`) merupakan hal yang cukup mudah. Kita perlu menambahkan tanda petik `"` pada awal dan akhir teks. Setelah itu objek akan terdefinisikan sebagai `character`.
+Kode tersebut akan memberikan hasil seperti kode berikut:
 
 ```{r}
-x <- "Aplikasi Komputer"
-class(x)
-x
+mydata = na.omit(mydata)
+summary(mydata)
 ```
 
-Apakah tipe data dari objek yang didefinisikan dengan nilai `"2.4"`?
 
-## Faktor (Factor) {#factor}
+### Mengganti `NA` dengan mean
 
-Faktor adalah tipe data pada bahasa pemrograman R yang digunakan untuk mendefinisikan sebuah objek menjadi sebuah objek dengan tipe data kategorik. Perintah yang digunakan untuk merubah sebuah objek menjadi sebuah faktor adalah `factor()`.
+Penggantian `NA` dengan `mean` hanya perlu dilakukan jika data memiliki terlalu banyak `NA`. Apabila `NA` terlalu banyak, maka penghapusan `NA` dapat menghilangkan data-data lain yang bisa jadi memiliki informasi penting. Mengganti `NA` denga `mean`juga perlu mempertimbangkan berbagai macam hal karena dapat menghasilkan _underestimate of standard errors_. Berikut adalah kode untuk mengganti `NA` dengan nilai `mean`.
 
 ```{r}
-x <- factor(c(1, 2, 3))
-y <- factor(c("SD", "SMP", "SMA", "SMA", "PT"))
-x
-y
+rataan = mean(mydata$berat, na.rm = TRUE)
+mydata$berat[is.na(mydata$berat)] = rataan
 ```
 
-Sebuah objek yang telah didefinisikan sebagaik faktor akan memiliki `levels` yang merupakan daftar kategori yang terdapat pada objek tersebut. Kita dapat menggunakan perintah `levels` untuk dapat memunculkan `levels` nya saja.
+Penjelasan kode:
+
+- `mean()` berfungsi untuk mendapatkan nilai rataan pada data yang ditentukan, dalam hal ini ialah `mydata$berat` (variabel `berat` pada data `mydata`).
+- `na.rm = TRUE` berfungsi untuk mengabaikan nilai `NA` pada variabel `berat` pada data `mydata`. Hal ini dilakukan agar perhitungan rataan terlepas dari nilai `NA` pada data yang bersangkutan (dalam hal ini `mydata$berat` tanpa mengubah data aslinya pada `mydata`)
+- `is.na()` adalah fungsi logika untuk menghasilkan `TRUE` apabila data bernilai `NA` dan `FALSE` jika selain `NA` dan `mydata$berat` adalah data variabel `berat` pada objek `mydata`. Sehingga `is.na(mydata$berat)` akan menghasilkan nilai `TRUE` apabila `mydata$berat` bernilai `NA` dan `FALSE` untuk selain bernilai `NA`.
+- `mydata$berat[is.na(mydata$berat)]` bertujuan untuk memberikan hasil `TRUE` dan `FALSE` pada variabel `berat` data `mydata`. Selanjutnya akan di isi dengan nilai `rataan`.
+
+
+## Membuat Variabel Baru
+
+Terdapat berbagai cara untuk membuat variabel baru di Program R. Dalam modul ini hanya menyajikan 2 cara saja yaitu tanpa dan dengan paket `tidyverse`.
+
+1. Tanpa paket `tidyverse` <br />
+Untuk membuat variabel baru dapat dilakukan dengan mendefinisikan `nama_variabel` tersebut setelah `mydata$` lalu `= isian_variabel_baru` seperti pada contoh berikut:
 
 ```{r}
-levels(x)
-levels(y)
+tinggi_meter = mydata$tinggi / 100
+mydata$tinggiM = tinggi_meter
+head(mydata)
 ```
 
-* Apa perbedaan _output_ dari objek yang bertipe `factor` dengan objek yang bertipe `numeric`?
-* Apa perbedaan _output_ dari objek yang bertipe `factor` dengan objek yang bertipe `character`?
+Penjelasan:
+
+  - `tinggi_meter` merupakan objek yang digunakan untuk menyimpan nilai dari `mydata$tinggi` yang dibagi dengan 100.
+  - `mydata$tinggiM` adalah variabel baru yang akan memuat nilai dari objek `tinggi_meter`.
+  - agar `mydata$tinggiM` berisi nilai `tinggi_meter` maka perlu diberi `=` diantara keduanya.
+
+2. Dengan paket `tidyverse` <br />
+Untuk membuat variabel baru dengan menggunakan paket `tidyverse` dapat dilakukan dengan fungsi `mutate(definisi_variabel_baru)`. Keuntungan dari penggunaan fungsi `mutate` adalah kita dapat membuat lebih dari 1 variabel baru sekaligus. Berikut contoh penggunaannya:
+
+```{r}
+mydata2 = mydata %>% mutate(tinggiM = tinggi / 100)
+head(mydata2)
+```
+
+Penjelasan:
+
+  - Objek `mydata2` akan digunakan untuk menyimpan objek `mydata` yang telah ditambahkan dengan variabel baru. Pada contoh sebelumnya, langkah ini dapat dilakukan dengan menambahkan kode `mydata2 = mydata` dan mengganti `mydata$tinggiM` dengan `mydata2$tinggiM`.
+  - `mutate(tinggiM = tinggi / 100)` membuat variabel baru yaitu `tinggiM` pada objek `mydata`.
+  - kode diatas memiliki hasil yang sama dengan kode berikut: `mutate(mydata, tinggiM = tinggi / 100)`.
+  
+Untuk membuat beberapa variabel sekaligus dapat dilakukan dengan menambahkan koma pada akhir pendefinisian variabel sebelumnya.
+
+```{r}
+mydata2 = mydata %>% 
+  mutate(tinggiM   = tinggi / 100, 
+         var_baru1 = 1,
+         var_baru2 = "ini variabel baru")
+head(mydata2)
+```
+
+
+## Transformasi Variabel
+
+Konsep yang digunakan dalam mentranformasi data sama dengan konsep dalam membuat variabel baru yang telah dijelaskan sebelumnya. Berikut adalah contoh dalam membuat variabel IMT:
+
+```{r}
+mydata2 = mydata2 %>% mutate(IMT = berat / (tinggiM^2))
+```
+
+## Recode
+
+Dalam hal `recode` akan ditunjukkan 1 contoh yang menggunkan paket `tidyverse`. Cara ini dianggap cara yang paling mudah dalam melakukannya.
+
+Kode berikut ini bertujuan untuk membuat variabel baru untuk menyimpan kategori-kategori nilai IMT yang telah dibuat sebelumnya. Terdapat 3 kategori yang digunakan dalam contoh ini yaitu:
+
+1. `Kurus`, kategori IMT untuk nilai IMT yang kurang dari 18 (`IMT < 18`).
+2. `Sedang`, kategori IMT untuk nilai IMT yang lebih dari sama dengan 18 dan kurang dari sama dengan 25. (`IMT >=18 & IMT <= 25`).
+3. `Gemuk`, kategori IMT untuk nilai IMT yang lebih dari 25.
+
+Dalam contoh ini kita akan membuat variabel baru dengan nama `IMTkat` menggunakan fungsi `mutate()`. Sedangkan isian dari `IMTkat` menggunakan fungsi `case_when()` yang disesuaikan dengan pendefinisian sebelumnya (kurus, normal dan gemuk). 
+
+```{r}
+mydata2 <- mydata2 %>% 
+  mutate(IMTkat = case_when(
+    IMT < 18 ~ "Kurus",
+    IMT >= 18 & IMT <= 25 ~ "Normal", 
+    IMT > 25 ~ "Gemuk")
+  )
+```
+
+Fungsi `case_when()` mengijinkan kita untuk membuat lebih dari 1 kondisi:
+
+1. `IMT < 18 ~ "Kurus"` akan memberikan nilai `Kurus` pada variabel yang baru didefinisikan (yaitu `IMTkat`) apabila variabel `IMT` memiliki nilai yang kurang dari 18.
+2. `IMT >= 18 & IMT <= 25 ~ "Normal"` akan memberikan nilai `Normal` pada variabel yang baru didefinisikan apabila variabel `IMT` memiliki nilai yang lebih dari sama dengan 18 dan kurang dari sama dengan 25.
+3. `IMT > 25 ~ "Gemuk"` akan memberikan nilai `Gemuk` pada variabel yang baru didefinisikan apabila variabel `IMT` memiliki nilai yang lebih dari 25.
+4. Perlu diingat bahwa dalam "pendefinisian" `case_when()` ini tidak menggunakan `=` melainkan `~`.
+
+
+## Filter 
+
+Untuk memudahkan dalam penggunaanya, dalam modul ini akan menggunakan fungsi `filter()` pada paket `tidyverse`. Secara konsep penggunaannya sama dengan penggunaan fungsi `mutate()`, hanya saja pada filter akan menggunakan operator hubungan (`<, >, ==, !=, dll.`) dalam pendefinisiannya. Contoh berikut akan memilih seluruh data pada `mydata2` dengan kondisi  `IMTkat` bernilai `Gemuk`: 
+
+```{r}
+mydata3 <- mydata2 %>% filter(IMTkat == "Gemuk")
+head(mydata3)
+```
+
+Fungsi `filter()` juga dapat digunakan untuk beberapa kondisi. Untuk menghubungkan lebih dari 1 kondisi perlu menggunakan operator logika (`&, |`). Berikut contohnya:
+
+```{r}
+mydata3 <- mydata2 %>% filter(IMTkat == "Gemuk" | IMTkat == "Kurus")
+summary(mydata3)
+```
+
+
+
+## Latihan
+```{r}
+mydata4 <- mydata2 %>% filter(jk == "male" | jk == "female")
+head(mydata4)
+```
+
+```{r}
+mydata4 <- mydata4 %>% mutate(
+  JK = case_when(
+    jk == "male" ~ "M",
+    jk == "female" ~ "F"
+  )
+)
+```
