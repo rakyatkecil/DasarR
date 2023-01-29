@@ -10,7 +10,7 @@
 
 **Alat dan kebutuhan**
 
-1. Komputer atau laptop dengan Sistem Operasi Windows atau MacOS
+1. Aplikasi R Studio
 2. Koneksi internet
 
 
@@ -107,6 +107,8 @@ Digunakan untuk melakukan manajemen pada data. Cara instal paket dengan menjalan
 Digunakan untuk membuat grafik yang lebih bagus. Cara instal paket dengan menjalankan fungsi `install.packages("ggplot2")` pada console
 3. `dgof` <br />
 Digunakan untuk melakukan uji normalitas menggunakan Metode Kolmogorov-Smirnov. Cara instal paket dengan menjalankan fungsi `install.packages("dgof")` pada console
+4. `readr` <br />
+Digunakan untuk _import_ data dengan _Import Wizard_
 
 
 ## Tipe Data {#datatype}

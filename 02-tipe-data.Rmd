@@ -1,5 +1,16 @@
-
 # Pertemuan 2: Manajemen Data
+
+**Capaian**
+
+1. Mahasiswa dapat meng-import data dalam format _.csv_
+2. Mahasiswa dapat melakukan identifikasi sederhana pada data
+3. Mahasiswa melakukan manajemen data dasar (Memilih Variabel, Missing Values (NA), Menemukan dan Menghapus Outlier, Menemukan Noise pada Data, Membuat Variabel Baru, Transformasi Variabel,  Recode, Filter)
+
+**Alat dan kebutuhan**
+
+1. Aplikasi R Studio
+2. Paket `readr` dan `tidyverse`
+3. Koneksi internet
 
 Kegitan Manajemen Data merupakan upaya-upaya yang dilakukan oleh sesorang untuk mempersiapkan data mentah ( _rawdata_ ) menjadi data yang terorganisasi dengan baik (siap untuk diolah). Umumnya data mentah yang kita dapat tidak seperti data-data yang digunakan dalam praktik di perkuliahan. Data mentah sering kali memiliki kondisi-kondisi seperti berikut:
 
