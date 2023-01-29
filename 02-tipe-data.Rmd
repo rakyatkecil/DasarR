@@ -13,6 +13,8 @@
 3. Koneksi internet
 
 <br />
+<br />
+**Pendahuluan** <br />
 Kegitan Manajemen Data merupakan upaya-upaya yang dilakukan oleh sesorang untuk mempersiapkan data mentah ( _rawdata_ ) menjadi data yang terorganisasi dengan baik (siap untuk diolah). Umumnya data mentah yang kita dapat tidak seperti data-data yang digunakan dalam praktik di perkuliahan. Data mentah sering kali memiliki kondisi-kondisi seperti berikut:
 
 1. Terdapat _missing value_, yang biasanya terjadi karena data yang hilang ataupun tidak lengkap saat peng-entry-an data (terkadang kasusnya sangat banyak)
