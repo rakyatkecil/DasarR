@@ -1,5 +1,19 @@
 # Pertemuan 1: Pengenalan
 
+**Capaian**
+
+1. Mahasiswa mengenal dan dapat membuat sebuah objek pada Program R
+2. Mahasiswa mengenal dan dapat melakukan instalasi paket pada Program R
+3. Mahasiswa mengetahui tipe-tipe data pada Program R
+4. Mahasiswa mengetahui struktur data pada Program R
+5. Mahasiswa mengetahui berbagai jenis _operator_ data pada Program R
+
+**Alat dan kebutuhan**
+
+1. Komputer atau laptop dengan Sistem Operasi Windows atau MacOS
+2. Koneksi internet
+
+
 ## Objek
 
 Objek merupakan sebuah wadah untuk menyimpan informasi (dapat berupa nilai, data, ataupun lainnya) yang telah didefinisikan. Penyimpanan informasi ke dalam sebuah objek memberikan kemudahan bagi pengguna R untuk memanggil informasi yang sama berulang kali hanya dengan memanggil nama objeknya saja. Seringkali sebuah informasi memiliki banyak bagian didalamnya seperti `data frame` atau kerangka data (memiliki kolom-kolom variabel).  Informasi ini akan sangat merepotkan jika harus memanggilnya berulang kali, sehingga dengan mendefinisikannya ke dalam sebuah objek akan mempercepat proses pengerjaannya.
@@ -56,6 +70,13 @@ Sekarang objek `a` telah memiliki nilai baru yaitu `79` dan objek b tidak tersed
 knitr::include_graphics("images//objek_02.jpg")
 ```
 
+Terdapat beberapa syarat pembuatan nama `objek` yaitu:
+
+1. Tidak ada penggunaan simbol apapun kecuali `.` (titik) dan `_`
+2. Tidak diawali dengan angka dan simbol apapun
+3. Tidak menggunakan spasi
+4. Jangan menggunakan nama objek yang sama dengan nama sebuah fungsi
+5. Penamaan objek adalah **_Case Sensitive_**
 
 ## Paket (Packages)
 

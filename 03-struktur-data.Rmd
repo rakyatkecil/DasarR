@@ -1,39 +1,62 @@
+
 # Pertemuan 3: Eksplorasi Data
 
-## Statistik Deskriptif
+Dalam pertemua ini kita akan menggunakan 2 paket yaitu `tidyverse` untuk menampilkan hasil deskriptif data dan `ggplot2` untuk visualisasi data. 
+
+Pada paket `tidyverse` kita akan menggunakan beberapa fungsi berikut:
+
+1. `%>%` (fungsi _pipe_)
+2. `summarise()` untuk statistik deskriptif (untuk statistik deskriptif yang diperlukan dapat disesuaikan dengan fungsi-fungsi statistik deskriptif dasar yang telah tersedia di `R` seperti `mean()`, `sd()`, `min()`, dsb.)
+3. `group_by()` yang digunakan apabila ingin memunculkan hasil deskriptif berdasarkan kelompok-kelompok tertentu (seperti pendidikan, wilayah, dsb.)
+
+Pertama-tama siapkan data yang akan digunakan.
 
 ```{r}
-library(tidyverse)
-data_latihan <- read.csv("G:/Mandat/data_latihan.csv", sep=";")
-mydata <- data_latihan %>% na.omit()
+rawdata <- read.csv("G:/Mandat/data_latihan.csv", sep=";")
+mydata <- rawdata %>% na.omit()
 head(mydata)
 
 ```
 
 
-### Deskriptif
-```{r}
-mydata %>% group_by(jk) %>% summarise(
-  n = n()
-)
+## Statistik Deskriptif
 
+Dalam `R` kita dapat menggunakan fungsi `summary()` untuk memberikan hasil deskriptif yang sederhana. Seperti pada contoh berikut:
+
+```{r}
+summary(mydata)
 ```
 
-### Deskriptif Variabel Tinggi Badan
+Seperti yang terlihat bahwa untuk data-data `numeric` akan menghasilkan nilai minimum, kuartil (1, 2 dan 3), rataan, maksimum dan jumlah _missing value_ (`NA`). Sedangkan pada data `character` hanya memunculkan jumlah datanya saja. Bagaimana dengan hasil pada data `factor`?
+
+### Deskriptif dengan `dplyr`
+
+Pada fungsi `summarise()` statistik deskriptif sebaiknya dilakukan pada masing-masing variabel. Hal ini dilakukan agar hasil tidak terlalu banyak yang justru akan mengganggu dalam memahami deskriptif data. Semimal pada contoh berikut akan menghitung rataan pada variabel tinggi badan (`tinggi`).
+
 ```{r}
 mydata %>% summarise(
-  rata_rata = mean(tinggi),
-  median    = median(tinggi),
-  std.dev   = sd(tinggi),
-  minimum   = min(tinggi),
-  maksimum  = max(tinggi), 
-  jarak     = range(tinggi),
-  n         = n()
+  rataan = mean(tinggi)
 )
 ```
 
+Perhatikan bahwa hasil dari fungsi `summarise()` disajikan dalam bentuk `data.frame`. Penamaan `rataan` hanya untuk menamakan hasil dari fungsi yang digunakan (dalam hal ini `mean()`). Penamaan tersebut sesuai dengan kebutuhan dari pengguna (namun nama tersebut harus seuai dengan format penamaan sebuah `objek` dalam `R`).
 
-### Deskriptif Variabel Berat Badan
+Selanjutnya akan ditambahkan dengan fungsi-fungsi lain
+
+```{r}
+mydata %>% summarise(
+  rataan = mean(tinggi),       # rataan
+  median    = median(tinggi),  # nilai tengah
+  std.dev   = sd(tinggi),      # standar deviasi
+  minimum   = min(tinggi),     # nilai minimum
+  maksimum  = max(tinggi),     # nilai maksimum
+  jarak     = range(tinggi),   # range
+  n_data    = n()              # jumlah data
+)
+```
+
+Selanjutnya untuk variabel lain dapat dibuat dengan cara yang sama lalu mengganti nama variabelnya saja.
+
 
 ```{r}
 mydata %>% summarise(
@@ -48,7 +71,10 @@ mydata %>% summarise(
 ```
 
 
-### Deskriptif Statistik berdasarkan kelompok
+### Deskriptif Statistik Berdasarkan Kelompok
+
+Untuk mendapatkan deskriptif sesuai dengan kelompok tertentu, maka perlu menambahkan fungsi `group_by(nama_variabel_kelompok)` sebelum fungsi `summarise()`. Semisal pada contoh berikut akan mengelompokkan deskriptif berdasarkan variabel jenis kelamin (`jk`) 
+
 ```{r}
 mydata %>% group_by(jk) %>% summarise(
   rata_rata = mean(tinggi),
@@ -64,147 +90,195 @@ mydata %>% group_by(jk) %>% summarise(
 
 ## Visualisasi Data dengan `ggplot2`
 
-Plot adalah salah satu hal mendasar yang dapat digunakan untuk menggambarkan distribusi data. Program R pun memiliki perintah - perintah untuk membuat sebuah plot. Namun perintah - perintah tersebut masih merupakan perintah yang sederhana. Hasilnya, gambar kurang menarik untuk disajikan pada khalayak umum. 
+Visualisasi Data adalah salah satu hal yang dapat digunakan untuk menyajikan data dalam bentuk grafik. Grafik ini dapat digunakan untuk melihat distribusi data hingga hubungan antar variabel. Program R pun memiliki fungsi-fungsi yang dapat digunakan untuk membuat sebuah grafik (`plot()`). Namun fungsi `plot()` ini masih merupakan fungsi yang sederhana. Hasilnya, grafik kurang menarik untuk disajikan pada khalayak umum. 
 
-`ggplot2` merupakan sebuah paket yang dapat digunakan pada program R dengan cara melakukan instalasi terlebih dahulu menggunakan perintah `install.package("ggplot2")`. Paket `ggplot2` memberikan fasilitas bagi penggunanya dalam membuat sebuah plot yang menarik untuk dilihat. Setelah anda memahami jenis-jenis plot beserta cara penggunaannya, kita dapat menggunakan paket `ggpubr` yang telah disusun khusus untuk kebutuhan publikasi/penerbitan.
+Seperti sebelumnya yang menggunakan paket `tidyverse` untuk meringkas data, dalam membuat grafik kali ini juga akan menggunakan paket yaitu `ggplot2`. Paket `ggplot2` ini memberikan fasilitas bagi penggunanya dalam membuat sebuah grafik yang jauh lebih menarik dibandingkan dengan fungsi `plot()`. Setelah anda memahami jenis-jenis grafik beserta cara penggunaannya, kita dapat menggunakan paket `ggpubr` yang telah disusun khusus untuk kebutuhan publikasi/penerbitan (penggunaan paket ini tidak akan dibahas dalam pertemuan ini).
 
-Setelah instalasi paket `ggplot2` selesai, selanjutnya kita dapat memanggil paket tersebut dengan perintah
+Setelah instalasi paket `ggplot2` selesai, selanjutnya kita dapat mengaktifkan paket tersebut dengan perintah
+
 ```{r}
 library(ggplot2)
 ```
 
-### Bar Plot
-Grafik batang merupakan grafik yang digunakan untuk menunjukkan frekuensi dari dara. Grafik batang lebih sering digunakan untuk menunjukkan perbedaan jumlah dari data yang bertipe kategorik seperti jenis kelamin, asal daerah, status perniahan, dsb. Selanjutnya kita akan membuat sebuah grafik batang dengan menggunakan data berikut:
+**Perhatikan** bahwa dalam membuat grafik (khususnya saat menggunakan paket `ggplot2`) sangat perlu menentukan terlebih dahulu hal-hal berikut:
+
+1. **Data** yang akan digunakan.
+2. **Variabel mana yang akan menjadi Variabel pada Axis X dan Variabel pada Axis Y**. Biasanya Axis X untuk variabel bebas dan Axis Y untuk variabel terikat. Namun dalam praktiknya tidak harus sesuai dengan kebiasaan tersebut. 
+3. **Jenis grafik yang akan digunakan**. Mengetahui grafik yang akan digunakan akan membatu kita dalam menentukan variabel mana saja yang dapat digunakan untuk grafik tersebut.
+4. **Label-label** seperti label untuk judul, subjudul, axis x, axis y, dll.
+5. **Tema Grafik** untuk paket `ggplot2`
+
+Poin 1 hingga 3 adalah yang wajib tersiapkan. Sedangkan poin 4 dan 5 adalah untuk keperluan estetik dalam pembuatan grafik yang bertujuan agar grafik menjadi lebih menarik dan mudah dipahami.
+
+
+### Diagram Batang
+
+Grafik batang merupakan grafik yang digunakan untuk menunjukkan distribusi frekuensi dari data. Grafik batang lebih sering digunakan untuk menunjukkan perbedaan jumlah dari data yang bertipe kategorik seperti jenis kelamin, asal daerah, status pernikahan, jumlah penjualan dalam kurun waktu tertentu, dsb. Sebelum kita akan membuat sebuah grafik batang, kita persiapkan datanya terlebih dahulu dengan menggunakan kode-kode berikut:
+
 ```{r}
-jpc <- c(34, 25, 69, 40, 30, 32, 45)
+jph <- c(34, 25, 69, 40, 30, 32, 45)
 hr  <- c("Sen", "Sel", "Rab", "Kam", "Jum", "Sab", "Min")
-x   <- data.frame(Hari = hr, Pasien = jpc)
+x   <- data.frame(Hari = hr, Pasien = jph)
 x
 ```
 
-Terdapat perintah `barplot` dalam `R` yang merupakan perintah yang sudah tersedia saat melakukan instalasi `R`. Walapun perintah `barplot` dapat kita gunakan, namun hasil yang diberikan sangat sederhana dan lebih cocok digunakan untuk sebuah laporan. Berikut adalah cara menggunakan perintah `barplot`:
+Keterangan:
+
+- objek `jph` adalah objek yang menyimpan jumlah kunjungan pasien harian dalam 1 minggu.
+- objek `hr` adalah nama-nama hari dari Hari Senin hingga Minggu.
+- objek `x` adalah kerangka data (`data.frame`) yang memuat variabel Hari dengan isian objek `hr` dan variabel Pasien dengan isian objek `jph`.
+
+
+Fungsi yang sudah ada untuk membuat grafik batang adalah `barplot()`. Fungsi ini memberikan hasil yang sangat sederhana dan lebih cocok digunakan untuk sebuah laporan. Pertama-tama kita tentukan terlebih dahulu data, variabel x dan y, dan jenis grafik yang sudah tentu menggunakan grafik batang:
+
+1. data -> `x`
+2. variabel x -> `x$Hari`; variabel y -> `x$Pasien` (`Pasien` dan `Hari` ada didalam objek `x`)
+3. jenis grafik -> grafik batang (`barplot()`)
+
+Berikut adalah cara membuat grafik batang dengan menggunakan perintah `barplot()`:
+
 ```{r}
-barplot(x$Pasien, 
-        names.arg = x$Hari)
+barplot(x$Pasien, names.arg = x$Hari, 
+        main = "Grafik Batang dengan Fungsi barplot()",
+        xlab = "Hari", 
+        ylab = "Jumlah Kunjungan Pasien Harian", 
+        ylim = c(0, 80))
 ```
 
-Selanjutnya kita akan menggunakan paket `ggplot2` untuk menyajikan grafik batang yang lebih menarik. Berikut adalah perintah untuk membuat grafik batang dengan menggunakan paket `ggplot2`:
+Penjelasan:
+
+- `x$Pasien`, setelah adalah data pasien harian yang akan menentukan tinggi batang dari grafik.
+- `names.arg = x$Hari` adalah penentuan label dari masing-masing batang. Dalam kasus ini label pada masing-masing batang sesuai dengan data hari `x$Hari`.
+- `main = ""` digunakan untuk menentukan judul dari grafik batang.
+- `xlab = ""` digunakan untuk menentukan judul dari Axis X.
+- `ylab = ""` digunakan untuk menentukan judul dari Axis Y.
+- `ylim = c(min, max)` digunakan untuk menentukan batas bawah (`min`) dan batas atas (`max`) dari Axis Y. **_Tambahan ini biasanya diperlukan jika grafik yang muncul memiliki batas atas dan bawah Axis Y kurang sesuai_**.
+
+Selanjutnya kita akan menggunakan paket `ggplot2` untuk menyajikan grafik batang yang lebih menarik. Berikut adalah fungsi untuk membuat grafik batang dengan menggunakan paket `ggplot2`:
+
 ```{r}
-p <- ggplot(x, aes(Hari)) + 
-  geom_bar(aes(weight=Pasien, fill=Hari, colour=Hari)) +
+ggplot(x, aes(y=Pasien, x=Hari, fill=Hari, colour=Hari)) + 
+  geom_col() +
   labs(title = "Jumlah Laki-laki dan Perempuan",
        subtitle = "Latihan Membuat Grafik dengan R") +
-  xlab("Jenis Kelamin") + 
-  ylab("Jumlah Responden") +
+  xlab("Hari") + 
+  ylab("Jumlah Kunjungan Pasien Harian") +
   theme_bw() + 
   theme(legend.position = "none")
-
-p
 ```
 
-penjelasan:
+Penjelasan:
 
-* `ggplot(x, aes(Hari))` adalah perintah untuk membuat sebuah objek `ggplot` dari variabel `Hari` pada data `x`
-* `geom_bar(aes(weight=Pasien, fill=Hari, colour=Hari))`
-  - `geom_bar()` adalah perintah untuk membuat grafik batang menggunakan `ggplot`
-  - `weight` adalah banyak datanya (dalam kasus yang kita kerjakan: banyaknya Pasien setiap hari)
-  - `fill` bertujuan untuk memberi warna batang (harus sama dengan `aes(Hari)` pada `ggplot` agar setiap batang memiliki warna yang berbeda)
-  - `colour` bertujuan untuk memberi warna garis (harus sama dengan `aes(Hari)` pada `ggplot` agar setiap batang memiliki warna yang berbeda)
-* `theme_bw()` bertujuan untuk menentukan tema `black and white` pada grafik
+- `ggplot(x, aes())` adalah fungsi untuk membuat sebuah objek `ggplot` dengan `x` adalah **datanya** dan `aes()` untuk mengisikan **variabel x** (data `x$Hari`) dan **variabel y** (data `x$Pasien`).
+- `fill` bertujuan untuk memberi warna batang (harus sama dengan `x` pada `aes()` agar setiap batang memiliki warna yang berbeda). Hal ini dikarenakan setiap batang merepresentasikan hari (variabel `x`). Bagian ini dapat dihilangkan apabila tidak diperlukan.
+- `colour` sama seperti `fill` namun untuk warna garis.
+- `geom_col()` adalah perintah untuk membuat grafik batang untuk `ggplot`.
+- `labs()` digunakan untuk menambahkan judul dan subjudul.
+- `xlab()` digunakan untuk memberikan label axis x.
+- `ylab()` digunakan untuk memberikan label axis y.
+- `theme_bw()` bertujuan untuk menentukan tema `black and white` pada grafik.
+- `theme(legend.position = "none")` digunakan untuk menghilangkan legenda pada grafik. Bagian ini dapat dihilangkan apabila tidak diperlukan.
+- `+` ini bertujuan menambahkan fungsi untuk `ggplot()` diawal baris. Berbeda dengan fungsi `barplot()` yang hanya memerlukan fungsi tersebut untuk membuat grafik, dalam `ggplot2` diperlukan beberapa fungsi yang dihubungkan dengan operator `+`.
+
 
 ### Histogram 
-Histogram merupakan grafik batang yang dapat menunjukkan seberapa sering suatu nilai yang berbeda terjadi. Histogram lebih sering digunakan untuk melihat distribusi dari suatu data. Berbeda dengan grafik batang, kita perlu menggunakan data numerik dalam membuat sebuah histogram. Berikut adalah data acak yang dibangkitkan dengan perintah `rnorm`:
+
+Histogram merupakan grafik batang yang dapat menunjukkan seberapa sering suatu nilai yang berbeda terjadi. Histogram lebih sering digunakan untuk melihat distribusi dari suatu data. Berbeda dengan grafik batang, kita perlu menggunakan data numerik dalam membuat sebuah histogram. Perbedaan utama dari histogram dan grafik batang adalah tidak adanya jarak antar batang pada histogram sedangkan pada grafik batang memiliki jarak antar masing-masing batangnya. 
+
+Data yang akan digunakan yntuk membuat grafik batang adalah data yang disimulasikan berdistribusi normal dengan menggunakan fungsi `rnorm()`. Berikut adalah kode untuk membuat simulasi data yang berdistribusi normal:
+
 ```{r}
-data <- data.frame(x = rnorm(100,5,2))
+set.seed(152)
+mydata <- data.frame(x = rnorm(100,5,2))
 ```
 
-Kita dapat menggunakan perintah `hist` yang telah tersedia pada program R saat melakukan instalasi program R.
+Selanjutnya kita membuat histogram dengan menggunakan fungsi `hist()` yang telah tersedia pada program R saat melakukan instalasi program R:
+
 ```{r}
-hist(data$x)
+hist(mydata$x)
 ```
 
-Selanjutnya kita akan menggunakan perintah yang tersedia pada paket `ggplot2`.
+Selanjutnya kita akan menggunakan perintah yang tersedia pada paket `ggplot2`:
+
 ```{r}
-p <- ggplot(data, aes(x)) + 
-  geom_histogram(binwidth = 1, 
-                 color = "white", 
-                 fill= "darkred") +
+ggplot(mydata, aes(x)) + 
+  geom_histogram(binwidth = 1.3) +
   theme_bw()
-p
 ```
 
-penjelasan:
+Penjelasan:
 
-* `ggplot(data, aes(x))` adalah perintah untuk membuat sebuah objek `ggplot` dari objek `x` pada data `data`
-* `geom_histogram(binwidth = 1, color = "white", fill= "darkred")`
-  - `geom_histogram()` adalah perintah untuk membuat histogram menggunakan `ggplot`
-  - `binwidth` adalah lebar dari masing-masing batang
-  - `fill` bertujuan untuk memberi warna batang (dalam kasus ini kita akan berikan warna yang sama untuk semua batang)
-  - `colour` bertujuan untuk memberi warna garis (dalam kasus ini kita akan berikan warna yang sama untuk semua garis)
-* `theme_bw()` bertujuan untuk menentukan tema `black and white` pada plot
+- `ggplot(data, aes(x))` adalah fungsi untuk membuat sebuah objek `ggplot` dari data `mydata` dengan variabel x nya adalah `x`
+- `geom_histogram(binwidth = 1)`
+  * `geom_histogram()` adalah fungsi untuk membuat histogram menggunakan `ggplot`
+  * `binwidth` adalah lebar dari masing-masing batang. Biasanya ditentukan apabila kita ingin mengetahui perbedaan hasil pada lebar batang yang kecil dengan yang besar.
+- `theme_bw()` bertujuan untuk menentukan tema `black and white` pada plot
 
-Selanjutnya bandingkan dengan histogram yang memiliki `binwidth` berbeda.
+Selanjutnya bandingkan dengan histogram yang memiliki `binwidth` yang lebih besar:
 ```{r}
-p <- ggplot(data, aes(x)) + 
-  geom_histogram(binwidth = 3, 
-                 color = "white", 
-                 fill= "darkred") +
+ggplot(mydata, aes(x)) + 
+  geom_histogram(binwidth = 3) +
   theme_bw()
-p
 ```
 
-### Pie Plot
-Pie plot atau diagram lingkaran lebih sering digunaan untuk menunjukkan perbandingan antar kategori pada sebuah variabel. Berikut ini adalah data yang akan kita gunakan untuk membuat diagram lingkaran:
+> Dalam membuat histogram hanya memerlukan 1 variabel yaitu variabel x saja. Namun ini tak berarti bahwa histogram hanya digunakan untuk melihat distribusi variabel bebas saja.
+
+Agar batang-batang terlihat seolah-olah dipisahkan, kita dapat menambahkan `colour` pada fungsi `geom_histogram()` seperti pada contoh berikut:
+
 ```{r}
-jumlah <- c(23, 57, 20)
-label <- c("Setuju", "Tidak setuju", "Tidak tahu")
-x <- data.frame(label, jumlah)
+ggplot(mydata, aes(x)) + 
+  geom_histogram(binwidth = 1.3, colour = "white") +
+  theme_bw()
 ```
-
-Menggunakan perintah `pie`
-```{r}
-pie(x$jumlah, labels = x$label)
-```
-
-Selanjutnya berikut ini adalah perintah untuk membuat diagram lingkaran dengan menggunakan paket `ggplot2`
-```{r}
-p <- ggplot(x, aes(x="", y=jumlah, fill=label)) +
-  geom_bar(stat = "identity")
-p + coord_polar("y", start = 0)
-```
-
-penjelasan:
-
-* `ggplot(x, aes(x="", y=jumlah, fill=label))` adalah perintah untuk membuat sebuah objek ggplot dengan data `x` dengan nilai `y` adalah jumlah dan `label` menjadi warna pembeda di setiap nilai pada `y`
-* `geom_bar(stat = "identity")`
-  - `geom_bar()` adalah perintah untuk membuat grafik batang menggunakan `ggplot`
-  - `stat = "identity"` bertujuan untuk membuat grafik batang dalam bentuk stacked bar chart
-* `coord_polar("y", start = 0)` bertujuan untuk membentuk stacked pada koordinat polar mengikuti `angle = y` dan dimulai dari titik nol `start = 0`
 
 ### Box Plot
-Box Plot dapat menggambarkan sebaran data yang bersifat `numerik`. Box plot dibuat dengan menggunakan nilai-nilai pada ukuran pemusatan data. Nilai-nilai tersebut ialah `1st quartile`, `median`, `3rd quartile`, dan `interquartile range`. Selanjutnya kita akan menggunakan 3 data berbeda yang bersebar normal untuk menunjukkan keunggulan dalam menggunakan box plot.
+Box Plot dapat menggambarkan sebaran data yang bersifat `numerik`. Box plot dibuat dengan menggunakan nilai-nilai pada ukuran pemusatan data. Nilai-nilai tersebut ialah `1st quartile`, `median`, `3rd quartile`, dan `interquartile range`. Boxplot biasanya digunakan untuk membandingkan distribusi data berdasarkan kelompok tertentu.
+
+Selanjutnya kita akan menggunakan 3 data berbeda yang bersebar normal untuk menunjukkan keunggulan dalam menggunakan box plot.
+
 ```{r}
-x <- rnorm(250, 9, 3)
-y <- rnorm(250, 4, 1)
-z <- rnorm(250, 11, 6)
+set.seed(17)
+x <- round(rnorm(75, 9, 3), 2)
+y <- round(rnorm(75, 4, 1), 2)
+z <- round(rnorm(75, 11, 6), 2)
+
+xdata <- data.frame(label = c(rep(c("x","y","z"), each=75)),
+                   value = c(x, y, z))
+head(xdata)
+```
+Penjelasan:
+
+1. `set.seed()` merupakan fungsi untuk mengunci angka acak yang akah dibuat (dalam kasus ini angka acak dibuat dengan fungsi `rnorm`)
+2. `rnorm(n, mean, sd)` merupakan fungsi untuk membangkitkan angka acak sebanyak `n` yang berdistribusi normal dengan rataannya adalah `mean` dan standar deviasinya adalah `sd`
+3. `rep(c("x","y","z"), each=75)`, `rep()` adalah fungsi untuk membuat replika (dalam kasus ini replika yang dibuat adalah `x`, `y` dan `z` masing-masing sebanyak `75` replika sesuai dengan `n` pada `rnorm`)
+4. `xdata` adalah objek untuk menyimpan `x`, `y` dan `z` dalam `data.frame` 
+5. `label` dalam `data.frame` digunakan untuk menyesuaikan kelompok sesuai dengan `x`, `y` dan `z`
+
+Sebagai tambahan, untuk melihat distribusi data dapat menggunakan fungsi `summarise()`.
+
+```{r}
+xdata %>% group_by(label) %>% summarise(
+  n       = n(),
+  rataan  = mean(value),
+  std.dev = sd(value),
+  min     = min(value),
+  median  = median(value),
+  max     = max(value)
+) 
 ```
 
-Menggunakan perintah `boxplot`
+Selanjutnya adalah membuat `boxplot` dengan menggunakan perintah `boxplot()` pada `R`
+
 ```{r, fig.show="hold", out.width = "75%", out.height= "75%", fig.align = 'center'}
 boxplot(x, y, z,
         names = c("x", "y", "z"))
-data <- data.frame(label = c(rep(c("x","y","z"),
-                                 each=250)),
-                   value = c(x, y, z))
-head(data)
 ```
 
-Menggunakan paket `ggplot2`
+Lalu kita bandingkan hasilnya dengan menggunakan paket `ggplot2`
 ```{r, out.width = "75%", out.height= "75%", fig.align = 'center'}
-p <- ggplot(data, aes(x=label, y=value)) +
+ggplot(xdata, aes(x=label, y=value)) +
   geom_boxplot(outlier.colour = "red") +
   theme_bw()
-p
 ```
 
 penjelasan:
@@ -214,74 +288,31 @@ penjelasan:
   - `geom_boxplot()` adalah perintah untuk membuat box plot menggunakan `ggplot`
   - `outlier.colour = "red"` memberikan warna merah pada garis box plot (optional)
 
-Menggunakan paket `ggplot2`
 
 ### Scatter Plot
-Scatter Plot (diagram pencar) merupakan grafik yang dibuat dengan tujuan untuk memasangkan 2 nilai/variabel. Diagram pencar dapat menggambarkan hubungan dari 2 nilai/variabel tersebut. Apabila titik-titik dalam diagram pencar menuju kearah kanan atas dari kiri bawah, maka terdapat hubungan yang positif dari kedua nilai/variabel begitu pula sebaliknya. Kita akan menggunakan data berikut untuk menunjukkan hubungan yang positi dan negatif dari 2 variabel.
+Scatter Plot (diagram pencar) merupakan diagram (titik) yang dibuat dengan tujuan untuk melihat hubungan dari 2 nilai/variabel `numeric`. Hubungan tersebut dapat terlihat dari pola titik-titiknya. Apabila titik-titik dalam diagram pencar menuju kearah kanan atas dari kiri bawah, maka terdapat hubungan yang positif dari kedua nilai/variabel. Arah sebaliknya menyatakan hubungan yang negatif. Kita akan menggunakan `mydata` untuk menunjukkan hubungan yang positif dan negatif dari 2 variabel.
+
 ```{r}
-n <- 10
-r <- 0.75
-
-library(MASS)
-data_pos <- mvrnorm(n, mu=c(3, 5), Sigma=matrix(c(1, r, r, 1), nrow=2))
-x_pos <- data_pos[, 1]
-y_pos <- data_pos[, 2]
-
-data_neg <- mvrnorm(n, mu=c(3, 5), Sigma=matrix(c(1, -r, -r, 1), nrow=2))
-x_neg <- data_neg[, 1]
-y_neg <- data_neg[, 2]
+summary(mydata)
 
 ```
 
 Menggunakan perintah `plot` pada program R:
-```{r, out.width = "75%", out.height= "75%", fig.align = 'center'}
-plot(y_pos, x_pos)
-plot(y_neg, x_neg)
+```{r, fig.align = 'center'}
+par(mar = c(4, 4, 0.1, 0.1))
+plot(x = mydata$berat, y = mydata$tinggi)
 ```
 
-Gambar pertama menunjukkan adanya hubungan yang positif pada pariabel `y_pos` dan `x_pos`. Sedangkan pada gambar kedua adalah sebaliknya, yaitu hubungan yang negatif. selanjutnya kita akan membangun diagram pencar menggunakan paket `ggplot2`.
+XXXXXX
 
 ```{r, out.width = "75%", out.height= "75%", fig.align = 'center'}
-data_pos <- data.frame(data_pos)
-colnames(data_pos) = c("x","y")
-p <- ggplot(data_pos, aes(x,y))
-p + geom_point(size=2) + 
-  geom_smooth(method=lm) +
+ggplot(mydata, aes(tinggi, berat)) +
+geom_point(size=2) + 
   theme_bw()
 ```
 
 penjelasan:
 
-* `data_pos` adalah objek yang memuat `data_pos` baru setelah diubah kedalam bentuk `data frame`
-* `colnames()` adalah perintah untuk memberikan nama kolom/variabel pada `data frame`
-* `ggplot(data_pos, aes(x,y))` adalah perintah untuk membuat sebuah objek ggplot dengan nilai `value` sebagai `y` dan `label` menjadi warna pembeda di setiap nilai `y` menggunaan data `data`
+* `ggplot(mydata, aes(tinggi, berat))` adalah perintah untuk membuat sebuah objek ggplot dengan nilai `tinggi` sebagai `x` dan `berat` sebagai `y` menggunaan data `mydata`
 * `geom_point()` adalah perintah untuk membuat diagram pencar 
   - `size=2` adalah perintah untuk mengubah ukuran titik diagram pencar menjadi sebesar 2 poin
-* `geom_smooth(method=lm)` adalah perintah untuk membuat garis regresi linier sebagai penegas hubungan antara 2 variabel (optional)
-
-
-### Line Plot
-
-```{r}
-x <- c(23, 57, 20)
-names(x) <- c("Setuju", "Tidak setuju", "Tidak tahu")
-```
-
-Menggunakan perintah `pie`
-```{r}
-plot(x, type = "o")
-```
-
-### Area Plot
-
-```{r}
-data("diamonds")
-head(diamonds)
-```
-Note: data `diamonds` adalah data yang sudah tersedia dalam program R
-
-Menggunakan paket `ggplot2`
-```{r, out.width = "75%", out.height= "75%", fig.align = 'center'}
-p <- ggplot(diamonds, aes(x = price, fill = cut))
-p + geom_area(stat = "bin")
-```

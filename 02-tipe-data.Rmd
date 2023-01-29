@@ -1,3 +1,4 @@
+
 # Pertemuan 2: Manajemen Data
 
 Kegitan Manajemen Data merupakan upaya-upaya yang dilakukan oleh sesorang untuk mempersiapkan data mentah ( _rawdata_ ) menjadi data yang terorganisasi dengan baik (siap untuk diolah). Umumnya data mentah yang kita dapat tidak seperti data-data yang digunakan dalam praktik di perkuliahan. Data mentah sering kali memiliki kondisi-kondisi seperti berikut:
@@ -61,10 +62,10 @@ str(mydata)
 
 Fungsi `str()` akan memunculkan informasi-informasi yang berguna seperti struktur data, jumlah baris (observasi), jumlah kolom (variabel), nama variabel, tipe data pada masing-masing variabel dan beberapa contoh data pertama pada data. Berdasarkan hasil diatas dapat diketahui bahwa mydata memiliki struktur data `data.frame`; terdapat `87 observasi` serta `3 variabel`; variabel `tinggi` bertipe `integer` (bilangan bulat), variabel `berat` bertipe `numeric` dan variabel `jk` bertipe `character`. Dengan mengetahui karakteristik data yang kita miliki akan memudahkan kita dalam menentukan tindakan pada data tersebut. Sebagai contoh, variabel `jk` akan kita ubah tipe datanya dari `character` ke `factor` karena variabel tersebut merupakan kategori dari jenis kelamin.
 
-> Untuk melihat keseluruhan dari data (`data.frame`), gunakan fungsi `View(mydata)` (dengan `V` kapital). Setelah menjalankan fungsi tersebut pada `console` maka akan terbuka jendela baru yang menampilkan data secara keseluruhan.
+> Untuk melihat keseluruhan data (`data.frame`), gunakan fungsi `View(mydata)` (dengan `V` kapital). Setelah menjalankan fungsi tersebut pada `console` maka akan terbuka jendela baru (di Jendela Editor) yang menampilkan data secara keseluruhan.
 
 
-## Ringkasan data dengan `summary()`
+## Ringkasan data dengan `summary()` {#ringkasan-data}
 
 terdapat sebuah fungsi yang dapat memberikan hasil ringkasan pada data. Fungsi tersebut adalah `summary()`. Fungsi `summary()` dapat memberikan ringkasan baik pada data yang bertipe `numeric`, `character`, dll. Selain itu juga dapat menunjukkan berapa banyak _missing data_ (`NA`) pada masing-masing variabel. Berikut adalah luaran dari fungsi `summary()`:
 
@@ -100,7 +101,7 @@ head(mydata2)
 Sekarang kita hanya memiliki 3 variabel saja, yaitu `jk` (jenis kelamin), `berat` (berat badan) dan `tinggi` (tinggi badan). 
 
 
-## Missing Values
+## Missing Values (`NA`)
 
 Dalam R, _missing value_ disimbolkan dengan `NA` yang berarti _Not Avialable_. Secara umum _missing value_ mendapatkan 3 perlakuan yaitu dihapus dalam data, diganti dengan nilai rataan (`mean`), atau kombinasi dari keduanya. Penggantian `NA` dengan `mean` hanya dapat dilakukan pada data yang bertipe `numeric`.
 
@@ -112,15 +113,15 @@ Penghapusan `NA` dilakukan apabila kita sudah memastikan bahwa **tidak ada varia
 Penghapusan `NA` dapat dilakukan dengan menggunakan fungsi `na.omit()`.
 
 ```{r}
-mydata = mydata %>% na.omit()
-summary(mydata)
+mydata3 = mydata2 %>% na.omit()
+summary(mydata2)
 ```
 
 Kode tersebut akan memberikan hasil seperti kode berikut:
 
 ```{r}
-mydata = na.omit(mydata)
-summary(mydata)
+mydata3 = na.omit(mydata2)
+summary(mydata2)
 ```
 
 
@@ -129,8 +130,9 @@ summary(mydata)
 Penggantian `NA` dengan `mean` hanya perlu dilakukan jika data memiliki terlalu banyak `NA`. Apabila `NA` terlalu banyak, maka penghapusan `NA` dapat menghilangkan data-data lain yang bisa jadi memiliki informasi penting. Mengganti `NA` denga `mean`juga perlu mempertimbangkan berbagai macam hal karena dapat menghasilkan _underestimate of standard errors_. Berikut adalah kode untuk mengganti `NA` dengan nilai `mean`.
 
 ```{r}
-rataan = mean(mydata$berat, na.rm = TRUE)
-mydata$berat[is.na(mydata$berat)] = rataan
+rataan = mean(mydata2$berat, na.rm = TRUE)
+mydata2$berat[is.na(mydata2$berat)] = rataan
+summary(mydata2)
 ```
 
 Penjelasan kode:
@@ -140,6 +142,27 @@ Penjelasan kode:
 - `is.na()` adalah fungsi logika untuk menghasilkan `TRUE` apabila data bernilai `NA` dan `FALSE` jika selain `NA` dan `mydata$berat` adalah data variabel `berat` pada objek `mydata`. Sehingga `is.na(mydata$berat)` akan menghasilkan nilai `TRUE` apabila `mydata$berat` bernilai `NA` dan `FALSE` untuk selain bernilai `NA`.
 - `mydata$berat[is.na(mydata$berat)]` bertujuan untuk memberikan hasil `TRUE` dan `FALSE` pada variabel `berat` data `mydata`. Selanjutnya akan di isi dengan nilai `rataan`.
 
+
+## Menemukan dan Menghapus Outlier
+
+_Outlier_ atau pencilan merupakan data yang memiliki nilai ekstrim (dapat sangat besar maupun sangat kecil). Sama seperti _missing value_, pencilan dapat dihilangkan dari data apabila jumlahnya yang sedikit. Apabila jumlah pencilan cukup banyak, maka perlu ada pertimbangan lain sebelum menghilangkan pencilan tersebut. Untuk mendeteksi pencilan dapat dilakukan dengan fungsi `summary()` atau menggunakan grafik `boxplot`. 
+
+Pada bagian sebelumnya yaitu pada #ringkasan-data telah terlihat bahwa terdapat nilai yang sangat besar pada variabel berat yaitu memiliki nilai `Max.` sebesar `1358` dan nilai `Min.` sebesar `15.00` sedangkan variabel tersebut memiliki nilai `Mean` sebesar `97.31`. Berdasarkan informasi tersebut dapat diduga bahwa nilai `1358` dan `15.00` bisa jadi merupakan pencilan pada data. Selanjutnya akan kita konfirmasi dugaan tersebut dengan menggunakan `boxplot` sebagai berikut:
+
+```{r}
+boxplot(mydata$berat)
+```
+
+Hasil `boxplot` menunjukkan bahwa terdapat 1 titik data yang nilainya terlampau jauh dari `boxplot` itu sendiri. Hasil ini mengkonfirmasi dugaan kita sebelumnya bahwa nilai berat `1358.00` adalah pencilan. Selanjutnya kita akan lakukan penghapusan 1 baris data yang memiliki berat sebesar `1358.00`.
+
+```{r}
+mydata = mydata[mydata$berat<1000, ]
+summary(mydata)
+boxplot(mydata$berat)
+```
+Sekarang kita memiliki hasil yang lebih baik. Perhatikan pada `boxplot` masih terlihat terdapat 3 buah titik yang berada diluar `boxplot`. Meskipun ini merupakan pencilan namun dapat kita abaikan karena nilai yang tidak terlampau jauh. Andaikan anda tetap akan menghapus nilai tersebut pun tidak akan terjadi masalah (karena jumlah data yang dihapus masih relatif kecil yaitu 3 observasi dibandingkan keseluruhan observasi yaitu 57 observasi).
+
+## Menemukan Noise pada Data
 
 ## Membuat Variabel Baru
 
@@ -177,11 +200,11 @@ Penjelasan:
 Untuk membuat beberapa variabel sekaligus dapat dilakukan dengan menambahkan koma pada akhir pendefinisian variabel sebelumnya.
 
 ```{r}
-mydata2 = mydata %>% 
+mydatax = mydata %>% 
   mutate(tinggiM   = tinggi / 100, 
          var_baru1 = 1,
          var_baru2 = "ini variabel baru")
-head(mydata2)
+head(mydatax)
 ```
 
 

@@ -9,7 +9,7 @@ bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
 github-repo: rstudio/bookdown-demo
-description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
+description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." 
 ---
 
 ```{r load-packages, include=FALSE}
@@ -20,6 +20,18 @@ library(dplyr)
 ```
 
 # Pengantar
+
+**Capaian**
+
+1. Mahasiswa dapat melakukan instalasi dan menjalankan Program R dan R Studio
+2. Mahasiswa mengenali ruang kerja Program R Studio
+3. Mahasiswa dapat membuat projek baru pada Program R Studio
+
+**Alat dan kebutuhan**
+
+1. Komputer atau laptop dengan Sistem Operasi Windows atau MacOS
+2. Koneksi internet
+
 
 ## Sejarah Program R
 
