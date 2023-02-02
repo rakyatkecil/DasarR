@@ -29,13 +29,15 @@ library(dplyr)
 
 **Alat dan kebutuhan**
 
-1. Komputer atau laptop dengan Sistem Operasi Windows atau MacOS
-2. Koneksi internet
+1. Komputer atau laptop dengan Sistem Operasi Windows, MacOS atau Linux
+2. Koneksi internet (jika perlu instalasi `package`)
 
 
-## Sejarah Program R
+## Sekilas tentang Program R
 
-R adalah salah satu bahasa pemrograman yang khusus dibuat untuk melakukan komputasi statsistik. Program R dibuat oleh **Ross Ihaka** dan **Robert Gentleman** berdasarkan (sangat mirip) pada bahasa pemrogram S yang perlu mengeluarkan beberapa rupiah untuk dapat menggunakannya. Sedangkan R adalah **_open source_**.
+`R` adalah salah satu bahasa pemrograman yang khusus dibuat untuk melakukan komputasi statsistik. `R` dibuat oleh **Ross Ihaka** dan **Robert Gentleman** dari Universitas Auckland (University of Auckland) tahun 1992. Pada saat itu, `R` dibuat untuk mengajarkan tentang pengenalan statistika pada mahasiswa Universitas Auckland. `R` dibuat dengan terinspirasi pada Bahasa Pemrograman S (pada saat itu menjadi bahasa pemrograman statistik dengan banyak pengguna) yang merupakan aplikasi berbayar. Sedangkan `R` merupakan aplikasi **_freeware_** (gratis) dan **_open source_**. Nama `R` sendiri diambil dari inisial kedua nama pembuatnya yaitu **Ross** dan **Robert**.
+
+Banyak pengembang program berkontribusi dalam mengembangkan fungsi-fungsi menjadi sebuah `package`. `Package` adalah kumpulan fungsi-fungsi yang sengaja dibuat untuk melakukan hal-hal tertentu seperti membuat tabel, grafik hingga fungsi untuk metode statistika tertentu. Hal menarik lainnya ialah `package` ini tak hanya dapat digunakan untuk kepentingan pribadi namun juga dapat digunakan oleh pengguna `R` lainnya. Dengan berbagai kemudahan dalam penggunaan dan pengembangannya, Bahasa Pemrograman `R` menjadi salah satu Bahasa Pemrograman yang banyak digunakan khususnya untuk kebutuhan analisis dan olah data. Hingga saat ini `R` digunakan dalam berbagai macam kebutuhan olah data dan analisis seperti bioinformatika, statistika, data mining, hingga pengembangan pemrograman statistika lainnya. 
 
 ```{r, echo=FALSE, fig.align='center', fig.cap="**Ross Ihaka** dan **Robert Gentleman**"}
 knitr::include_graphics("images//RIRG.jpg")
@@ -44,16 +46,16 @@ knitr::include_graphics("images//RIRG.jpg")
 
 ## Program R
 
-R secara resmi diluncurkan pertama kali pada 29 Februari 2000 (R 1.0). Banyak pengguna menganggap R adalah sebuah sistem statistika. Hal ini dikarenakan R sangat terinspirasi dengan Program S yang memang dibuat khusus untuk pemrograman statistik. 
+R secara resmi diluncurkan pertama kali pada 29 Februari 2000 (R 1.0). Banyak pengguna menganggap R adalah sebuah sistem statistika. Hal ini dikarenakan R sangat terinspirasi dari Bahasa Pemrograman S yang memang dibuat khusus untuk pemrograman statistik. 
 
-R memberikan banyak kemudahan bagi pemula yang masih baru memulai belajar pemrograman (terutama dalam hal statistik). Hal ini dikarenakan terdapat berbagai fungsi-fungsi dasar statistik yang sangat mirip dengan nama metode statistikanya, seperti untuk menghitung nilai rata-rata (mean) menggunakan fungsi  `mean()`  di R. Selain dapat digunakan dalam berbagai macam teknik statistika (dengan menggunakan `paket` yang berkaitan tentunya), R dapat digunakan untuk membuat grafik sesuai dengan kebutuhan penggunanya. 
+R memberikan banyak kemudahan bagi pemula yang masih baru memulai belajar pemrograman (terutama dalam hal statistik). Hal ini dikarenakan terdapat berbagai fungsi-fungsi dasar statistik yang sangat mirip dengan nama metode statistikanya, seperti untuk menghitung nilai rata-rata ( _mean_ ) menggunakan fungsi  `mean()`  di R. Selain dapat digunakan dalam berbagai macam teknik statistika (dengan menggunakan `paket` yang berkaitan tentunya), R dapat digunakan untuk membuat grafik sesuai dengan kebutuhan penggunanya. 
 
-Salah satu keunggulan R adalah memiliki komunitas yang besar. Siapa saja dapat membuat sebuah `paket` yang terdiri dari berbagai fungsi. `Paket-paket` dalam R dikembangkan dari berbagai bidang seperti ahli statistik, programmer, psikolog, dsb. Setiap `paket` memiliki tujuan masing-masing sesuai dengan kegunaan yang diinginkan oleh pembuatnya.
+Kelebihan lain dari R ialah memiliki komunitas yang besar. Siapa saja dapat membuat sebuah `package` (paket) yang terdiri dari berbagai fungsi. `Packages` dalam R dikembangkan oleh ahli statistik, ahli bioinformatika, programmer, psikolog, dsb. Setiap `package` memiliki tujuan masing-masing sesuai dengan kegunaan yang diinginkan oleh pembuatnya.
 
 **Kenapa harus menggunakan R?**
 
 - Gratis dan _open source_.
-- Tersedia untuk Windows, Macintosh dan Linux.
+- Tersedia untuk Windows, MacOS dan Linux.
 - Kualitas gambar yang bagus.
 - Pengguna dapat menentukan penggunaan metode statistika dengan algoritma tertentu.
 - Ketersediaan berbagai macam paket statistik ( _statistical packages_ ) yang dapat digunakan secara gratis.
@@ -63,36 +65,36 @@ Salah satu keunggulan R adalah memiliki komunitas yang besar. Siapa saja dapat m
 Untuk menjalankan R, maka langkah pertama yang harus dilakukan adalah melakukan instalasi Program R di komputer/laptop anda. Paket instalasi Program R dapat di unduh pada link berikut: 
 
 - <a href="https://cran.r-project.org/bin/windows/base/" target="_blank">for Windows</a>
-- <a href="https://cran.r-project.org/bin/macosx/" target="_blank">for Macintosh</a>
+- <a href="https://cran.r-project.org/bin/macosx/" target="_blank">for MacOS</a>
 
-Setelah paket instalasi berhasil di unduh, selanjutnya klik 2x pada paket tersebut lalu ikuti langkah-langkah sebagai berikut:
+Setelah paket instalasi berhasil diunduh, selanjutnya klik 2x pada paket tersebut lalu ikuti langkah-langkah sebagai berikut:
 
-1. Pilih bahasa yang akan digunakan. Lalu klik `next`
-```{r, echo=FALSE, fig.align='center', fig.cap="Pilih Bahasa yang Akan Digunakan"}
+1. Pilih bahasa yang akan digunakan, lalu klik `next`
+```{r, echo=FALSE, fig.align='center', fig.cap="Pemilihan Bahasa"}
 knitr::include_graphics("images//Instal R//01.jpg")
 ```
 
-2. Baca Lisensi Program. Setelah itu klik `next`
+2. Baca Lisensi Program, selanjutnya klik `next`
 ```{r, echo=FALSE, fig.align='center', fig.cap="Lisensi Program"}
 knitr::include_graphics("images//Instal R//02.jpg")
 ```
 
-3. Pilih folder tempat (direktori) R di instal. Lalu klik `next`
+3. Pilih folder tempat (direktori) R di instal, kemudian klik `next`
 ```{r, echo=FALSE, fig.align='center', fig.cap="Pilih Direktori Tempat R Diinstal"}
 knitr::include_graphics("images//Instal R//03.jpg")
 ```
 
-4. Pilih komponen yang akan di instal (dapat dipilih semua). Lalu klik `next`
+4. Pilih komponen yang akan di instal (dapat dipilih semua), kemudian klik `next`
 ```{r, echo=FALSE, fig.align='center', fig.cap="Pemilihan Komponen yang akan Diinstal"}
 knitr::include_graphics("images//Instal R//04.jpg")
 ```
 
-5. Selanjutnya pemilihan `startup`. Pilih `No`, Lalu klik `next`
+5. Pada kotak dialog pemilihan `startup`. Pilih `No`, lalu klik `next`
 ```{r, echo=FALSE, fig.align='center', fig.cap="Pemilihan Startup"}
 knitr::include_graphics("images//Instal R//05.jpg")
 ```
 
-6. Lalu tunggu hingga proses instalasi selesai. Lalu klik `next` (jika diperlukan).
+6. Selanjutnya tunggu hingga proses instalasi selesai, kemudian klik `next` (jika diperlukan).
 ```{r, echo=FALSE, fig.align='center', fig.cap="Proses Instalasi"}
 knitr::include_graphics("images//Instal R//06.jpg")
 ```
@@ -102,7 +104,7 @@ knitr::include_graphics("images//Instal R//06.jpg")
 knitr::include_graphics("images//Instal R//07.jpg")
 ```
 
-8. Dapat dipastikan kembali bahwa proses instalasi program telah berjalan dengan membuka program. Apabila tidak muncul permasalahan ( _error_ ), maka proses instalasi program telah berhasil.
+8. Dapat dipastikan kembali bahwa proses instalasi program telah berjalan dengan membuka program. Apabila tidak muncul permasalahan , maka proses instalasi program telah berhasil.
 ```{r, echo=FALSE, fig.align='center', fig.cap="Icon Program R pada Layar Desktop"}
 knitr::include_graphics("images//Instal R//08.jpg")
 ```
@@ -110,17 +112,17 @@ knitr::include_graphics("images//Instal R//08.jpg")
 
 ## R Studio
 
-R Studio atau `RStudio` adalah _open source_ _integrated development environment_ IDE untuk R. R harus ter-instal terlebih dahulu sebelum melakukan instalasi RStudio. **Tampilan antarmuka RStudio yang terorganisasi dengan baik membuat pengguna dapat melihat dengan jelas kode R, grafik, tabel data, dan _output_ secara bersamaan**. Selain itu terdapat fasilitas Import Wizard (panduan import) seperti di program-program lain. R juga dapat mengimgport berbagai macam jenis file data seperti CSV, XLS/XLSX, SAS, SPSS, Stata tanpa harus membuat kode untuk melakukannya.
+R Studio atau `RStudio` adalah _open source_ _integrated development environment_ IDE untuk R. R harus terinstal terlebih dahulu sebelum melakukan instalasi RStudio. **Tampilan antarmuka RStudio yang terorganisasi dengan baik membuat pengguna dapat melihat dengan jelas kode R, grafik, tabel data, dan _output_ secara bersamaan**. Selain itu terdapat fasilitas ( _Import Wizard_ ) (panduan import) seperti di program-program lain. R juga dapat mengimport berbagai macam jenis file data seperti CSV, XLS/XLSX, SAS, SPSS, Stata tanpa harus membuat kode untuk melakukannya.
 
 
 ### Instalasi Program R Studio
 Untuk melakukan instalasi program RStudio, unduh file paket instalasi pada link berikut:
 
 - <a href="https://download1.rstudio.org/electron/windows/RStudio-2022.12.0-353.exe" target="_blank">for Windows</a>
-- <a href="https://download1.rstudio.org/electron/macos/RStudio-2022.12.0-353.dmg" target="_blank">for Macintosh</a>
+- <a href="https://download1.rstudio.org/electron/macos/RStudio-2022.12.0-353.dmg" target="_blank">for MacOS</a>
 - <a href="https://download1.rstudio.org/electron/bionic/amd64/rstudio-2022.12.0-353-amd64.deb" target="_blank">for Ubuntu 18+ / Debian 10+</a>
 
-Setelah paket instalasi berhasil di unduh, selanjutnya klik 2x pada paket tersebut lalu ikuti langkah-langkah sebagai berikut:
+Setelah paket instalasi berhasil diunduh, selanjutnya klik 2x pada paket tersebut lalu ikuti langkah-langkah sebagai berikut:
 
 1. Klik `next` pada jendela pertama.
 ```{r, echo=FALSE, fig.align='center', fig.cap="Jendela Pertama Instalasi RStudio"}
@@ -153,13 +155,13 @@ knitr::include_graphics("images//Instal RStudio//05.jpg")
 
 ### Lingkungan Kerja RStudio
 
-Sebelum membahas tentang lingkungan kerja RStudio, siapkan R Script terlebih dahulu. Klik File -> New File -> R Script, atau gunakan tombol Ctrl + Shift + N. Selanjutnya tampilan antarmuka RStudio akan seperti gambar berikut:
+Sebelum membahas tentang lingkungan kerja RStudio, siapkan R Script terlebih dahulu. Klik File -> New File -> R Script, atau gunakan tombol Ctrl + Shift + N. Selanjutnya tampilan antarmuka RStudio dapat dilihat pada Gambar 1.15.
 
 ```{r, echo=FALSE, fig.align='center', fig.cap="Tampilan Antarmuka RStudio"}
 knitr::include_graphics("images//Antarmuka//01.jpg")
 ```
 
-Terdapat 4 jendela dalam RStudio. Masing-masing jendela memiliki kegunaannya masing-masing dan dalam praktikya, hampir semua jendela akan digunakan. Sehingga pemahaman terhadap kegunaan setiap jendela adalah langkah pertama sebelum belajar lebih jauh dalam menggunakan RStudio. Berikut pembagian jendela pada Rstudio:
+Terdapat 4 jendela dalam RStudio. Masing-masing jendela memiliki kegunaannya masing-masing dan dalam praktiknya, hampir semua jendela akan digunakan. Sehingga, dibutuhkan pemahaman terhadap kegunaan setiap jendela sebelum belajar lebih jauh dalam menggunakan RStudio. Pembagian jendela Rstudio dapat dilihat pada Gambar 1.16.
 
 ```{r, echo=FALSE, fig.align='center', fig.cap="Pembagian Jendela Antarmuka RStudio"}
 knitr::include_graphics("images//Antarmuka//02.jpg")
@@ -167,11 +169,11 @@ knitr::include_graphics("images//Antarmuka//02.jpg")
 
 Berikut penjelasan pada masing-masing jendela:
 
-1. **R Script Editor** <br />
-R Script Editor adalah tempat kita untuk membuat dan menyusun kode-kode R yang akan dijalankan di Jendela Console. Secara teknis pengerjaan R dilakukan pada Console, namun dalam praktiknya pengguna biasanya tidak hanya menggunakan 1 atau 2 baris kode saja, namun hingga ratusan baris kode. Jika ratusan baris kode di susun dalam Console akan membuat pengguna kesulitan dalam melanjutkan pada baris berikutnya (karena lupa, atau ada yang kode yang salah). Apabila kode-kode tersebut disusun dalam R Script, pengguna dapat dengan bebas mengganti kode-kode yang salah hingga menyusun ulang kode yang dibuat. Tentu hal ini membuat pekerjaan jauh lebih mudah.
+1. ( _**R Script Editor**_ ) <br />
+( _R Script Editor_ ) adalah tempat pengguna untuk membuat dan menyusun kode-kode R yang akan dijalankan di jendela ( _Console_ ). Secara teknis pengerjaan R dilakukan pada ( _Console_ ), namun dalam praktiknya pengguna biasanya tidak hanya menggunakan 1 atau 2 baris kode saja, namun hingga ratusan baris kode. Jika ratusan baris kode disusun dalam jendela ( _Console_ ) akan membuat pengguna kesulitan dalam melanjutkan pada baris berikutnya (karena lupa atau ada kode yang salah). Apabila kode-kode tersebut tersusun di ( _R Script Editor_ ), pengguna dapat dengan bebas mengganti kode-kode yang salah hingga menyusun ulang kode yang dibuat. Tentu hal ini membuat pekerjaan jauh lebih mudah.
 
-2. **Console** <br />
-Jendela Console adalah jendela untuk menjalankan kode-kode R (R Script). Setiap kode R hanya dapat dijalankan di Console. Untuk melihat cara kerjanya secara langsung, coba ketikan kode `5 + 5` di R Script lalu tekan `Enter`. Perhatikan apakah RStudio memberikan hasil dari `5 + 5` tersebut? Tentu tidak akan terjadi apa-apa pada RStudio. Nah, sekarang ketikan `5 + 5` di Console lalu tekan `Enter`. Perhatikan bahwa dalam Console `5 + 5` akan menghasilkan nilai `10`. Hal ini menunjukkan bahwa R Script bukanlah tempat untuk menjalankan kode R, melainkan Console. Untuk menjalakan kode dari R Script ke Console dapat dilakukan dengan meletakkan `cursor` pada baris yang akan dijalankan pada Console lalu tekan `Ctrl + Enter`.
+2. ( _**Console**_ ) <br />
+Jendela ( _Console_ ) adalah tempat menjalankan kode-kode R ( _R Script Editor_ ). Setiap kode R hanya dapat dijalankan di jendela ( _Console_ ). Cara kerja pada jendela ( _Console_ ) secara langsung  dapat dilihat dengan mengeketikkan kode `5 + 5` di ( _R Script Editor_ ) lalu tekan `Enter`. Perhatikan apakah RStudio memberikan hasil dari `5 + 5` tersebut? Tentu tidak akan terjadi apa-apa pada RStudio. Nah, sekarang ketikan `5 + 5` di jendela ( _Console_ ) lalu tekan `Enter`. Perhatikan bahwa dalam jendela ( _Console_ ) `5 + 5` akan menghasilkan nilai `10`. Hal ini menunjukkan bahwa ( _R Script Editor_ ) bukanlah tempat untuk menjalankan kode R, melainkan jendela ( _Console_ ). Kode dari ( _R Script Editor_ ) ke jendela ( _Console_ ) dapat dijalankan dengan meletakkan `cursor` pada baris yang akan dijalankan pada ( _R Script Editor_ ) lalu tekan `Ctrl + Enter`.
 
 3. **Environment, History, Connection, Tutorial**  <br />
 Jendela ke-3 yang akan sering digunakan adalah Tab `Environment`. Tab `Environment` menunjukkan objek-objek yang ada atau telah kita buat (pembuatan objek akan dibahas pada chapter berikutnya). 

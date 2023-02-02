@@ -23,7 +23,7 @@
 <meta name="author" content="’dimas" />
 
 
-<meta name="date" content="2023-01-30" />
+<meta name="date" content="2023-02-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -138,7 +138,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Pengantar</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#sejarah-program-r"><i class="fa fa-check"></i><b>1.1</b> Sejarah Program R</a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#sekilas-tentang-program-r"><i class="fa fa-check"></i><b>1.1</b> Sekilas tentang Program R</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#program-r"><i class="fa fa-check"></i><b>1.2</b> Program R</a>
 <ul>
 <li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#instalasi-program-r"><i class="fa fa-check"></i><b>1.2.1</b> Instalasi Program R</a></li>
@@ -229,7 +229,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: decimal">
 <li>Aplikasi R Studio</li>
 <li>Paket <code>readr</code> dan <code>tidyverse</code></li>
-<li>Koneksi internet</li>
+<li>Koneksi internet (jika perlu instalasi <code>package</code>)</li>
 </ol>
 <p><br />
 <br />
@@ -254,9 +254,9 @@ Kegitan Manajemen Data merupakan upaya-upaya yang dilakukan oleh sesorang untuk 
 </ol>
 <div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="pertemuan-2-manajemen-data.html#cb106-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;images//import_01.jpg&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-58"></span>
-<img src="images/import_01.JPG" alt="Jendela Import Wizard" width="\maxwidth" />
+<img src="images/import_01.JPG" alt="Jendela Import Wizard" width="594" />
 <p class="caption">
-Figure 3.1: Jendela Import Wizard
+Gambar 3.1: Jendela Import Wizard
 </p>
 </div>
 <ol start="4" style="list-style-type: decimal">
@@ -305,22 +305,14 @@ Figure 3.1: Jendela Import Wizard
 </ol>
 <p>Sekarang kita akan gunakan fungsi <code>summary()</code> pada <code>mydata</code>:</p>
 <div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="pertemuan-2-manajemen-data.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mydata)</span></code></pre></div>
-<pre><code>##      tinggi          berat        
-##  Min.   : 66.0   Min.   :  15.00  
-##  1st Qu.:167.0   1st Qu.:  55.60  
-##  Median :180.0   Median :  79.00  
-##  Mean   :174.4   Mean   :  97.31  
-##  3rd Qu.:191.0   3rd Qu.:  84.50  
-##  Max.   :264.0   Max.   :1358.00  
-##  NA&#39;s   :6       NA&#39;s   :28       
-##       jk           
-##  Length:87         
-##  Class :character  
-##  Mode  :character  
-##                    
-##                    
-##                    
-## </code></pre>
+<pre><code>##      tinggi          berat              jk           
+##  Min.   : 66.0   Min.   :  15.00   Length:87         
+##  1st Qu.:167.0   1st Qu.:  55.60   Class :character  
+##  Median :180.0   Median :  79.00   Mode  :character  
+##  Mean   :174.4   Mean   :  97.31                     
+##  3rd Qu.:191.0   3rd Qu.:  84.50                     
+##  Max.   :264.0   Max.   :1358.00                     
+##  NA&#39;s   :6       NA&#39;s   :28</code></pre>
 </div>
 <div id="memilih-variabel" class="section level2 hasAnchor" number="3.4">
 <h2><span class="header-section-number">3.4</span> Memilih Variabel<a href="pertemuan-2-manajemen-data.html#memilih-variabel" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -355,41 +347,25 @@ Figure 3.1: Jendela Import Wizard
 <p>Penghapusan <code>NA</code> dapat dilakukan dengan menggunakan fungsi <code>na.omit()</code>.</p>
 <div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="pertemuan-2-manajemen-data.html#cb117-1" aria-hidden="true" tabindex="-1"></a>mydata3 <span class="ot">=</span> mydata2 <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>()</span>
 <span id="cb117-2"><a href="pertemuan-2-manajemen-data.html#cb117-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mydata2)</span></code></pre></div>
-<pre><code>##       jk                berat        
-##  Length:87          Min.   :  15.00  
-##  Class :character   1st Qu.:  55.60  
-##  Mode  :character   Median :  79.00  
-##                     Mean   :  97.31  
-##                     3rd Qu.:  84.50  
-##                     Max.   :1358.00  
-##                     NA&#39;s   :28       
-##      tinggi     
-##  Min.   : 66.0  
-##  1st Qu.:167.0  
-##  Median :180.0  
-##  Mean   :174.4  
-##  3rd Qu.:191.0  
-##  Max.   :264.0  
-##  NA&#39;s   :6</code></pre>
+<pre><code>##       jk                berat             tinggi     
+##  Length:87          Min.   :  15.00   Min.   : 66.0  
+##  Class :character   1st Qu.:  55.60   1st Qu.:167.0  
+##  Mode  :character   Median :  79.00   Median :180.0  
+##                     Mean   :  97.31   Mean   :174.4  
+##                     3rd Qu.:  84.50   3rd Qu.:191.0  
+##                     Max.   :1358.00   Max.   :264.0  
+##                     NA&#39;s   :28        NA&#39;s   :6</code></pre>
 <p>Kode tersebut akan memberikan hasil seperti kode berikut:</p>
 <div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="pertemuan-2-manajemen-data.html#cb119-1" aria-hidden="true" tabindex="-1"></a>mydata3 <span class="ot">=</span> <span class="fu">na.omit</span>(mydata2)</span>
 <span id="cb119-2"><a href="pertemuan-2-manajemen-data.html#cb119-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mydata2)</span></code></pre></div>
-<pre><code>##       jk                berat        
-##  Length:87          Min.   :  15.00  
-##  Class :character   1st Qu.:  55.60  
-##  Mode  :character   Median :  79.00  
-##                     Mean   :  97.31  
-##                     3rd Qu.:  84.50  
-##                     Max.   :1358.00  
-##                     NA&#39;s   :28       
-##      tinggi     
-##  Min.   : 66.0  
-##  1st Qu.:167.0  
-##  Median :180.0  
-##  Mean   :174.4  
-##  3rd Qu.:191.0  
-##  Max.   :264.0  
-##  NA&#39;s   :6</code></pre>
+<pre><code>##       jk                berat             tinggi     
+##  Length:87          Min.   :  15.00   Min.   : 66.0  
+##  Class :character   1st Qu.:  55.60   1st Qu.:167.0  
+##  Mode  :character   Median :  79.00   Median :180.0  
+##                     Mean   :  97.31   Mean   :174.4  
+##                     3rd Qu.:  84.50   3rd Qu.:191.0  
+##                     Max.   :1358.00   Max.   :264.0  
+##                     NA&#39;s   :28        NA&#39;s   :6</code></pre>
 </div>
 <div id="mengganti-na-dengan-mean" class="section level3 hasAnchor" number="3.5.2">
 <h3><span class="header-section-number">3.5.2</span> Mengganti <code>NA</code> dengan mean<a href="pertemuan-2-manajemen-data.html#mengganti-na-dengan-mean" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -397,22 +373,14 @@ Figure 3.1: Jendela Import Wizard
 <div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="pertemuan-2-manajemen-data.html#cb121-1" aria-hidden="true" tabindex="-1"></a>rataan <span class="ot">=</span> <span class="fu">mean</span>(mydata2<span class="sc">$</span>berat, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb121-2"><a href="pertemuan-2-manajemen-data.html#cb121-2" aria-hidden="true" tabindex="-1"></a>mydata2<span class="sc">$</span>berat[<span class="fu">is.na</span>(mydata2<span class="sc">$</span>berat)] <span class="ot">=</span> rataan</span>
 <span id="cb121-3"><a href="pertemuan-2-manajemen-data.html#cb121-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mydata2)</span></code></pre></div>
-<pre><code>##       jk                berat        
-##  Length:87          Min.   :  15.00  
-##  Class :character   1st Qu.:  75.00  
-##  Mode  :character   Median :  84.00  
-##                     Mean   :  97.31  
-##                     3rd Qu.:  97.31  
-##                     Max.   :1358.00  
-##                                      
-##      tinggi     
-##  Min.   : 66.0  
-##  1st Qu.:167.0  
-##  Median :180.0  
-##  Mean   :174.4  
-##  3rd Qu.:191.0  
-##  Max.   :264.0  
-##  NA&#39;s   :6</code></pre>
+<pre><code>##       jk                berat             tinggi     
+##  Length:87          Min.   :  15.00   Min.   : 66.0  
+##  Class :character   1st Qu.:  75.00   1st Qu.:167.0  
+##  Mode  :character   Median :  84.00   Median :180.0  
+##                     Mean   :  97.31   Mean   :174.4  
+##                     3rd Qu.:  97.31   3rd Qu.:191.0  
+##                     Max.   :1358.00   Max.   :264.0  
+##                                       NA&#39;s   :6</code></pre>
 <p>Penjelasan kode:</p>
 <ul>
 <li><code>mean()</code> berfungsi untuk mendapatkan nilai rataan pada data yang ditentukan, dalam hal ini ialah <code>mydata$berat</code> (variabel <code>berat</code> pada data <code>mydata</code>).</li>
@@ -427,29 +395,21 @@ Figure 3.1: Jendela Import Wizard
 <p><em>Outlier</em> atau pencilan merupakan data yang memiliki nilai ekstrim (dapat sangat besar maupun sangat kecil). Sama seperti <em>missing value</em>, pencilan dapat dihilangkan dari data apabila jumlahnya yang sedikit. Apabila jumlah pencilan cukup banyak, maka perlu ada pertimbangan lain sebelum menghilangkan pencilan tersebut. Untuk mendeteksi pencilan dapat dilakukan dengan fungsi <code>summary()</code> atau menggunakan grafik <code>boxplot</code>.</p>
 <p>Pada bagian sebelumnya yaitu pada #ringkasan-data telah terlihat bahwa terdapat nilai yang sangat besar pada variabel berat yaitu memiliki nilai <code>Max.</code> sebesar <code>1358</code> dan nilai <code>Min.</code> sebesar <code>15.00</code> sedangkan variabel tersebut memiliki nilai <code>Mean</code> sebesar <code>97.31</code>. Berdasarkan informasi tersebut dapat diduga bahwa nilai <code>1358</code> dan <code>15.00</code> bisa jadi merupakan pencilan pada data. Selanjutnya akan kita konfirmasi dugaan tersebut dengan menggunakan <code>boxplot</code> sebagai berikut:</p>
 <div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="pertemuan-2-manajemen-data.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(mydata<span class="sc">$</span>berat)</span></code></pre></div>
-<embed src="dr_files/figure-html/unnamed-chunk-67-1.pdf" width="\maxwidth" type="application/pdf" />
+<p><img src="dr_files/figure-html/unnamed-chunk-67-1.png" width="672" /></p>
 <p>Hasil <code>boxplot</code> menunjukkan bahwa terdapat 1 titik data yang nilainya terlampau jauh dari <code>boxplot</code> itu sendiri. Hasil ini mengkonfirmasi dugaan kita sebelumnya bahwa nilai berat <code>1358.00</code> adalah pencilan. Selanjutnya kita akan lakukan penghapusan 1 baris data yang memiliki berat sebesar <code>1358.00</code>.</p>
 <div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="pertemuan-2-manajemen-data.html#cb124-1" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">=</span> mydata[mydata<span class="sc">$</span>berat<span class="sc">&lt;</span><span class="dv">1000</span>, ]</span>
 <span id="cb124-2"><a href="pertemuan-2-manajemen-data.html#cb124-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mydata)</span></code></pre></div>
-<pre><code>##      tinggi          berat       
-##  Min.   : 66.0   Min.   : 15.00  
-##  1st Qu.:168.5   1st Qu.: 55.30  
-##  Median :180.0   Median : 79.00  
-##  Mean   :174.0   Mean   : 75.58  
-##  3rd Qu.:192.5   3rd Qu.: 84.00  
-##  Max.   :234.0   Max.   :159.00  
-##  NA&#39;s   :28      NA&#39;s   :28      
-##       jk           
-##  Length:86         
-##  Class :character  
-##  Mode  :character  
-##                    
-##                    
-##                    
-## </code></pre>
+<pre><code>##      tinggi          berat             jk           
+##  Min.   : 66.0   Min.   : 15.00   Length:86         
+##  1st Qu.:168.5   1st Qu.: 55.30   Class :character  
+##  Median :180.0   Median : 79.00   Mode  :character  
+##  Mean   :174.0   Mean   : 75.58                     
+##  3rd Qu.:192.5   3rd Qu.: 84.00                     
+##  Max.   :234.0   Max.   :159.00                     
+##  NA&#39;s   :28      NA&#39;s   :28</code></pre>
 <div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="pertemuan-2-manajemen-data.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(mydata<span class="sc">$</span>berat)</span></code></pre></div>
-<embed src="dr_files/figure-html/unnamed-chunk-68-1.pdf" width="\maxwidth" type="application/pdf" />
-<p>Sekarang kita memiliki hasil yang lebih baik. Perhatikan pada <code>boxplot</code> masih terlihat terdapat 3 buah titik yang berada diluar <code>boxplot</code>. Meskipun ini merupakan pencilan namun dapat kita abaikan karena nilai yang tidak terlampau jauh. Andaikan anda tetap akan menghapus nilai tersebut pun tidak akan terjadi masalah (karena jumlah data yang dihapus masih relatif kecil yaitu 3 observasi dibandingkan keseluruhan observasi yaitu 57 observasi).</p>
+<p><img src="dr_files/figure-html/unnamed-chunk-68-1.png" width="672" />
+Sekarang kita memiliki hasil yang lebih baik. Perhatikan pada <code>boxplot</code> masih terlihat terdapat 3 buah titik yang berada diluar <code>boxplot</code>. Meskipun ini merupakan pencilan namun dapat kita abaikan karena nilai yang tidak terlampau jauh. Andaikan anda tetap akan menghapus nilai tersebut pun tidak akan terjadi masalah (karena jumlah data yang dihapus masih relatif kecil yaitu 3 observasi dibandingkan keseluruhan observasi yaitu 57 observasi).</p>
 </div>
 <div id="menemukan-noise-pada-data" class="section level2 hasAnchor" number="3.7">
 <h2><span class="header-section-number">3.7</span> Menemukan Noise pada Data<a href="pertemuan-2-manajemen-data.html#menemukan-noise-pada-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -502,20 +462,13 @@ Untuk membuat variabel baru dengan menggunakan paket <code>tidyverse</code> dapa
 <span id="cb131-3"><a href="pertemuan-2-manajemen-data.html#cb131-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">var_baru1 =</span> <span class="dv">1</span>,</span>
 <span id="cb131-4"><a href="pertemuan-2-manajemen-data.html#cb131-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">var_baru2 =</span> <span class="st">&quot;ini variabel baru&quot;</span>)</span>
 <span id="cb131-5"><a href="pertemuan-2-manajemen-data.html#cb131-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mydatax)</span></code></pre></div>
-<pre><code>##   tinggi berat     jk tinggiM var_baru1
-## 1    172    77   male    1.72         1
-## 2    167    75   none    1.67         1
-## 3     96    32   none    0.96         1
-## 4    202   136   male    2.02         1
-## 5    150    49 female    1.50         1
-## 6    178   120   male    1.78         1
-##           var_baru2
-## 1 ini variabel baru
-## 2 ini variabel baru
-## 3 ini variabel baru
-## 4 ini variabel baru
-## 5 ini variabel baru
-## 6 ini variabel baru</code></pre>
+<pre><code>##   tinggi berat     jk tinggiM var_baru1         var_baru2
+## 1    172    77   male    1.72         1 ini variabel baru
+## 2    167    75   none    1.67         1 ini variabel baru
+## 3     96    32   none    0.96         1 ini variabel baru
+## 4    202   136   male    2.02         1 ini variabel baru
+## 5    150    49 female    1.50         1 ini variabel baru
+## 6    178   120   male    1.78         1 ini variabel baru</code></pre>
 </div>
 <div id="transformasi-variabel" class="section level2 hasAnchor" number="3.9">
 <h2><span class="header-section-number">3.9</span> Transformasi Variabel<a href="pertemuan-2-manajemen-data.html#transformasi-variabel" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -561,20 +514,13 @@ Untuk membuat variabel baru dengan menggunakan paket <code>tidyverse</code> dapa
 <p>Fungsi <code>filter()</code> juga dapat digunakan untuk beberapa kondisi. Untuk menghubungkan lebih dari 1 kondisi perlu menggunakan operator logika (<code>&amp;, |</code>). Berikut contohnya:</p>
 <div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="pertemuan-2-manajemen-data.html#cb137-1" aria-hidden="true" tabindex="-1"></a>mydata3 <span class="ot">&lt;-</span> mydata2 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(IMTkat <span class="sc">==</span> <span class="st">&quot;Gemuk&quot;</span> <span class="sc">|</span> IMTkat <span class="sc">==</span> <span class="st">&quot;Kurus&quot;</span>)</span>
 <span id="cb137-2"><a href="pertemuan-2-manajemen-data.html#cb137-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mydata3)</span></code></pre></div>
-<pre><code>##      tinggi          berat       
-##  Min.   : 66.0   Min.   : 17.00  
-##  1st Qu.:165.0   1st Qu.: 48.00  
-##  Median :178.0   Median : 75.00  
-##  Mean   :167.8   Mean   : 74.45  
-##  3rd Qu.:190.0   3rd Qu.: 84.00  
-##  Max.   :229.0   Max.   :159.00  
-##       jk               tinggiM     
-##  Length:33          Min.   :0.660  
-##  Class :character   1st Qu.:1.650  
-##  Mode  :character   Median :1.780  
-##                     Mean   :1.678  
-##                     3rd Qu.:1.900  
-##                     Max.   :2.290  
+<pre><code>##      tinggi          berat             jk               tinggiM     
+##  Min.   : 66.0   Min.   : 17.00   Length:33          Min.   :0.660  
+##  1st Qu.:165.0   1st Qu.: 48.00   Class :character   1st Qu.:1.650  
+##  Median :178.0   Median : 75.00   Mode  :character   Median :1.780  
+##  Mean   :167.8   Mean   : 74.45                      Mean   :1.678  
+##  3rd Qu.:190.0   3rd Qu.: 84.00                      3rd Qu.:1.900  
+##  Max.   :229.0   Max.   :159.00                      Max.   :2.290  
 ##       IMT           IMTkat         
 ##  Min.   :12.89   Length:33         
 ##  1st Qu.:17.99   Class :character  

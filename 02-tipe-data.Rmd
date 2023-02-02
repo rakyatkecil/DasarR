@@ -10,7 +10,7 @@
 
 1. Aplikasi R Studio
 2. Paket `readr` dan `tidyverse`
-3. Koneksi internet
+3. Koneksi internet (jika perlu instalasi `package`)
 
 <br />
 <br />

@@ -31,7 +31,7 @@ tab:unnamed-chunk-53
 tab:unnamed-chunk-54
 fig:unnamed-chunk-58
 pengantar
-sejarah-program-r
+sekilas-tentang-program-r
 program-r
 instalasi-program-r
 r-studio

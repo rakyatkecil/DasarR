@@ -11,7 +11,7 @@
 **Alat dan kebutuhan**
 
 1. Aplikasi R Studio
-2. Koneksi internet
+2. Koneksi internet (jika perlu instalasi `package`)
 
 
 ## Objek
@@ -57,10 +57,9 @@ Objek-objek tersebut telah terdefinisikan di RStudio. Perhatikan pada Jendela En
 knitr::include_graphics("images//objek_01.jpg")
 ```
 
-Objek-objek tersebut dapat dihapu ataupun digantikan dengan nilai yang baru. Untuk menghapus sebuah objek dapat dilakukan dengan menggunakan fungsi `rm(nama_objek)`. Contoh:
+Objek-objek tersebut dapat dihapus ataupun digantikan dengan nilai yang baru. Untuk menghapus sebuah objek dapat dilakukan dengan menggunakan fungsi `rm(nama_objek)`. Contoh:
 
 ```{r}
-a = 79
 rm(b)
 ```
 

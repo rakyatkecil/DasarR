@@ -23,7 +23,7 @@
 <meta name="author" content="’dimas" />
 
 
-<meta name="date" content="2023-01-30" />
+<meta name="date" content="2023-02-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -138,7 +138,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Pengantar</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#sejarah-program-r"><i class="fa fa-check"></i><b>1.1</b> Sejarah Program R</a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#sekilas-tentang-program-r"><i class="fa fa-check"></i><b>1.1</b> Sekilas tentang Program R</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#program-r"><i class="fa fa-check"></i><b>1.2</b> Program R</a>
 <ul>
 <li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#instalasi-program-r"><i class="fa fa-check"></i><b>1.2.1</b> Instalasi Program R</a></li>
@@ -230,14 +230,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>Alat dan kebutuhan</strong></p>
 <ol style="list-style-type: decimal">
 <li>Aplikasi R Studio</li>
-<li>Koneksi internet</li>
+<li>Koneksi internet (jika perlu instalasi <code>package</code>)</li>
 </ol>
 <div id="objek" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> Objek<a href="pertemuan-1-pengenalan.html#objek" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Objek merupakan sebuah wadah untuk menyimpan informasi (dapat berupa nilai, data, ataupun lainnya) yang telah didefinisikan. Penyimpanan informasi ke dalam sebuah objek memberikan kemudahan bagi pengguna R untuk memanggil informasi yang sama berulang kali hanya dengan memanggil nama objeknya saja. Seringkali sebuah informasi memiliki banyak bagian didalamnya seperti <code>data frame</code> atau kerangka data (memiliki kolom-kolom variabel). Informasi ini akan sangat merepotkan jika harus memanggilnya berulang kali, sehingga dengan mendefinisikannya ke dalam sebuah objek akan mempercepat proses pengerjaannya.</p>
 <p>Terdapat beberapa cara dalam mendefinisikan objek pada R seperti yang tersajikan pada tabel berikut:</p>
 <table>
-<caption><span id="tab:unnamed-chunk-21">Table 2.1: </span>Operator Pendefinisian Objek pada R</caption>
+<caption><span id="tab:unnamed-chunk-21">Tabel 2.1: </span>Operator Pendefinisian Objek pada R</caption>
 <thead>
 <tr class="header">
 <th align="left">Operator</th>
@@ -277,19 +277,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5 5 Surya</code></pre>
 <p>Objek-objek tersebut telah terdefinisikan di RStudio. Perhatikan pada Jendela Environment saat ini sudah ada 4 buah objek yang didefinisikan sebelumnya.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-24"></span>
-<img src="images/objek_01.JPG" alt="Jendela Environment yang Sudah Terdapat Objek" width="\maxwidth" />
+<img src="images/objek_01.JPG" alt="Jendela Environment yang Sudah Terdapat Objek" width="307" />
 <p class="caption">
-Figure 2.1: Jendela Environment yang Sudah Terdapat Objek
+Gambar 2.1: Jendela Environment yang Sudah Terdapat Objek
 </p>
 </div>
-<p>Objek-objek tersebut dapat dihapu ataupun digantikan dengan nilai yang baru. Untuk menghapus sebuah objek dapat dilakukan dengan menggunakan fungsi <code>rm(nama_objek)</code>. Contoh:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="pertemuan-1-pengenalan.html#cb10-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="dv">79</span></span>
-<span id="cb10-2"><a href="pertemuan-1-pengenalan.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(b)</span></code></pre></div>
+<p>Objek-objek tersebut dapat dihapus ataupun digantikan dengan nilai yang baru. Untuk menghapus sebuah objek dapat dilakukan dengan menggunakan fungsi <code>rm(nama_objek)</code>. Contoh:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="pertemuan-1-pengenalan.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(b)</span></code></pre></div>
 <p>Sekarang objek <code>a</code> telah memiliki nilai baru yaitu <code>79</code> dan objek b tidak tersedia pada Jendela Environment.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-26"></span>
-<img src="images/objek_02.JPG" alt="Jendela Environment setelah Penggantian Objek `a` dan Penghapusan Objek `b`" width="\maxwidth" />
+<img src="images/objek_02.JPG" alt="Jendela Environment setelah Penggantian Objek `a` dan Penghapusan Objek `b`" width="306" />
 <p class="caption">
-Figure 2.2: Jendela Environment setelah Penggantian Objek <code>a</code> dan Penghapusan Objek <code>b</code>
+Gambar 2.2: Jendela Environment setelah Penggantian Objek <code>a</code> dan Penghapusan Objek <code>b</code>
 </p>
 </div>
 <p>Terdapat beberapa syarat pembuatan nama <code>objek</code> yaitu:</p>
@@ -306,17 +305,17 @@ Figure 2.2: Jendela Environment setelah Penggantian Objek <code>a</code> dan Pen
 <p>R Packages adalah unit yang sangat fundamental dalam Program R. Dalam sebuah R Packages berisi kode-kode yang dapat digunakan, sampel data dan dokumentasi yang telah dideskripsikan dengan baik untuk mempermudah penggunaannya. Terdapat berbagai macam paket yang tersedia di software repository CRAN ( <em>The Comprehensive R Archive Network</em> ) yang merupakan pusat arsip dari versi-versi paket terbaru dan yang lama (biasanya paket diperbarui oleh pembuatnya untuk keperluan kemudahan penggunanya atau menyesuaikan dengan update terbaru dari R). Tercatat bahwa pada November 2020 sudah terdapat lebih dari 16.000 paket yang tersedia di CRAN.</p>
 <p>Sebagai contoh penggunaan paket, akan dilakukan pembuatan grafik dengan menggunakan fungsi <code>plot()</code> yang merupakan fungsi bawaan dari R (dari paket <code>base</code>) dibandingkan dengan grafik yang menggunakan paket <code>ggplot2</code>. Berikut Hasilnya:</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-27"></span>
-<img src="images/paket_01.jpg" alt="Diagram Pencar Dengan dan Tanpa Menggunakan Paket" width="\maxwidth" />
+<img src="images/paket_01.jpg" alt="Diagram Pencar Dengan dan Tanpa Menggunakan Paket" width="607" />
 <p class="caption">
-Figure 2.3: Diagram Pencar Dengan dan Tanpa Menggunakan Paket
+Gambar 2.3: Diagram Pencar Dengan dan Tanpa Menggunakan Paket
 </p>
 </div>
 <p>Untuk melakukan instalasi paket, pertama siapkan jaringan internet yang baik. Paket akan di unduh dari repository CRAN. Setelah jaringan internet stabil, gunakan fungsi <code>install.packages("nama_paket")</code> lalu jalankan pada Console.</p>
 <p>Pastikan jaringan internet stabil selama proses instalasi paket berlangsung. Biasanya paket-paket dalam R tidak dapat berdiri sendiri atau memerlukan paket lain yang juga harus terinstal. Apabila terdapat 1 paket lain yang diperlukan namun gagal terinstal, maka paket yang akan kita gunakan tidak akan berjalan. Saat ini terjadi biasanya nama paket tidak akan muncul di <strong>Tab Packages</strong> (beberapa kasus nama paket muncul namun tidak dapat menggunakan fungsi yang ada). <strong>Apabila paket tidak berfungsi dengan baik, maka lakukan instalasi ulang pada paket tersebut</strong>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-28"></span>
-<img src="images/paket_02.JPG" alt="Contoh Paket `ggplot2` yang Sudah Terinstal dan Dapat Digunakan" width="\maxwidth" />
+<img src="images/paket_02.JPG" alt="Contoh Paket `ggplot2` yang Sudah Terinstal dan Dapat Digunakan" width="573" />
 <p class="caption">
-Figure 2.4: Contoh Paket <code>ggplot2</code> yang Sudah Terinstal dan Dapat Digunakan
+Gambar 2.4: Contoh Paket <code>ggplot2</code> yang Sudah Terinstal dan Dapat Digunakan
 </p>
 </div>
 <p>Secara <em>default</em> CRAN menjadi repository untuk mengunduh paket di RStudio. Sehingga kita tidak perlu mengatur repository lagi.</p>
@@ -478,8 +477,7 @@ Digunakan untuk <em>import</em> data dengan <em>Import Wizard</em></li>
 ## [1] 1 3 6 2
 ## 
 ## $b
-## [1] &quot;Apa&quot;   &quot;kabar&quot; &quot;anda&quot;  &quot;hari&quot;  &quot;ini&quot;  
-## [6] &quot;?&quot;    
+## [1] &quot;Apa&quot;   &quot;kabar&quot; &quot;anda&quot;  &quot;hari&quot;  &quot;ini&quot;   &quot;?&quot;    
 ## 
 ## $c
 ## [1]  TRUE FALSE FALSE FALSE  TRUE</code></pre>
@@ -506,7 +504,7 @@ Digunakan untuk <em>import</em> data dengan <em>Import Wizard</em></li>
 ## 4 Andina Perempuan 154 40
 ## 5   Elok Perempuan 163 52</code></pre>
 <table>
-<caption><span id="tab:unnamed-chunk-46">Table 2.2: </span>Data Mahasiswa 2020</caption>
+<caption><span id="tab:unnamed-chunk-46">Tabel 2.2: </span>Data Mahasiswa 2020</caption>
 <thead>
 <tr class="header">
 <th align="left">nama</th>
@@ -550,8 +548,7 @@ Digunakan untuk <em>import</em> data dengan <em>Import Wizard</em></li>
 </table>
 <p>Selanjutnya untuk memanggil objek/variabel pada sebuah <code>data.frame</code> mirip dengan memanggil data pada sebuah <code>matrix</code>. Selain itu kita dapat pula memanggil dengan cara menyebutkan nama objek/variabel pada <code>data.frame</code> tersebut.</p>
 <div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="pertemuan-1-pengenalan.html#cb68-1" aria-hidden="true" tabindex="-1"></a>x[,<span class="dv">2</span>]</span></code></pre></div>
-<pre><code>## [1] Laki-laki Laki-laki Perempuan Perempuan
-## [5] Perempuan
+<pre><code>## [1] Laki-laki Laki-laki Perempuan Perempuan Perempuan
 ## Levels: Laki-laki Perempuan</code></pre>
 <div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="pertemuan-1-pengenalan.html#cb70-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">4</span>,]</span></code></pre></div>
 <pre><code>##     nama        jk  tb bb
@@ -579,7 +576,7 @@ Digunakan untuk <em>import</em> data dengan <em>Import Wizard</em></li>
 <h3><span class="header-section-number">2.5.1</span> Operator Aritmatika<a href="pertemuan-1-pengenalan.html#operator" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Operator artimatika adalah operator yang digunakan untuk melakukan komputasi dengan menggunakan operasi - operasi matematika seperti penjumlahan, pengurangan, dll. Berikut adalah daftar operator aritmatika pada R:</p>
 <table>
-<caption><span id="tab:unnamed-chunk-48">Table 2.3: </span>Operator Aritmatika pada R</caption>
+<caption><span id="tab:unnamed-chunk-48">Tabel 2.3: </span>Operator Aritmatika pada R</caption>
 <thead>
 <tr class="header">
 <th align="center">Operator</th>
@@ -617,7 +614,7 @@ Digunakan untuk <em>import</em> data dengan <em>Import Wizard</em></li>
 <div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="pertemuan-1-pengenalan.html#cb76-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">3</span></span>
 <span id="cb76-2"><a href="pertemuan-1-pengenalan.html#cb76-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">5</span></span></code></pre></div>
 <table>
-<caption><span id="tab:unnamed-chunk-50">Table 2.4: </span>Hasil Penggunaan Operator pada R</caption>
+<caption><span id="tab:unnamed-chunk-50">Tabel 2.4: </span>Hasil Penggunaan Operator pada R</caption>
 <thead>
 <tr class="header">
 <th align="center">Operator</th>
@@ -663,7 +660,7 @@ Digunakan untuk <em>import</em> data dengan <em>Import Wizard</em></li>
 <h3><span class="header-section-number">2.5.2</span> Operator Logika<a href="pertemuan-1-pengenalan.html#operator-logika" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Operator logika akan menghasilkan nilai <code>TRUE</code> dan <code>FALSE</code>. Seperti halnya logika matematika, terdapat 2 operator logika yaitu <em>dan</em> (<code>AND</code>), <em>atau</em> (<code>OR</code>) dan ingkaran (<code>NOT</code>). Berikut adalah daftar operator logika pada R:</p>
 <table>
-<caption><span id="tab:unnamed-chunk-51">Table 2.5: </span>Operator Logika pada R</caption>
+<caption><span id="tab:unnamed-chunk-51">Tabel 2.5: </span>Operator Logika pada R</caption>
 <thead>
 <tr class="header">
 <th align="center">Operator</th>
@@ -703,20 +700,17 @@ Digunakan untuk <em>import</em> data dengan <em>Import Wizard</em></li>
 <div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="pertemuan-1-pengenalan.html#cb79-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">&amp;</span>y</span></code></pre></div>
 <pre><code>## [1]  TRUE FALSE FALSE</code></pre>
 <div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="pertemuan-1-pengenalan.html#cb81-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">&amp;&amp;</span>z</span></code></pre></div>
-<pre><code>## Warning in x &amp;&amp; z: &#39;length(x) = 3 &gt; 1&#39; in coercion
-## to &#39;logical(1)&#39;
+<pre><code>## Warning in x &amp;&amp; z: &#39;length(x) = 3 &gt; 1&#39; in coercion to &#39;logical(1)&#39;
 
-## Warning in x &amp;&amp; z: &#39;length(x) = 3 &gt; 1&#39; in coercion
-## to &#39;logical(1)&#39;</code></pre>
+## Warning in x &amp;&amp; z: &#39;length(x) = 3 &gt; 1&#39; in coercion to &#39;logical(1)&#39;</code></pre>
 <pre><code>## [1] FALSE</code></pre>
 <div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="pertemuan-1-pengenalan.html#cb84-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">|</span>y</span></code></pre></div>
 <pre><code>## [1]  TRUE FALSE  TRUE</code></pre>
 <div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="pertemuan-1-pengenalan.html#cb86-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">||</span>z</span></code></pre></div>
-<pre><code>## Warning in x || z: &#39;length(x) = 3 &gt; 1&#39; in coercion
-## to &#39;logical(1)&#39;</code></pre>
+<pre><code>## Warning in x || z: &#39;length(x) = 3 &gt; 1&#39; in coercion to &#39;logical(1)&#39;</code></pre>
 <pre><code>## [1] TRUE</code></pre>
 <table>
-<caption><span id="tab:unnamed-chunk-53">Table 2.6: </span>Hasil Penggunaan Operator Logika</caption>
+<caption><span id="tab:unnamed-chunk-53">Tabel 2.6: </span>Hasil Penggunaan Operator Logika</caption>
 <thead>
 <tr class="header">
 <th align="left">P1</th>
@@ -767,7 +761,7 @@ Digunakan untuk <em>import</em> data dengan <em>Import Wizard</em></li>
 <h3><span class="header-section-number">2.5.3</span> Operator Relasi<a href="pertemuan-1-pengenalan.html#relational" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Operator relasi adalah operator yang digunakan untuk membandingkan 2 buah nilai/objek. Hasil <em>output</em> dari operator relasi ini adalah <code>TRUE</code> dan <code>FALSE</code>. Berikut adalah daftar operator relasi:</p>
 <table>
-<caption><span id="tab:unnamed-chunk-54">Table 2.7: </span>Operasi Relasi pada R</caption>
+<caption><span id="tab:unnamed-chunk-54">Tabel 2.7: </span>Operasi Relasi pada R</caption>
 <thead>
 <tr class="header">
 <th align="left">Operator</th>
