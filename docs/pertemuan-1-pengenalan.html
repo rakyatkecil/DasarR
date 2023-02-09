@@ -23,7 +23,7 @@
 <meta name="author" content="’dimas" />
 
 
-<meta name="date" content="2023-02-01" />
+<meta name="date" content="2023-02-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -196,6 +196,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.10" data-path="pertemuan-2-manajemen-data.html"><a href="pertemuan-2-manajemen-data.html#recode"><i class="fa fa-check"></i><b>3.10</b> Recode</a></li>
 <li class="chapter" data-level="3.11" data-path="pertemuan-2-manajemen-data.html"><a href="pertemuan-2-manajemen-data.html#filter"><i class="fa fa-check"></i><b>3.11</b> Filter</a></li>
 <li class="chapter" data-level="3.12" data-path="pertemuan-2-manajemen-data.html"><a href="pertemuan-2-manajemen-data.html#latihan"><i class="fa fa-check"></i><b>3.12</b> Latihan</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html"><i class="fa fa-check"></i><b>4</b> Pertemuan 3: Eksplorasi Data</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#statistik-deskriptif"><i class="fa fa-check"></i><b>4.1</b> Statistik Deskriptif</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#deskriptif-dengan-dplyr"><i class="fa fa-check"></i><b>4.1.1</b> Deskriptif dengan <code>dplyr</code></a></li>
+<li class="chapter" data-level="4.1.2" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#deskriptif-statistik-berdasarkan-kelompok"><i class="fa fa-check"></i><b>4.1.2</b> Deskriptif Statistik Berdasarkan Kelompok</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#visualisasi-data-dengan-ggplot2"><i class="fa fa-check"></i><b>4.2</b> Visualisasi Data dengan <code>ggplot2</code></a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#diagram-batang"><i class="fa fa-check"></i><b>4.2.1</b> Diagram Batang</a></li>
+<li class="chapter" data-level="4.2.2" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#histogram"><i class="fa fa-check"></i><b>4.2.2</b> Histogram</a></li>
+<li class="chapter" data-level="4.2.3" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#box-plot"><i class="fa fa-check"></i><b>4.2.3</b> Box Plot</a></li>
+<li class="chapter" data-level="4.2.4" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#scatter-plot"><i class="fa fa-check"></i><b>4.2.4</b> Scatter Plot</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -421,7 +436,8 @@ Digunakan untuk <em>import</em> data dengan <em>Import Wizard</em></li>
 <pre><code>## [1] 1 2 3 4 5</code></pre>
 <div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="pertemuan-1-pengenalan.html#cb38-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Hipertensi&quot;</span>, <span class="st">&quot;Diabetes&quot;</span>, <span class="st">&quot;Asam Urat&quot;</span>)</span>
 <span id="cb38-2"><a href="pertemuan-1-pengenalan.html#cb38-2" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div>
-<pre><code>## [1] &quot;Hipertensi&quot; &quot;Diabetes&quot;   &quot;Asam Urat&quot;</code></pre>
+<pre><code>## [1] &quot;Hipertensi&quot; &quot;Diabetes&quot;  
+## [3] &quot;Asam Urat&quot;</code></pre>
 <div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="pertemuan-1-pengenalan.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(x)</span></code></pre></div>
 <pre><code>## [1] 5</code></pre>
 <div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="pertemuan-1-pengenalan.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(y)</span></code></pre></div>
@@ -477,7 +493,8 @@ Digunakan untuk <em>import</em> data dengan <em>Import Wizard</em></li>
 ## [1] 1 3 6 2
 ## 
 ## $b
-## [1] &quot;Apa&quot;   &quot;kabar&quot; &quot;anda&quot;  &quot;hari&quot;  &quot;ini&quot;   &quot;?&quot;    
+## [1] &quot;Apa&quot;   &quot;kabar&quot; &quot;anda&quot;  &quot;hari&quot; 
+## [5] &quot;ini&quot;   &quot;?&quot;    
 ## 
 ## $c
 ## [1]  TRUE FALSE FALSE FALSE  TRUE</code></pre>
@@ -548,13 +565,15 @@ Digunakan untuk <em>import</em> data dengan <em>Import Wizard</em></li>
 </table>
 <p>Selanjutnya untuk memanggil objek/variabel pada sebuah <code>data.frame</code> mirip dengan memanggil data pada sebuah <code>matrix</code>. Selain itu kita dapat pula memanggil dengan cara menyebutkan nama objek/variabel pada <code>data.frame</code> tersebut.</p>
 <div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="pertemuan-1-pengenalan.html#cb68-1" aria-hidden="true" tabindex="-1"></a>x[,<span class="dv">2</span>]</span></code></pre></div>
-<pre><code>## [1] Laki-laki Laki-laki Perempuan Perempuan Perempuan
+<pre><code>## [1] Laki-laki Laki-laki Perempuan
+## [4] Perempuan Perempuan
 ## Levels: Laki-laki Perempuan</code></pre>
 <div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="pertemuan-1-pengenalan.html#cb70-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">4</span>,]</span></code></pre></div>
 <pre><code>##     nama        jk  tb bb
 ## 4 Andina Perempuan 154 40</code></pre>
 <div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="pertemuan-1-pengenalan.html#cb72-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">$</span>nama</span></code></pre></div>
-<pre><code>## [1] &quot;Ahmad&quot;  &quot;Ganjar&quot; &quot;Lusi&quot;   &quot;Andina&quot; &quot;Elok&quot;</code></pre>
+<pre><code>## [1] &quot;Ahmad&quot;  &quot;Ganjar&quot; &quot;Lusi&quot;  
+## [4] &quot;Andina&quot; &quot;Elok&quot;</code></pre>
 <div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="pertemuan-1-pengenalan.html#cb74-1" aria-hidden="true" tabindex="-1"></a>x[,<span class="fu">c</span>(<span class="st">&#39;jk&#39;</span>, <span class="st">&#39;nama&#39;</span>)]</span></code></pre></div>
 <pre><code>##          jk   nama
 ## 1 Laki-laki  Ahmad
@@ -700,14 +719,17 @@ Digunakan untuk <em>import</em> data dengan <em>Import Wizard</em></li>
 <div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="pertemuan-1-pengenalan.html#cb79-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">&amp;</span>y</span></code></pre></div>
 <pre><code>## [1]  TRUE FALSE FALSE</code></pre>
 <div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="pertemuan-1-pengenalan.html#cb81-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">&amp;&amp;</span>z</span></code></pre></div>
-<pre><code>## Warning in x &amp;&amp; z: &#39;length(x) = 3 &gt; 1&#39; in coercion to &#39;logical(1)&#39;
+<pre><code>## Warning in x &amp;&amp; z: &#39;length(x) = 3 &gt;
+## 1&#39; in coercion to &#39;logical(1)&#39;
 
-## Warning in x &amp;&amp; z: &#39;length(x) = 3 &gt; 1&#39; in coercion to &#39;logical(1)&#39;</code></pre>
+## Warning in x &amp;&amp; z: &#39;length(x) = 3 &gt;
+## 1&#39; in coercion to &#39;logical(1)&#39;</code></pre>
 <pre><code>## [1] FALSE</code></pre>
 <div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="pertemuan-1-pengenalan.html#cb84-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">|</span>y</span></code></pre></div>
 <pre><code>## [1]  TRUE FALSE  TRUE</code></pre>
 <div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="pertemuan-1-pengenalan.html#cb86-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">||</span>z</span></code></pre></div>
-<pre><code>## Warning in x || z: &#39;length(x) = 3 &gt; 1&#39; in coercion to &#39;logical(1)&#39;</code></pre>
+<pre><code>## Warning in x || z: &#39;length(x) = 3 &gt;
+## 1&#39; in coercion to &#39;logical(1)&#39;</code></pre>
 <pre><code>## [1] TRUE</code></pre>
 <table>
 <caption><span id="tab:unnamed-chunk-53">Tabel 2.6: </span>Hasil Penggunaan Operator Logika</caption>

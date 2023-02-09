@@ -1,7 +1,8 @@
 
+
 # Pertemuan 3: Eksplorasi Data
 
-Dalam pertemua ini kita akan menggunakan 2 paket yaitu `tidyverse` untuk menampilkan hasil deskriptif data dan `ggplot2` untuk visualisasi data. 
+Dalam pertemuan ini kita akan menggunakan 2 paket yaitu `tidyverse` untuk menampilkan hasil deskriptif data dan `ggplot2` untuk visualisasi data. 
 
 Pada paket `tidyverse` kita akan menggunakan beberapa fungsi berikut:
 
@@ -293,20 +294,19 @@ penjelasan:
 Scatter Plot (diagram pencar) merupakan diagram (titik) yang dibuat dengan tujuan untuk melihat hubungan dari 2 nilai/variabel `numeric`. Hubungan tersebut dapat terlihat dari pola titik-titiknya. Apabila titik-titik dalam diagram pencar menuju kearah kanan atas dari kiri bawah, maka terdapat hubungan yang positif dari kedua nilai/variabel. Arah sebaliknya menyatakan hubungan yang negatif. Kita akan menggunakan `mydata` untuk menunjukkan hubungan yang positif dan negatif dari 2 variabel.
 
 ```{r}
-summary(mydata)
+summary(rawdata)
 
 ```
 
 Menggunakan perintah `plot` pada program R:
 ```{r, fig.align = 'center'}
-par(mar = c(4, 4, 0.1, 0.1))
-plot(x = mydata$berat, y = mydata$tinggi)
+plot(x = rawdata$tinggi, y = rawdata$berat)
 ```
 
 XXXXXX
 
 ```{r, out.width = "75%", out.height= "75%", fig.align = 'center'}
-ggplot(mydata, aes(tinggi, berat)) +
+ggplot(rawdata, aes(tinggi, berat)) +
 geom_point(size=2) + 
   theme_bw()
 ```

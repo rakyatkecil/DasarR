@@ -73,3 +73,12 @@ transformasi-variabel
 recode
 filter
 latihan
+pertemuan-3-eksplorasi-data
+statistik-deskriptif
+deskriptif-dengan-dplyr
+deskriptif-statistik-berdasarkan-kelompok
+visualisasi-data-dengan-ggplot2
+diagram-batang
+histogram
+box-plot
+scatter-plot

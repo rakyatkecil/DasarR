@@ -23,7 +23,7 @@
 <meta name="author" content="’dimas" />
 
 
-<meta name="date" content="2023-02-01" />
+<meta name="date" content="2023-02-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="pertemuan-1-pengenalan.html"/>
-
+<link rel="next" href="pertemuan-3-eksplorasi-data.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -197,6 +197,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.11" data-path="pertemuan-2-manajemen-data.html"><a href="pertemuan-2-manajemen-data.html#filter"><i class="fa fa-check"></i><b>3.11</b> Filter</a></li>
 <li class="chapter" data-level="3.12" data-path="pertemuan-2-manajemen-data.html"><a href="pertemuan-2-manajemen-data.html#latihan"><i class="fa fa-check"></i><b>3.12</b> Latihan</a></li>
 </ul></li>
+<li class="chapter" data-level="4" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html"><i class="fa fa-check"></i><b>4</b> Pertemuan 3: Eksplorasi Data</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#statistik-deskriptif"><i class="fa fa-check"></i><b>4.1</b> Statistik Deskriptif</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#deskriptif-dengan-dplyr"><i class="fa fa-check"></i><b>4.1.1</b> Deskriptif dengan <code>dplyr</code></a></li>
+<li class="chapter" data-level="4.1.2" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#deskriptif-statistik-berdasarkan-kelompok"><i class="fa fa-check"></i><b>4.1.2</b> Deskriptif Statistik Berdasarkan Kelompok</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#visualisasi-data-dengan-ggplot2"><i class="fa fa-check"></i><b>4.2</b> Visualisasi Data dengan <code>ggplot2</code></a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#diagram-batang"><i class="fa fa-check"></i><b>4.2.1</b> Diagram Batang</a></li>
+<li class="chapter" data-level="4.2.2" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#histogram"><i class="fa fa-check"></i><b>4.2.2</b> Histogram</a></li>
+<li class="chapter" data-level="4.2.3" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#box-plot"><i class="fa fa-check"></i><b>4.2.3</b> Box Plot</a></li>
+<li class="chapter" data-level="4.2.4" data-path="pertemuan-3-eksplorasi-data.html"><a href="pertemuan-3-eksplorasi-data.html#scatter-plot"><i class="fa fa-check"></i><b>4.2.4</b> Scatter Plot</a></li>
+</ul></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -305,14 +320,22 @@ Gambar 3.1: Jendela Import Wizard
 </ol>
 <p>Sekarang kita akan gunakan fungsi <code>summary()</code> pada <code>mydata</code>:</p>
 <div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="pertemuan-2-manajemen-data.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mydata)</span></code></pre></div>
-<pre><code>##      tinggi          berat              jk           
-##  Min.   : 66.0   Min.   :  15.00   Length:87         
-##  1st Qu.:167.0   1st Qu.:  55.60   Class :character  
-##  Median :180.0   Median :  79.00   Mode  :character  
-##  Mean   :174.4   Mean   :  97.31                     
-##  3rd Qu.:191.0   3rd Qu.:  84.50                     
-##  Max.   :264.0   Max.   :1358.00                     
-##  NA&#39;s   :6       NA&#39;s   :28</code></pre>
+<pre><code>##      tinggi          berat        
+##  Min.   : 66.0   Min.   :  15.00  
+##  1st Qu.:167.0   1st Qu.:  55.60  
+##  Median :180.0   Median :  79.00  
+##  Mean   :174.4   Mean   :  97.31  
+##  3rd Qu.:191.0   3rd Qu.:  84.50  
+##  Max.   :264.0   Max.   :1358.00  
+##  NA&#39;s   :6       NA&#39;s   :28       
+##       jk           
+##  Length:87         
+##  Class :character  
+##  Mode  :character  
+##                    
+##                    
+##                    
+## </code></pre>
 </div>
 <div id="memilih-variabel" class="section level2 hasAnchor" number="3.4">
 <h2><span class="header-section-number">3.4</span> Memilih Variabel<a href="pertemuan-2-manajemen-data.html#memilih-variabel" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -347,25 +370,41 @@ Gambar 3.1: Jendela Import Wizard
 <p>Penghapusan <code>NA</code> dapat dilakukan dengan menggunakan fungsi <code>na.omit()</code>.</p>
 <div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="pertemuan-2-manajemen-data.html#cb117-1" aria-hidden="true" tabindex="-1"></a>mydata3 <span class="ot">=</span> mydata2 <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>()</span>
 <span id="cb117-2"><a href="pertemuan-2-manajemen-data.html#cb117-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mydata2)</span></code></pre></div>
-<pre><code>##       jk                berat             tinggi     
-##  Length:87          Min.   :  15.00   Min.   : 66.0  
-##  Class :character   1st Qu.:  55.60   1st Qu.:167.0  
-##  Mode  :character   Median :  79.00   Median :180.0  
-##                     Mean   :  97.31   Mean   :174.4  
-##                     3rd Qu.:  84.50   3rd Qu.:191.0  
-##                     Max.   :1358.00   Max.   :264.0  
-##                     NA&#39;s   :28        NA&#39;s   :6</code></pre>
+<pre><code>##       jk           
+##  Length:87         
+##  Class :character  
+##  Mode  :character  
+##                    
+##                    
+##                    
+##                    
+##      berat             tinggi     
+##  Min.   :  15.00   Min.   : 66.0  
+##  1st Qu.:  55.60   1st Qu.:167.0  
+##  Median :  79.00   Median :180.0  
+##  Mean   :  97.31   Mean   :174.4  
+##  3rd Qu.:  84.50   3rd Qu.:191.0  
+##  Max.   :1358.00   Max.   :264.0  
+##  NA&#39;s   :28        NA&#39;s   :6</code></pre>
 <p>Kode tersebut akan memberikan hasil seperti kode berikut:</p>
 <div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="pertemuan-2-manajemen-data.html#cb119-1" aria-hidden="true" tabindex="-1"></a>mydata3 <span class="ot">=</span> <span class="fu">na.omit</span>(mydata2)</span>
 <span id="cb119-2"><a href="pertemuan-2-manajemen-data.html#cb119-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mydata2)</span></code></pre></div>
-<pre><code>##       jk                berat             tinggi     
-##  Length:87          Min.   :  15.00   Min.   : 66.0  
-##  Class :character   1st Qu.:  55.60   1st Qu.:167.0  
-##  Mode  :character   Median :  79.00   Median :180.0  
-##                     Mean   :  97.31   Mean   :174.4  
-##                     3rd Qu.:  84.50   3rd Qu.:191.0  
-##                     Max.   :1358.00   Max.   :264.0  
-##                     NA&#39;s   :28        NA&#39;s   :6</code></pre>
+<pre><code>##       jk           
+##  Length:87         
+##  Class :character  
+##  Mode  :character  
+##                    
+##                    
+##                    
+##                    
+##      berat             tinggi     
+##  Min.   :  15.00   Min.   : 66.0  
+##  1st Qu.:  55.60   1st Qu.:167.0  
+##  Median :  79.00   Median :180.0  
+##  Mean   :  97.31   Mean   :174.4  
+##  3rd Qu.:  84.50   3rd Qu.:191.0  
+##  Max.   :1358.00   Max.   :264.0  
+##  NA&#39;s   :28        NA&#39;s   :6</code></pre>
 </div>
 <div id="mengganti-na-dengan-mean" class="section level3 hasAnchor" number="3.5.2">
 <h3><span class="header-section-number">3.5.2</span> Mengganti <code>NA</code> dengan mean<a href="pertemuan-2-manajemen-data.html#mengganti-na-dengan-mean" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -373,14 +412,22 @@ Gambar 3.1: Jendela Import Wizard
 <div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="pertemuan-2-manajemen-data.html#cb121-1" aria-hidden="true" tabindex="-1"></a>rataan <span class="ot">=</span> <span class="fu">mean</span>(mydata2<span class="sc">$</span>berat, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb121-2"><a href="pertemuan-2-manajemen-data.html#cb121-2" aria-hidden="true" tabindex="-1"></a>mydata2<span class="sc">$</span>berat[<span class="fu">is.na</span>(mydata2<span class="sc">$</span>berat)] <span class="ot">=</span> rataan</span>
 <span id="cb121-3"><a href="pertemuan-2-manajemen-data.html#cb121-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mydata2)</span></code></pre></div>
-<pre><code>##       jk                berat             tinggi     
-##  Length:87          Min.   :  15.00   Min.   : 66.0  
-##  Class :character   1st Qu.:  75.00   1st Qu.:167.0  
-##  Mode  :character   Median :  84.00   Median :180.0  
-##                     Mean   :  97.31   Mean   :174.4  
-##                     3rd Qu.:  97.31   3rd Qu.:191.0  
-##                     Max.   :1358.00   Max.   :264.0  
-##                                       NA&#39;s   :6</code></pre>
+<pre><code>##       jk           
+##  Length:87         
+##  Class :character  
+##  Mode  :character  
+##                    
+##                    
+##                    
+##                    
+##      berat             tinggi     
+##  Min.   :  15.00   Min.   : 66.0  
+##  1st Qu.:  75.00   1st Qu.:167.0  
+##  Median :  84.00   Median :180.0  
+##  Mean   :  97.31   Mean   :174.4  
+##  3rd Qu.:  97.31   3rd Qu.:191.0  
+##  Max.   :1358.00   Max.   :264.0  
+##                    NA&#39;s   :6</code></pre>
 <p>Penjelasan kode:</p>
 <ul>
 <li><code>mean()</code> berfungsi untuk mendapatkan nilai rataan pada data yang ditentukan, dalam hal ini ialah <code>mydata$berat</code> (variabel <code>berat</code> pada data <code>mydata</code>).</li>
@@ -399,14 +446,22 @@ Gambar 3.1: Jendela Import Wizard
 <p>Hasil <code>boxplot</code> menunjukkan bahwa terdapat 1 titik data yang nilainya terlampau jauh dari <code>boxplot</code> itu sendiri. Hasil ini mengkonfirmasi dugaan kita sebelumnya bahwa nilai berat <code>1358.00</code> adalah pencilan. Selanjutnya kita akan lakukan penghapusan 1 baris data yang memiliki berat sebesar <code>1358.00</code>.</p>
 <div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="pertemuan-2-manajemen-data.html#cb124-1" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">=</span> mydata[mydata<span class="sc">$</span>berat<span class="sc">&lt;</span><span class="dv">1000</span>, ]</span>
 <span id="cb124-2"><a href="pertemuan-2-manajemen-data.html#cb124-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mydata)</span></code></pre></div>
-<pre><code>##      tinggi          berat             jk           
-##  Min.   : 66.0   Min.   : 15.00   Length:86         
-##  1st Qu.:168.5   1st Qu.: 55.30   Class :character  
-##  Median :180.0   Median : 79.00   Mode  :character  
-##  Mean   :174.0   Mean   : 75.58                     
-##  3rd Qu.:192.5   3rd Qu.: 84.00                     
-##  Max.   :234.0   Max.   :159.00                     
-##  NA&#39;s   :28      NA&#39;s   :28</code></pre>
+<pre><code>##      tinggi          berat       
+##  Min.   : 66.0   Min.   : 15.00  
+##  1st Qu.:168.5   1st Qu.: 55.30  
+##  Median :180.0   Median : 79.00  
+##  Mean   :174.0   Mean   : 75.58  
+##  3rd Qu.:192.5   3rd Qu.: 84.00  
+##  Max.   :234.0   Max.   :159.00  
+##  NA&#39;s   :28      NA&#39;s   :28      
+##       jk           
+##  Length:86         
+##  Class :character  
+##  Mode  :character  
+##                    
+##                    
+##                    
+## </code></pre>
 <div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="pertemuan-2-manajemen-data.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(mydata<span class="sc">$</span>berat)</span></code></pre></div>
 <p><img src="dr_files/figure-html/unnamed-chunk-68-1.png" width="672" />
 Sekarang kita memiliki hasil yang lebih baik. Perhatikan pada <code>boxplot</code> masih terlihat terdapat 3 buah titik yang berada diluar <code>boxplot</code>. Meskipun ini merupakan pencilan namun dapat kita abaikan karena nilai yang tidak terlampau jauh. Andaikan anda tetap akan menghapus nilai tersebut pun tidak akan terjadi masalah (karena jumlah data yang dihapus masih relatif kecil yaitu 3 observasi dibandingkan keseluruhan observasi yaitu 57 observasi).</p>
@@ -462,13 +517,20 @@ Untuk membuat variabel baru dengan menggunakan paket <code>tidyverse</code> dapa
 <span id="cb131-3"><a href="pertemuan-2-manajemen-data.html#cb131-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">var_baru1 =</span> <span class="dv">1</span>,</span>
 <span id="cb131-4"><a href="pertemuan-2-manajemen-data.html#cb131-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">var_baru2 =</span> <span class="st">&quot;ini variabel baru&quot;</span>)</span>
 <span id="cb131-5"><a href="pertemuan-2-manajemen-data.html#cb131-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mydatax)</span></code></pre></div>
-<pre><code>##   tinggi berat     jk tinggiM var_baru1         var_baru2
-## 1    172    77   male    1.72         1 ini variabel baru
-## 2    167    75   none    1.67         1 ini variabel baru
-## 3     96    32   none    0.96         1 ini variabel baru
-## 4    202   136   male    2.02         1 ini variabel baru
-## 5    150    49 female    1.50         1 ini variabel baru
-## 6    178   120   male    1.78         1 ini variabel baru</code></pre>
+<pre><code>##   tinggi berat     jk tinggiM
+## 1    172    77   male    1.72
+## 2    167    75   none    1.67
+## 3     96    32   none    0.96
+## 4    202   136   male    2.02
+## 5    150    49 female    1.50
+## 6    178   120   male    1.78
+##   var_baru1         var_baru2
+## 1         1 ini variabel baru
+## 2         1 ini variabel baru
+## 3         1 ini variabel baru
+## 4         1 ini variabel baru
+## 5         1 ini variabel baru
+## 6         1 ini variabel baru</code></pre>
 </div>
 <div id="transformasi-variabel" class="section level2 hasAnchor" number="3.9">
 <h2><span class="header-section-number">3.9</span> Transformasi Variabel<a href="pertemuan-2-manajemen-data.html#transformasi-variabel" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -504,23 +566,37 @@ Untuk membuat variabel baru dengan menggunakan paket <code>tidyverse</code> dapa
 <p>Untuk memudahkan dalam penggunaanya, dalam modul ini akan menggunakan fungsi <code>filter()</code> pada paket <code>tidyverse</code>. Secara konsep penggunaannya sama dengan penggunaan fungsi <code>mutate()</code>, hanya saja pada filter akan menggunakan operator hubungan (<code>&lt;, &gt;, ==, !=, dll.</code>) dalam pendefinisiannya. Contoh berikut akan memilih seluruh data pada <code>mydata2</code> dengan kondisi <code>IMTkat</code> bernilai <code>Gemuk</code>:</p>
 <div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="pertemuan-2-manajemen-data.html#cb135-1" aria-hidden="true" tabindex="-1"></a>mydata3 <span class="ot">&lt;-</span> mydata2 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(IMTkat <span class="sc">==</span> <span class="st">&quot;Gemuk&quot;</span>)</span>
 <span id="cb135-2"><a href="pertemuan-2-manajemen-data.html#cb135-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mydata3)</span></code></pre></div>
-<pre><code>##   tinggi berat     jk tinggiM      IMT IMTkat
-## 1    172    77   male    1.72 26.02758  Gemuk
-## 2    167    75   none    1.67 26.89232  Gemuk
-## 3     96    32   none    0.96 34.72222  Gemuk
-## 4    202   136   male    2.02 33.33007  Gemuk
-## 6    178   120   male    1.78 37.87401  Gemuk
-## 7    165    75 female    1.65 27.54821  Gemuk</code></pre>
+<pre><code>##   tinggi berat     jk tinggiM
+## 1    172    77   male    1.72
+## 2    167    75   none    1.67
+## 3     96    32   none    0.96
+## 4    202   136   male    2.02
+## 6    178   120   male    1.78
+## 7    165    75 female    1.65
+##        IMT IMTkat
+## 1 26.02758  Gemuk
+## 2 26.89232  Gemuk
+## 3 34.72222  Gemuk
+## 4 33.33007  Gemuk
+## 6 37.87401  Gemuk
+## 7 27.54821  Gemuk</code></pre>
 <p>Fungsi <code>filter()</code> juga dapat digunakan untuk beberapa kondisi. Untuk menghubungkan lebih dari 1 kondisi perlu menggunakan operator logika (<code>&amp;, |</code>). Berikut contohnya:</p>
 <div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="pertemuan-2-manajemen-data.html#cb137-1" aria-hidden="true" tabindex="-1"></a>mydata3 <span class="ot">&lt;-</span> mydata2 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(IMTkat <span class="sc">==</span> <span class="st">&quot;Gemuk&quot;</span> <span class="sc">|</span> IMTkat <span class="sc">==</span> <span class="st">&quot;Kurus&quot;</span>)</span>
 <span id="cb137-2"><a href="pertemuan-2-manajemen-data.html#cb137-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mydata3)</span></code></pre></div>
-<pre><code>##      tinggi          berat             jk               tinggiM     
-##  Min.   : 66.0   Min.   : 17.00   Length:33          Min.   :0.660  
-##  1st Qu.:165.0   1st Qu.: 48.00   Class :character   1st Qu.:1.650  
-##  Median :178.0   Median : 75.00   Mode  :character   Median :1.780  
-##  Mean   :167.8   Mean   : 74.45                      Mean   :1.678  
-##  3rd Qu.:190.0   3rd Qu.: 84.00                      3rd Qu.:1.900  
-##  Max.   :229.0   Max.   :159.00                      Max.   :2.290  
+<pre><code>##      tinggi          berat       
+##  Min.   : 66.0   Min.   : 17.00  
+##  1st Qu.:165.0   1st Qu.: 48.00  
+##  Median :178.0   Median : 75.00  
+##  Mean   :167.8   Mean   : 74.45  
+##  3rd Qu.:190.0   3rd Qu.: 84.00  
+##  Max.   :229.0   Max.   :159.00  
+##       jk               tinggiM     
+##  Length:33          Min.   :0.660  
+##  Class :character   1st Qu.:1.650  
+##  Mode  :character   Median :1.780  
+##                     Mean   :1.678  
+##                     3rd Qu.:1.900  
+##                     Max.   :2.290  
 ##       IMT           IMTkat         
 ##  Min.   :12.89   Length:33         
 ##  1st Qu.:17.99   Class :character  
@@ -533,13 +609,20 @@ Untuk membuat variabel baru dengan menggunakan paket <code>tidyverse</code> dapa
 <h2><span class="header-section-number">3.12</span> Latihan<a href="pertemuan-2-manajemen-data.html#latihan" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="pertemuan-2-manajemen-data.html#cb139-1" aria-hidden="true" tabindex="-1"></a>mydata4 <span class="ot">&lt;-</span> mydata2 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(jk <span class="sc">==</span> <span class="st">&quot;male&quot;</span> <span class="sc">|</span> jk <span class="sc">==</span> <span class="st">&quot;female&quot;</span>)</span>
 <span id="cb139-2"><a href="pertemuan-2-manajemen-data.html#cb139-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mydata4)</span></code></pre></div>
-<pre><code>##   tinggi berat     jk tinggiM      IMT IMTkat
-## 1    172    77   male    1.72 26.02758  Gemuk
-## 4    202   136   male    2.02 33.33007  Gemuk
-## 5    150    49 female    1.50 21.77778 Normal
-## 6    178   120   male    1.78 37.87401  Gemuk
-## 7    165    75 female    1.65 27.54821  Gemuk
-## 9    183    84   male    1.83 25.08286  Gemuk</code></pre>
+<pre><code>##   tinggi berat     jk tinggiM
+## 1    172    77   male    1.72
+## 4    202   136   male    2.02
+## 5    150    49 female    1.50
+## 6    178   120   male    1.78
+## 7    165    75 female    1.65
+## 9    183    84   male    1.83
+##        IMT IMTkat
+## 1 26.02758  Gemuk
+## 4 33.33007  Gemuk
+## 5 21.77778 Normal
+## 6 37.87401  Gemuk
+## 7 27.54821  Gemuk
+## 9 25.08286  Gemuk</code></pre>
 <div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="pertemuan-2-manajemen-data.html#cb141-1" aria-hidden="true" tabindex="-1"></a>mydata4 <span class="ot">&lt;-</span> mydata4 <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(</span>
 <span id="cb141-2"><a href="pertemuan-2-manajemen-data.html#cb141-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">JK =</span> <span class="fu">case_when</span>(</span>
 <span id="cb141-3"><a href="pertemuan-2-manajemen-data.html#cb141-3" aria-hidden="true" tabindex="-1"></a>    jk <span class="sc">==</span> <span class="st">&quot;male&quot;</span> <span class="sc">~</span> <span class="st">&quot;M&quot;</span>,</span>
@@ -554,8 +637,8 @@ Untuk membuat variabel baru dengan menggunakan paket <code>tidyverse</code> dapa
           </div>
         </div>
       </div>
-<a href="pertemuan-1-pengenalan.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="pertemuan-1-pengenalan.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="pertemuan-3-eksplorasi-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
